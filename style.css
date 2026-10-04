@@ -8,31 +8,34 @@
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    min-height: 100dvh;
-
     font-family: Georgia, "Times New Roman", serif;
-    color: #fff;
+    color: #ffffff;
 
     background:
-        radial-gradient(circle at 50% 20%, rgba(130, 35, 75, 0.25), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(80, 20, 60, 0.2), transparent 40%),
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(130, 35, 75, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(80, 20, 60, 0.2),
+            transparent 40%
+        ),
         #09060b;
-
-    overflow: hidden;
 }
 
 
 /* ========================================
-   PASSWORD SCREEN
+   PASSWORD
 ======================================== */
 
 .password-screen {
@@ -41,21 +44,20 @@ body {
     z-index: 9999;
 
     width: 100%;
-    height: 100%;
     height: 100dvh;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding:
-        max(20px, env(safe-area-inset-top))
-        20px
-        max(20px, env(safe-area-inset-bottom))
-        20px;
+    padding: 20px;
 
     background:
-        radial-gradient(circle at center, rgba(100, 25, 60, 0.35), transparent 55%),
+        radial-gradient(
+            circle at center,
+            rgba(100, 25, 60, 0.35),
+            transparent 55%
+        ),
         #08050a;
 
     transition:
@@ -72,7 +74,8 @@ body {
 .password-box {
     width: min(440px, 100%);
 
-    padding: 42px 30px;
+    padding: clamp(25px, 5vw, 42px)
+             clamp(20px, 5vw, 30px);
 
     text-align: center;
 
@@ -90,7 +93,7 @@ body {
 }
 
 .password-heart {
-    font-size: 42px;
+    font-size: clamp(32px, 7vw, 42px);
     margin-bottom: 12px;
 
     color: #ff6f9f;
@@ -104,7 +107,7 @@ body {
     margin-bottom: 8px;
 
     font-family: Arial, sans-serif;
-    font-size: 11px;
+    font-size: clamp(9px, 2vw, 11px);
     letter-spacing: 3px;
 
     color: rgba(255, 255, 255, 0.5);
@@ -113,7 +116,7 @@ body {
 .password-box h1 {
     margin-bottom: 16px;
 
-    font-size: clamp(30px, 6vw, 42px);
+    font-size: clamp(28px, 7vw, 42px);
     font-weight: normal;
 }
 
@@ -123,7 +126,7 @@ body {
     margin: 0 auto 22px;
 
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: clamp(13px, 2vw, 14px);
     line-height: 1.7;
 
     color: rgba(255, 255, 255, 0.68);
@@ -133,7 +136,7 @@ body {
     margin-bottom: 18px;
 
     font-family: Arial, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 5px;
 
     color: rgba(255, 255, 255, 0.5);
@@ -152,7 +155,7 @@ body {
 
     background: rgba(255, 255, 255, 0.07);
 
-    color: white;
+    color: #ffffff;
 
     text-align: center;
 
@@ -189,7 +192,7 @@ body {
         #d93670
     );
 
-    color: white;
+    color: #ffffff;
 
     font-family: Arial, sans-serif;
     font-size: 15px;
@@ -216,7 +219,6 @@ body {
 
 .password-error {
     display: flex;
-
     flex-direction: column;
 
     gap: 3px;
@@ -261,13 +263,21 @@ body::after {
     position: fixed;
     inset: 0;
 
-    pointer-events: none;
-
     z-index: 0;
 
+    pointer-events: none;
+
     background-image:
-        radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,180,210,0.35) 1px, transparent 1px);
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.55) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 180, 210, 0.35) 1px,
+            transparent 1px
+        );
 
     background-size:
         95px 95px,
@@ -312,7 +322,6 @@ body::after {
     z-index: 1;
 
     width: 100%;
-    height: 100%;
     height: 100dvh;
 
     display: flex;
@@ -326,6 +335,8 @@ body::after {
     scrollbar-width: none;
 
     overscroll-behavior-x: contain;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 #album::-webkit-scrollbar {
@@ -343,32 +354,35 @@ body::after {
     flex: 0 0 100%;
 
     width: 100%;
-    height: 100%;
-    height: 100dvh;
-
     min-width: 100%;
-    min-height: 100dvh;
+
+    height: 100dvh;
 
     scroll-snap-align: center;
     scroll-snap-stop: always;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    overflow: hidden;
+    /*
+       Spazio riservato per:
+       - barra superiore
+       - contenuto
+       - navigazione inferiore
+    */
 
     padding:
-        max(80px, env(safe-area-inset-top) + 55px)
-        30px
-        max(100px, env(safe-area-inset-bottom) + 75px)
-        30px;
+        clamp(55px, 8vh, 90px)
+        clamp(55px, 8vw, 110px)
+        clamp(80px, 11vh, 120px);
+
+    overflow: hidden;
 }
 
 
 /* ========================================
-   CONTENUTO GENERALE
+   CONTENUTO
 ======================================== */
 
 .page-content {
@@ -390,22 +404,44 @@ body::after {
 
 
 /* ========================================
+   TESTI GENERALI
+======================================== */
+
+.page h2 {
+    margin-bottom: clamp(12px, 2vh, 22px);
+
+    font-size: clamp(24px, 4vw, 42px);
+
+    font-weight: normal;
+
+    line-height: 1.15;
+}
+
+.page p {
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(13px, 1.4vw, 17px);
+
+    line-height: 1.65;
+
+    color: rgba(255, 255, 255, 0.76);
+}
+
+
+/* ========================================
    COVER
 ======================================== */
 
-.cover {
-    text-align: center;
-}
-
 .cover .page-content {
-    gap: 14px;
+    gap: clamp(8px, 1.5vh, 15px);
 }
 
 .cover-small {
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
-    letter-spacing: 4px;
+    font-size: clamp(9px, 1.2vw, 12px);
+
+    letter-spacing: clamp(2px, 0.4vw, 4px);
 
     color: rgba(255, 255, 255, 0.48);
 
@@ -413,18 +449,17 @@ body::after {
 }
 
 .cover h1 {
-    font-size: clamp(42px, 9vw, 82px);
+    font-size: clamp(40px, 8vw, 82px);
 
     font-weight: normal;
-    line-height: 1.05;
 
-    margin: 4px 0;
+    line-height: 1.05;
 }
 
 .cover-heart {
     color: #ff6398;
 
-    font-size: clamp(32px, 7vw, 55px);
+    font-size: clamp(30px, 5vw, 55px);
 
     animation: heartbeat 2s infinite ease-in-out;
 }
@@ -432,7 +467,7 @@ body::after {
 .cover-subtitle {
     font-family: Arial, sans-serif;
 
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(13px, 1.8vw, 18px);
 
     color: rgba(255, 255, 255, 0.7);
 
@@ -440,11 +475,11 @@ body::after {
 }
 
 .cover-date {
-    margin-top: 8px;
+    margin-top: 6px;
 
     font-family: Arial, sans-serif;
 
-    font-size: 13px;
+    font-size: clamp(11px, 1.3vw, 14px);
 
     color: rgba(255, 255, 255, 0.4);
 
@@ -453,51 +488,35 @@ body::after {
 
 
 /* ========================================
-   TITOLI PAGINE
-======================================== */
-
-.page h2 {
-    margin-bottom: 20px;
-
-    font-size: clamp(25px, 5vw, 40px);
-
-    font-weight: normal;
-
-    line-height: 1.2;
-}
-
-.page p {
-    font-family: Arial, sans-serif;
-
-    font-size: clamp(14px, 2vw, 17px);
-
-    line-height: 1.7;
-
-    color: rgba(255, 255, 255, 0.76);
-}
-
-
-/* ========================================
-   PAGINE FOTO
+   FOTO
 ======================================== */
 
 .photo-page .page-content {
-    gap: 18px;
+    gap: clamp(10px, 2vh, 20px);
 }
 
 .photo-frame {
     position: relative;
 
-    width: min(650px, 82vw);
-    height: min(55vh, 560px);
+    /*
+       L'immagine occupa una parte importante
+       dello schermo ma lascia spazio al testo.
+    */
+
+    width: min(72vw, 720px);
+
+    height: min(
+        58vh,
+        560px
+    );
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 10px;
+    padding: clamp(6px, 1vw, 10px);
 
-    border-radius: 22px;
+    border-radius: clamp(15px, 2vw, 24px);
 
     background: rgba(255, 255, 255, 0.07);
 
@@ -509,6 +528,8 @@ body::after {
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+
+    flex-shrink: 1;
 }
 
 .photo-frame img {
@@ -517,21 +538,25 @@ body::after {
     width: 100%;
     height: 100%;
 
+    /*
+       NON deformiamo mai la fotografia.
+    */
+
     object-fit: contain;
 
-    border-radius: 15px;
+    border-radius: clamp(10px, 1.5vw, 16px);
 }
 
 .photo-text {
-    width: min(680px, 100%);
+    width: min(700px, 100%);
 
-    margin-top: 2px;
+    flex-shrink: 1;
 }
 
 .photo-text p {
-    font-size: clamp(13px, 1.9vw, 16px);
+    font-size: clamp(12px, 1.45vw, 16px);
 
-    line-height: 1.65;
+    line-height: 1.55;
 }
 
 
@@ -540,18 +565,18 @@ body::after {
 ======================================== */
 
 .video-page .page-content {
-    gap: 18px;
+    gap: clamp(10px, 2vh, 20px);
 }
 
 .video-container {
-    width: min(720px, 85vw);
+    width: min(72vw, 760px);
 
     max-height: 58vh;
 
     display: flex;
     justify-content: center;
 
-    border-radius: 20px;
+    border-radius: clamp(14px, 2vw, 22px);
 
     overflow: hidden;
 
@@ -561,6 +586,8 @@ body::after {
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.55);
+
+    flex-shrink: 1;
 }
 
 .video-container video {
@@ -579,9 +606,9 @@ body::after {
 }
 
 .video-text p {
-    font-size: clamp(13px, 1.9vw, 16px);
+    font-size: clamp(12px, 1.45vw, 16px);
 
-    line-height: 1.65;
+    line-height: 1.55;
 }
 
 
@@ -590,23 +617,28 @@ body::after {
 ======================================== */
 
 .letter-page .page-content {
-    width: min(720px, 100%);
-
-    justify-content: center;
+    width: min(760px, 100%);
 }
 
 .letter {
     width: 100%;
 
-    max-height: 62vh;
+    /*
+       La lettera può scorrere internamente
+       senza far uscire la pagina dallo schermo.
+    */
+
+    max-height: min(65vh, 620px);
 
     overflow-y: auto;
 
-    padding: 30px 32px;
+    padding:
+        clamp(20px, 3vw, 34px)
+        clamp(20px, 4vw, 36px);
 
     text-align: left;
 
-    border-radius: 22px;
+    border-radius: clamp(16px, 2vw, 24px);
 
     background:
         linear-gradient(
@@ -624,13 +656,13 @@ body::after {
 }
 
 .letter p {
-    font-size: clamp(14px, 1.9vw, 16px);
+    font-size: clamp(13px, 1.5vw, 16px);
 
-    line-height: 1.8;
+    line-height: 1.75;
 
     color: rgba(255, 255, 255, 0.8);
 
-    margin-bottom: 17px;
+    margin-bottom: 16px;
 }
 
 .letter p:last-child {
@@ -643,11 +675,11 @@ body::after {
 ======================================== */
 
 .final-page .page-content {
-    gap: 18px;
+    gap: clamp(10px, 2vh, 18px);
 }
 
 .final-heart {
-    font-size: clamp(45px, 9vw, 75px);
+    font-size: clamp(42px, 7vw, 75px);
 
     color: #ff6398;
 
@@ -655,7 +687,7 @@ body::after {
 }
 
 .final-page h1 {
-    font-size: clamp(30px, 6vw, 55px);
+    font-size: clamp(28px, 5vw, 55px);
 
     font-weight: normal;
 
@@ -663,32 +695,34 @@ body::after {
 }
 
 .final-page p {
-    width: min(650px, 100%);
+    width: min(680px, 100%);
 
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: clamp(13px, 1.5vw, 17px);
 
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 .final-signature {
-    margin-top: 8px;
+    margin-top: 5px;
 
     font-family: Georgia, serif;
 
-    font-size: 18px;
+    font-size: clamp(15px, 1.7vw, 19px);
 
     color: rgba(255, 255, 255, 0.8);
 }
 
 
 /* ========================================
-   BOTTONE INIZIA
+   START BUTTON
 ======================================== */
 
 #startBtn {
-    margin-top: 20px;
+    margin-top: clamp(10px, 2vh, 20px);
 
-    padding: 14px 28px;
+    padding:
+        clamp(11px, 1.5vh, 14px)
+        clamp(22px, 3vw, 30px);
 
     border: 1px solid rgba(255,255,255,0.15);
 
@@ -699,7 +733,8 @@ body::after {
     color: white;
 
     font-family: Arial, sans-serif;
-    font-size: 14px;
+
+    font-size: clamp(12px, 1.4vw, 14px);
 
     cursor: pointer;
 
@@ -733,11 +768,10 @@ body::after {
 
     top: 50%;
 
-    width: 48px;
-    height: 48px;
+    width: clamp(38px, 4vw, 50px);
+    height: clamp(38px, 4vw, 50px);
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -751,7 +785,7 @@ body::after {
 
     color: white;
 
-    font-size: 22px;
+    font-size: clamp(17px, 2vw, 22px);
 
     cursor: pointer;
 
@@ -773,11 +807,11 @@ body::after {
 }
 
 #prevBtn {
-    left: 18px;
+    left: clamp(8px, 2vw, 22px);
 }
 
 #nextBtn {
-    right: 18px;
+    right: clamp(8px, 2vw, 22px);
 }
 
 .nav-button.disabled {
@@ -797,12 +831,11 @@ body::after {
     z-index: 100;
 
     left: 50%;
-    bottom: max(22px, env(safe-area-inset-bottom) + 12px);
+    bottom: max(18px, env(safe-area-inset-bottom) + 10px);
 
     transform: translateX(-50%);
 
     display: flex;
-
     align-items: center;
 
     gap: 7px;
@@ -855,15 +888,19 @@ body::after {
     z-index: 90;
 
     left: 50%;
-    bottom: max(55px, env(safe-area-inset-bottom) + 45px);
+
+    bottom: max(
+        48px,
+        calc(env(safe-area-inset-bottom) + 38px)
+    );
 
     transform: translateX(-50%);
 
     font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: clamp(8px, 1vw, 10px);
 
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 
     text-transform: uppercase;
 
@@ -877,24 +914,33 @@ body::after {
 }
 
 @keyframes swipeHint {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.25;
-        transform: translateX(-50%);
+
+        transform:
+            translateX(-50%);
     }
 
     50% {
         opacity: 0.65;
-        transform: translateX(-50%) translateX(5px);
+
+        transform:
+            translateX(-50%)
+            translateX(5px);
     }
 }
 
 
 /* ========================================
-   ANIMAZIONI
+   HEARTBEAT
 ======================================== */
 
 @keyframes heartbeat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -917,77 +963,67 @@ body::after {
 
 
 /* ========================================
-   IPHONE / MOBILE
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .page {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .photo-frame {
+        width: min(82vw, 650px);
+    }
+
+    .video-container {
+        width: min(82vw, 700px);
+    }
+}
+
+
+/* ========================================
+   TELEFONI
 ======================================== */
 
 @media (max-width: 600px) {
 
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        height: 100dvh;
-    }
-
-    #album {
-        height: 100%;
-        height: 100dvh;
-    }
-
     .page {
-        height: 100%;
-        height: 100dvh;
+        padding-top:
+            max(
+                45px,
+                calc(env(safe-area-inset-top) + 25px)
+            );
 
-        min-height: 100dvh;
+        padding-right: 45px;
 
-        /*
-         * Importante:
-         * lasciamo spazio ai controlli sopra e sotto
-         * senza spingere il contenuto fuori dallo schermo.
-         */
-        padding-top: max(
-            65px,
-            calc(env(safe-area-inset-top) + 35px)
-        );
+        padding-bottom:
+            max(
+                78px,
+                calc(env(safe-area-inset-bottom) + 55px)
+            );
 
-        padding-right: 20px;
-
-        padding-bottom: max(
-            85px,
-            calc(env(safe-area-inset-bottom) + 65px)
-        );
-
-        padding-left: 20px;
-
-        overflow: hidden;
+        padding-left: 45px;
     }
 
     .page-content {
         width: 100%;
 
-        max-height: calc(
-            100dvh -
-            env(safe-area-inset-top) -
-            env(safe-area-inset-bottom) -
-            150px
-        );
-
-        justify-content: center;
+        max-height:
+            calc(
+                100dvh
+                - env(safe-area-inset-top)
+                - env(safe-area-inset-bottom)
+                - 125px
+            );
     }
 
 
     /* COVER */
 
-    .cover .page-content {
-        gap: 10px;
-    }
-
     .cover h1 {
         font-size: clamp(34px, 10vw, 50px);
-    }
-
-    .cover-subtitle {
-        font-size: 14px;
     }
 
     .cover-small {
@@ -996,37 +1032,37 @@ body::after {
         letter-spacing: 2.5px;
     }
 
+    .cover-subtitle {
+        font-size: 13px;
+    }
+
 
     /* FOTO */
 
     .photo-page .page-content {
-        gap: 12px;
+        gap: 10px;
     }
 
     .photo-frame {
-        width: min(88vw, 500px);
+        width: 100%;
 
         /*
-         * Altezza ridotta per evitare che il testo
-         * finisca sotto lo schermo.
-         */
-        height: min(43vh, 420px);
+           Non troppo piccola:
+           l'immagine deve rimanere protagonista.
+        */
 
-        padding: 7px;
+        height: min(
+            46vh,
+            430px
+        );
+
+        padding: 6px;
 
         border-radius: 17px;
     }
 
-    .photo-frame img {
-        border-radius: 11px;
-    }
-
-    .photo-text {
-        width: 100%;
-    }
-
     .photo-text p {
-        font-size: 13px;
+        font-size: 12.5px;
 
         line-height: 1.5;
     }
@@ -1034,24 +1070,18 @@ body::after {
 
     /* VIDEO */
 
-    .video-page .page-content {
-        gap: 12px;
-    }
-
     .video-container {
-        width: 88vw;
+        width: 100%;
 
-        max-height: 45vh;
-
-        border-radius: 16px;
+        max-height: 46vh;
     }
 
     .video-container video {
-        max-height: 45vh;
+        max-height: 46vh;
     }
 
     .video-text p {
-        font-size: 13px;
+        font-size: 12.5px;
 
         line-height: 1.5;
     }
@@ -1059,82 +1089,56 @@ body::after {
 
     /* LETTERA */
 
-    .letter-page .page-content {
-        max-height: calc(
-            100dvh -
-            env(safe-area-inset-top) -
-            env(safe-area-inset-bottom) -
-            145px
-        );
-    }
-
     .letter {
-        max-height: 57vh;
+        max-height: 58vh;
 
-        padding: 22px 20px;
-
-        border-radius: 18px;
+        padding: 20px 18px;
     }
 
     .letter p {
-        font-size: 13px;
+        font-size: 12.5px;
 
-        line-height: 1.65;
-
-        margin-bottom: 14px;
+        line-height: 1.6;
     }
 
 
     /* FINALE */
 
-    .final-page .page-content {
-        gap: 12px;
-    }
-
     .final-page h1 {
-        font-size: 31px;
+        font-size: 30px;
     }
 
     .final-page p {
-        font-size: 13px;
+        font-size: 12.5px;
 
-        line-height: 1.65;
-    }
-
-    .final-signature {
-        font-size: 16px;
+        line-height: 1.6;
     }
 
 
     /* NAVIGAZIONE */
 
     .nav-button {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
 
-        font-size: 18px;
+        font-size: 17px;
     }
 
     #prevBtn {
-        left: 8px;
+        left: 5px;
     }
 
     #nextBtn {
-        right: 8px;
+        right: 5px;
     }
 
 
     /* DOTS */
 
     .dots {
-        bottom: max(
-            12px,
-            calc(env(safe-area-inset-bottom) + 7px)
-        );
+        gap: 6px;
 
         padding: 7px 10px;
-
-        gap: 6px;
     }
 
     .dot {
@@ -1145,88 +1149,52 @@ body::after {
     .dot.active {
         width: 15px;
     }
-
-
-    /* SWIPE */
-
-    .swipe-hint {
-        bottom: max(
-            43px,
-            calc(env(safe-area-inset-bottom) + 35px)
-        );
-
-        font-size: 8px;
-
-        letter-spacing: 1.5px;
-    }
-
-
-    /* PASSWORD */
-
-    .password-screen {
-        padding:
-            max(18px, env(safe-area-inset-top) + 10px)
-            18px
-            max(18px, env(safe-area-inset-bottom) + 10px)
-            18px;
-    }
-
-    .password-box {
-        padding: 30px 22px;
-
-        border-radius: 22px;
-    }
-
-    .password-heart {
-        font-size: 34px;
-    }
-
-    .password-box h1 {
-        font-size: 30px;
-    }
-
-    .password-box p {
-        font-size: 13px;
-
-        line-height: 1.6;
-    }
-
-    .password-format {
-        font-size: 13px;
-
-        letter-spacing: 4px;
-    }
-
-    .password-box input,
-    .password-box button {
-        height: 49px;
-    }
 }
 
 
 /* ========================================
-   IPHONE 16 / SCHERMI MOLTO ALTI
+   TELEFONO IN ORIZZONTALE
 ======================================== */
 
-@media (max-width: 600px) and (min-height: 800px) {
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .page {
+        padding-top: 30px;
+        padding-bottom: 55px;
+
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
+    .photo-page .page-content {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        align-items: center;
+
+        gap: 20px;
+    }
 
     .photo-frame {
-        height: min(48vh, 470px);
+        width: 100%;
+        height: 68vh;
+    }
+
+    .photo-text {
+        width: 100%;
     }
 
     .video-container {
-        max-height: 48vh;
+        max-height: 68vh;
     }
 
     .video-container video {
-        max-height: 48vh;
+        max-height: 68vh;
     }
 
-    .photo-text p,
-    .video-text p {
-        font-size: 13px;
-
-        line-height: 1.55;
+    .letter {
+        max-height: 70vh;
     }
 }
 
@@ -1238,46 +1206,35 @@ body::after {
 @media (max-width: 380px) {
 
     .page {
-        padding-left: 15px;
-        padding-right: 15px;
-
-        padding-bottom: max(
-            80px,
-            calc(env(safe-area-inset-bottom) + 60px)
-        );
-    }
-
-    .cover h1 {
-        font-size: 32px;
+        padding-left: 42px;
+        padding-right: 42px;
     }
 
     .photo-frame {
-        height: 38vh;
+        height: 42vh;
     }
 
     .photo-text p,
-    .video-text p,
-    .final-page p {
-        font-size: 12px;
+    .video-text p {
+        font-size: 11.5px;
 
         line-height: 1.45;
     }
 
     .letter {
-        max-height: 53vh;
+        max-height: 55vh;
 
-        padding: 18px 16px;
+        padding: 17px 15px;
     }
 
     .letter p {
-        font-size: 12px;
+        font-size: 11.5px;
 
         line-height: 1.55;
     }
 
-    .nav-button {
-        width: 36px;
-        height: 36px;
+    .final-page p {
+        font-size: 11.5px;
     }
 }
 
@@ -1289,31 +1246,59 @@ body::after {
 @media (max-height: 700px) {
 
     .page {
-        padding-top: 45px;
-        padding-bottom: 75px;
+        padding-top: 35px;
+        padding-bottom: 65px;
     }
 
     .photo-frame {
-        height: 38vh;
+        height: 42vh;
     }
 
     .video-container {
-        max-height: 38vh;
+        max-height: 42vh;
     }
 
     .video-container video {
-        max-height: 38vh;
+        max-height: 42vh;
     }
 
     .photo-text p,
     .video-text p {
-        font-size: 12px;
+        font-size: 11.5px;
 
         line-height: 1.4;
     }
 
     .letter {
-        max-height: 52vh;
+        max-height: 55vh;
+    }
+}
+
+
+/* ========================================
+   MONITOR MOLTO GRANDI
+======================================== */
+
+@media (min-width: 1600px) {
+
+    .photo-frame {
+        width: min(65vw, 800px);
+
+        height: min(58vh, 650px);
+    }
+
+    .video-container {
+        width: min(65vw, 850px);
+
+        max-height: 60vh;
+    }
+
+    .video-container video {
+        max-height: 60vh;
+    }
+
+    .page p {
+        font-size: 17px;
     }
 }
 
@@ -1328,8 +1313,10 @@ body::after {
     *::before,
     *::after {
         scroll-behavior: auto !important;
+
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+
         transition-duration: 0.01ms !important;
     }
 }
