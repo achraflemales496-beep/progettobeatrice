@@ -1,0 +1,1393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 70, 130, 0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(180, 40, 100, 0.12),
+            transparent 35%
+        ),
+        #09060b;
+
+    color: #fff;
+}
+
+
+/* =================================
+   STELLE
+================================= */
+
+.stars {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.7) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.4) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        120px 120px,
+        190px 190px;
+
+    background-position:
+        20px 30px,
+        80px 100px;
+
+    animation: starsMove 15s linear infinite;
+}
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-120px);
+    }
+
+}
+
+
+/* =================================
+   PASSWORD
+================================= */
+
+.password-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(255, 70, 130, .20),
+            transparent 40%
+        ),
+        #09060b;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.password-screen.hidden {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+.password-box {
+
+    width: min(450px, 100%);
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55),
+        0 0 70px rgba(255,70,120,.08);
+
+    animation: passwordAppear .8s ease;
+}
+
+@keyframes passwordAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+.password-heart {
+
+    color: #ff5c91;
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 1.8s infinite;
+}
+
+.password-small {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.4);
+
+    margin-bottom: 15px;
+}
+
+.password-box h1 {
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    margin-bottom: 18px;
+}
+
+.password-box > p {
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+
+/* FORMATO PASSWORD */
+
+.password-format {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 22px;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.35);
+
+    margin-bottom: 18px;
+}
+
+
+/* INPUT */
+
+#passwordInput {
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    outline: none;
+
+    background: rgba(0,0,0,.25);
+
+    color: #fff;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    transition:
+        border .3s ease,
+        box-shadow .3s ease;
+}
+
+#passwordInput::placeholder {
+
+    color: rgba(255,255,255,.3);
+}
+
+#passwordInput:focus {
+
+    border-color: rgba(255,92,145,.6);
+
+    box-shadow:
+        0 0 25px rgba(255,70,120,.1);
+}
+
+
+/* BOTTONE */
+
+#passwordBtn {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255,92,145,.4);
+
+    border-radius: 50px;
+
+    background: rgba(255,70,120,.1);
+
+    color: #fff;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+#passwordBtn:hover {
+
+    background: rgba(255,70,120,.2);
+
+    transform: translateY(-2px);
+}
+
+
+/* =================================
+   NOTIFICA ERRORE
+================================= */
+
+.password-error {
+
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 13px 15px;
+
+    border-radius: 15px;
+
+    background: rgba(255,60,100,.08);
+
+    border: 1px solid rgba(255,80,120,.18);
+
+    color: #ff8eaa;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.password-error span {
+
+    margin-right: 5px;
+
+    color: #ff5c91;
+}
+
+.password-error small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+}
+
+.password-error.show {
+
+    display: block;
+
+    animation: shake .4s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-6px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+
+}
+
+
+/* =================================
+   ALBUM
+================================= */
+
+.book {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+}
+
+.book::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =================================
+   PAGINE
+================================= */
+
+.page {
+
+    position: relative;
+
+    flex: 0 0 100vw;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    scroll-snap-align: start;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 70px;
+
+    overflow: hidden;
+}
+
+
+/* =================================
+   COPERTINA
+================================= */
+
+.cover {
+    text-align: center;
+}
+
+.cover-content {
+
+    max-width: 900px;
+
+    width: 100%;
+}
+
+.eyebrow {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.55);
+
+    margin-bottom: 30px;
+}
+
+.mini-heart {
+
+    font-size: 30px;
+
+    color: #ff5c91;
+
+    animation: heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+.cover h1 {
+
+    margin-top: 15px;
+
+    font-size: clamp(55px, 9vw, 115px);
+
+    font-weight: normal;
+
+    letter-spacing: -4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #ffb5ca,
+            #ff4f87
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.cover h1 span {
+
+    color: #ff5c91;
+
+    -webkit-text-fill-color: #ff5c91;
+}
+
+.cover h2 {
+
+    margin-top: 20px;
+
+    font-size: clamp(22px, 3vw, 36px);
+
+    font-weight: normal;
+
+    color: #f5dbe4;
+}
+
+.cover-text {
+
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,.72);
+}
+
+.date-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin: 30px 0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.6);
+}
+
+.date-box div {
+
+    color: #ff5c91;
+
+    font-size: 18px;
+}
+
+.start-btn {
+
+    border: 1px solid rgba(255,100,150,.45);
+
+    background: rgba(255,70,120,.08);
+
+    color: #fff;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.start-btn span {
+
+    margin-left: 10px;
+}
+
+.start-btn:hover {
+
+    background: rgba(255,70,120,.18);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 35px rgba(255,50,120,.15);
+}
+
+
+/* =================================
+   FOTO
+================================= */
+
+.memory-content {
+
+    width: min(1200px, 90vw);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(50px, 8vw, 120px);
+}
+
+.memory-content.reverse {
+
+    flex-direction: row-reverse;
+}
+
+.photo-container {
+
+    width: min(480px, 40vw);
+
+    aspect-ratio: 4 / 5;
+
+    padding: 12px;
+
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5),
+        0 0 50px rgba(255,70,120,.08);
+
+    transform: rotate(-2deg);
+
+    transition: transform .5s ease;
+}
+
+.memory-content.reverse .photo-container {
+
+    transform: rotate(2deg);
+}
+
+.photo-container:hover {
+
+    transform: rotate(0deg) scale(1.02);
+}
+
+.photo-container img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =================================
+   TESTO
+================================= */
+
+.memory-text {
+
+    width: min(500px, 40vw);
+}
+
+.memory-number {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #ff6f9c;
+
+    margin-bottom: 10px;
+}
+
+.memory-label {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.4);
+
+    margin-bottom: 20px;
+}
+
+.memory-text h2 {
+
+    font-size: clamp(35px, 4vw, 55px);
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+
+    color: #fff;
+}
+
+.memory-text p {
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    color: rgba(255,255,255,.72);
+
+    margin-bottom: 18px;
+}
+
+.heart {
+
+    color: #ff5c91;
+
+    font-size: 24px;
+
+    margin-top: 25px;
+}
+
+
+/* =================================
+   VIDEO
+================================= */
+
+.video-page {
+
+    text-align: center;
+}
+
+.video-content {
+
+    width: min(950px, 90vw);
+}
+
+.video-content h2 {
+
+    font-size: clamp(40px, 5vw, 65px);
+
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+.video-container {
+
+    width: 100%;
+
+    background: #000;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.6),
+        0 0 50px rgba(255,70,120,.08);
+
+    overflow: hidden;
+}
+
+.video-container video {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 60vh;
+
+    object-fit: contain;
+}
+
+.video-text {
+
+    max-width: 750px;
+
+    margin: 22px auto 0;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =================================
+   LETTERA
+================================= */
+
+.letter-content {
+
+    width: min(1200px, 90vw);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 80px;
+}
+
+.letter-photo {
+
+    width: min(390px, 35vw);
+
+    padding: 10px;
+
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    transform: rotate(-2deg);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5);
+}
+
+.letter-photo img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+}
+
+.letter {
+
+    width: min(550px, 45vw);
+}
+
+.letter h2 {
+
+    font-size: clamp(40px, 5vw, 65px);
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+.letter p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,.72);
+
+    margin-bottom: 17px;
+}
+
+.signature {
+
+    margin-top: 30px;
+
+    color: rgba(255,255,255,.55);
+
+    line-height: 1.7;
+}
+
+.signature strong {
+
+    color: #fff;
+
+    font-size: 20px;
+}
+
+
+/* =================================
+   FINALE
+================================= */
+
+.final-page {
+
+    text-align: center;
+}
+
+.final-content {
+
+    width: min(800px, 90vw);
+}
+
+.big-heart {
+
+    color: #ff5c91;
+
+    font-size: 80px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 1.8s infinite;
+
+    text-shadow:
+        0 0 40px rgba(255,70,120,.35);
+}
+
+.final-content h1 {
+
+    font-size: clamp(45px, 7vw, 85px);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+.final-content h1 span {
+
+    display: block;
+
+    color: #ff9db8;
+}
+
+.final-content h2 {
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+    color: rgba(255,255,255,.8);
+
+    margin-bottom: 35px;
+}
+
+.final-content h2 span {
+
+    color: #ff5c91;
+}
+
+.final-message {
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.final-message p {
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+}
+
+.final-highlight {
+
+    color: #ffb2c7 !important;
+
+    font-size: 19px !important;
+}
+
+.final-love {
+
+    margin-top: 30px;
+
+    font-size: 28px;
+
+    color: #fff;
+}
+
+.final-signature {
+
+    margin-top: 25px;
+
+    font-size: 16px;
+
+    color: rgba(255,255,255,.45);
+}
+
+
+/* =================================
+   NAVIGAZIONE
+================================= */
+
+.nav-btn {
+
+    position: fixed;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 20;
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: rgba(0,0,0,.25);
+
+    backdrop-filter: blur(10px);
+
+    color: #fff;
+
+    font-size: 35px;
+
+    line-height: 40px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+.nav-btn:hover {
+
+    background: rgba(255,70,120,.15);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.nav-btn.prev {
+
+    left: 20px;
+}
+
+.nav-btn.next {
+
+    right: 20px;
+}
+
+
+/* =================================
+   DOTS
+================================= */
+
+.dots {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,.3);
+
+    cursor: pointer;
+
+    transition:
+        width .3s ease,
+        background .3s ease;
+}
+
+.dot.active {
+
+    width: 25px;
+
+    border-radius: 10px;
+
+    background: #ff6f9c;
+}
+
+
+/* =================================
+   SWIPE
+================================= */
+
+.swipe-hint {
+
+    position: fixed;
+
+    top: 22px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.3);
+
+    pointer-events: none;
+}
+
+.swipe-hint span {
+
+    color: #ff6f9c;
+
+    margin: 0 5px;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 700px) {
+
+    .page {
+
+        padding: 50px 25px 70px;
+    }
+
+    .cover h1 {
+
+        font-size: clamp(45px, 14vw, 75px);
+
+        letter-spacing: -2px;
+    }
+
+    .cover h2 {
+
+        font-size: 22px;
+    }
+
+    .cover-text {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .date-box {
+
+        gap: 12px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .memory-content,
+    .memory-content.reverse {
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        width: 100%;
+
+        max-height: 90vh;
+    }
+
+    .photo-container {
+
+        width: min(330px, 78vw);
+
+        aspect-ratio: 4 / 4.5;
+    }
+
+    .memory-text {
+
+        width: min(500px, 90vw);
+
+        text-align: center;
+    }
+
+    .memory-text h2 {
+
+        font-size: 32px;
+
+        margin-bottom: 15px;
+    }
+
+    .memory-text p {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-bottom: 10px;
+    }
+
+    .heart {
+
+        margin-top: 10px;
+    }
+
+    .video-content {
+
+        width: 100%;
+    }
+
+    .video-content h2 {
+
+        font-size: 38px;
+
+        margin-bottom: 20px;
+    }
+
+    .video-text {
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+        margin-top: 15px;
+    }
+
+    .letter-content {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        width: 100%;
+    }
+
+    .letter-photo {
+
+        width: min(250px, 60vw);
+    }
+
+    .letter {
+
+        width: 100%;
+
+        text-align: center;
+
+        max-height: 47vh;
+
+        overflow-y: auto;
+
+        padding-right: 5px;
+    }
+
+    .letter h2 {
+
+        font-size: 35px;
+
+        margin-bottom: 15px;
+    }
+
+    .letter p {
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+        margin-bottom: 10px;
+    }
+
+    .signature {
+
+        margin-top: 15px;
+    }
+
+    .big-heart {
+
+        font-size: 60px;
+    }
+
+    .final-content h1 {
+
+        font-size: 45px;
+    }
+
+    .final-content h2 {
+
+        font-size: 21px;
+
+        margin-bottom: 25px;
+    }
+
+    .final-message p {
+
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+    .final-love {
+
+        font-size: 24px;
+    }
+
+    .nav-btn {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 28px;
+
+        line-height: 34px;
+    }
+
+    .nav-btn.prev {
+
+        left: 8px;
+    }
+
+    .nav-btn.next {
+
+        right: 8px;
+    }
+
+    .dots {
+
+        bottom: 15px;
+    }
+
+    .swipe-hint {
+
+        top: 12px;
+    }
+
+    /* PASSWORD MOBILE */
+
+    .password-box {
+
+        padding: 35px 25px;
+    }
+
+    .password-box h1 {
+
+        font-size: 35px;
+    }
+
+    .password-format {
+
+        font-size: 19px;
+
+        letter-spacing: 4px;
+    }
+
+}
