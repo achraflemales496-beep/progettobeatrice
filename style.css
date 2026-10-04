@@ -37,11 +37,9 @@ body {
 
 .stars {
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
-
     z-index: 0;
 
     background-image:
@@ -76,7 +74,6 @@ body {
     to {
         transform: translateY(-120px);
     }
-
 }
 
 
@@ -86,13 +83,11 @@ body {
 
 .password-screen {
     position: fixed;
-
     inset: 0;
 
     z-index: 9999;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -107,7 +102,6 @@ body {
         #09060b;
 
     opacity: 1;
-
     visibility: visible;
 
     transition:
@@ -117,14 +111,11 @@ body {
 
 .password-screen.hidden {
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
 }
 
 .password-box {
-
     width: min(450px, 100%);
 
     padding: 45px 35px;
@@ -138,6 +129,7 @@ body {
     border-radius: 25px;
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
         0 30px 100px rgba(0,0,0,.55),
@@ -163,11 +155,9 @@ body {
             translateY(0)
             scale(1);
     }
-
 }
 
 .password-heart {
-
     color: #ff5c91;
 
     font-size: 45px;
@@ -178,7 +168,6 @@ body {
 }
 
 .password-small {
-
     display: block;
 
     font-family: Arial, sans-serif;
@@ -193,7 +182,6 @@ body {
 }
 
 .password-box h1 {
-
     font-size: 42px;
 
     font-weight: normal;
@@ -202,7 +190,6 @@ body {
 }
 
 .password-box > p {
-
     color: rgba(255,255,255,.65);
 
     font-size: 15px;
@@ -213,10 +200,11 @@ body {
 }
 
 
-/* FORMATO PASSWORD */
+/* =================================
+   FORMATO PASSWORD
+================================= */
 
 .password-format {
-
     font-family: Arial, sans-serif;
 
     font-size: 22px;
@@ -229,10 +217,11 @@ body {
 }
 
 
-/* INPUT */
+/* =================================
+   INPUT
+================================= */
 
 #passwordInput {
-
     width: 100%;
 
     padding: 15px 18px;
@@ -259,12 +248,10 @@ body {
 }
 
 #passwordInput::placeholder {
-
     color: rgba(255,255,255,.3);
 }
 
 #passwordInput:focus {
-
     border-color: rgba(255,92,145,.6);
 
     box-shadow:
@@ -272,10 +259,11 @@ body {
 }
 
 
-/* BOTTONE */
+/* =================================
+   BOTTONE PASSWORD
+================================= */
 
 #passwordBtn {
-
     width: 100%;
 
     margin-top: 15px;
@@ -302,7 +290,6 @@ body {
 }
 
 #passwordBtn:hover {
-
     background: rgba(255,70,120,.2);
 
     transform: translateY(-2px);
@@ -314,7 +301,6 @@ body {
 ================================= */
 
 .password-error {
-
     display: none;
 
     margin-top: 18px;
@@ -337,14 +323,12 @@ body {
 }
 
 .password-error span {
-
     margin-right: 5px;
 
     color: #ff5c91;
 }
 
 .password-error small {
-
     display: block;
 
     margin-top: 3px;
@@ -355,7 +339,6 @@ body {
 }
 
 .password-error.show {
-
     display: block;
 
     animation: shake .4s ease;
@@ -383,7 +366,6 @@ body {
     80% {
         transform: translateX(6px);
     }
-
 }
 
 
@@ -392,7 +374,6 @@ body {
 ================================= */
 
 .book {
-
     position: relative;
 
     z-index: 1;
@@ -401,10 +382,14 @@ body {
 
     width: 100vw;
 
-    height: 100vh;
+    height: 100dvh;
 
     overflow-x: auto;
 
+    /*
+       Lo scroll verticale viene gestito
+       dalle singole pagine.
+    */
     overflow-y: hidden;
 
     scroll-snap-type: x mandatory;
@@ -412,6 +397,10 @@ body {
     scroll-behavior: smooth;
 
     scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
 }
 
 .book::-webkit-scrollbar {
@@ -424,14 +413,23 @@ body {
 ================================= */
 
 .page {
-
     position: relative;
 
     flex: 0 0 100vw;
 
     width: 100vw;
 
-    height: 100vh;
+    min-width: 100vw;
+
+    /*
+       La pagina occupa lo schermo,
+       ma il suo contenuto può essere
+       più alto e quindi scorrere.
+    */
+
+    height: 100dvh;
+
+    min-height: 100dvh;
 
     scroll-snap-align: start;
 
@@ -441,9 +439,33 @@ body {
 
     justify-content: center;
 
-    padding: 70px;
+    padding:
+        70px
+        clamp(35px, 6vw, 100px);
 
-    overflow: hidden;
+    /*
+       IMPORTANTE:
+       lo scroll verticale avviene qui.
+    */
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-y: contain;
+}
+
+
+/* =================================
+   CONTENUTO PAGINA
+================================= */
+
+.page > * {
+    flex-shrink: 0;
 }
 
 
@@ -456,14 +478,14 @@ body {
 }
 
 .cover-content {
-
     max-width: 900px;
 
     width: 100%;
+
+    flex-shrink: 0;
 }
 
 .eyebrow {
-
     display: block;
 
     font-family: Arial, sans-serif;
@@ -478,7 +500,6 @@ body {
 }
 
 .mini-heart {
-
     font-size: 30px;
 
     color: #ff5c91;
@@ -496,11 +517,9 @@ body {
     50% {
         transform: scale(1.15);
     }
-
 }
 
 .cover h1 {
-
     margin-top: 15px;
 
     font-size: clamp(55px, 9vw, 115px);
@@ -523,14 +542,12 @@ body {
 }
 
 .cover h1 span {
-
     color: #ff5c91;
 
     -webkit-text-fill-color: #ff5c91;
 }
 
 .cover h2 {
-
     margin-top: 20px;
 
     font-size: clamp(22px, 3vw, 36px);
@@ -541,7 +558,6 @@ body {
 }
 
 .cover-text {
-
     max-width: 650px;
 
     margin: 30px auto;
@@ -554,7 +570,6 @@ body {
 }
 
 .date-box {
-
     display: flex;
 
     align-items: center;
@@ -575,14 +590,12 @@ body {
 }
 
 .date-box div {
-
     color: #ff5c91;
 
     font-size: 18px;
 }
 
 .start-btn {
-
     border: 1px solid rgba(255,100,150,.45);
 
     background: rgba(255,70,120,.08);
@@ -606,12 +619,10 @@ body {
 }
 
 .start-btn span {
-
     margin-left: 10px;
 }
 
 .start-btn:hover {
-
     background: rgba(255,70,120,.18);
 
     transform: translateY(-3px);
@@ -626,7 +637,6 @@ body {
 ================================= */
 
 .memory-content {
-
     width: min(1200px, 90vw);
 
     display: flex;
@@ -636,20 +646,22 @@ body {
     justify-content: center;
 
     gap: clamp(50px, 8vw, 120px);
+
+    flex-shrink: 0;
 }
 
 .memory-content.reverse {
-
     flex-direction: row-reverse;
 }
 
 .photo-container {
-
     width: min(480px, 40vw);
 
     aspect-ratio: 4 / 5;
 
     padding: 12px;
+
+    flex-shrink: 0;
 
     background: rgba(255,255,255,.06);
 
@@ -665,17 +677,14 @@ body {
 }
 
 .memory-content.reverse .photo-container {
-
     transform: rotate(2deg);
 }
 
 .photo-container:hover {
-
     transform: rotate(0deg) scale(1.02);
 }
 
 .photo-container img {
-
     display: block;
 
     width: 100%;
@@ -691,12 +700,12 @@ body {
 ================================= */
 
 .memory-text {
-
     width: min(500px, 40vw);
+
+    flex-shrink: 0;
 }
 
 .memory-number {
-
     display: block;
 
     font-family: Arial, sans-serif;
@@ -711,7 +720,6 @@ body {
 }
 
 .memory-label {
-
     display: block;
 
     font-family: Arial, sans-serif;
@@ -726,7 +734,6 @@ body {
 }
 
 .memory-text h2 {
-
     font-size: clamp(35px, 4vw, 55px);
 
     font-weight: normal;
@@ -737,7 +744,6 @@ body {
 }
 
 .memory-text p {
-
     font-size: 17px;
 
     line-height: 1.9;
@@ -748,7 +754,6 @@ body {
 }
 
 .heart {
-
     color: #ff5c91;
 
     font-size: 24px;
@@ -762,17 +767,16 @@ body {
 ================================= */
 
 .video-page {
-
     text-align: center;
 }
 
 .video-content {
-
     width: min(950px, 90vw);
+
+    flex-shrink: 0;
 }
 
 .video-content h2 {
-
     font-size: clamp(40px, 5vw, 65px);
 
     font-weight: normal;
@@ -781,7 +785,6 @@ body {
 }
 
 .video-container {
-
     width: 100%;
 
     background: #000;
@@ -796,18 +799,16 @@ body {
 }
 
 .video-container video {
-
     display: block;
 
     width: 100%;
 
-    max-height: 60vh;
+    max-height: 70vh;
 
     object-fit: contain;
 }
 
 .video-text {
-
     max-width: 750px;
 
     margin: 22px auto 0;
@@ -825,7 +826,6 @@ body {
 ================================= */
 
 .letter-content {
-
     width: min(1200px, 90vw);
 
     display: flex;
@@ -835,13 +835,16 @@ body {
     justify-content: center;
 
     gap: 80px;
+
+    flex-shrink: 0;
 }
 
 .letter-photo {
-
     width: min(390px, 35vw);
 
     padding: 10px;
+
+    flex-shrink: 0;
 
     background: rgba(255,255,255,.06);
 
@@ -854,7 +857,6 @@ body {
 }
 
 .letter-photo img {
-
     display: block;
 
     width: 100%;
@@ -865,12 +867,12 @@ body {
 }
 
 .letter {
-
     width: min(550px, 45vw);
+
+    flex-shrink: 0;
 }
 
 .letter h2 {
-
     font-size: clamp(40px, 5vw, 65px);
 
     font-weight: normal;
@@ -879,7 +881,6 @@ body {
 }
 
 .letter p {
-
     font-size: 16px;
 
     line-height: 1.8;
@@ -890,7 +891,6 @@ body {
 }
 
 .signature {
-
     margin-top: 30px;
 
     color: rgba(255,255,255,.55);
@@ -899,7 +899,6 @@ body {
 }
 
 .signature strong {
-
     color: #fff;
 
     font-size: 20px;
@@ -911,17 +910,16 @@ body {
 ================================= */
 
 .final-page {
-
     text-align: center;
 }
 
 .final-content {
-
     width: min(800px, 90vw);
+
+    flex-shrink: 0;
 }
 
 .big-heart {
-
     color: #ff5c91;
 
     font-size: 80px;
@@ -935,7 +933,6 @@ body {
 }
 
 .final-content h1 {
-
     font-size: clamp(45px, 7vw, 85px);
 
     font-weight: normal;
@@ -946,14 +943,12 @@ body {
 }
 
 .final-content h1 span {
-
     display: block;
 
     color: #ff9db8;
 }
 
 .final-content h2 {
-
     font-size: 25px;
 
     font-weight: normal;
@@ -964,19 +959,16 @@ body {
 }
 
 .final-content h2 span {
-
     color: #ff5c91;
 }
 
 .final-message {
-
     max-width: 650px;
 
     margin: auto;
 }
 
 .final-message p {
-
     color: rgba(255,255,255,.68);
 
     font-size: 16px;
@@ -987,14 +979,12 @@ body {
 }
 
 .final-highlight {
-
     color: #ffb2c7 !important;
 
     font-size: 19px !important;
 }
 
 .final-love {
-
     margin-top: 30px;
 
     font-size: 28px;
@@ -1003,7 +993,6 @@ body {
 }
 
 .final-signature {
-
     margin-top: 25px;
 
     font-size: 16px;
@@ -1017,7 +1006,6 @@ body {
 ================================= */
 
 .nav-btn {
-
     position: fixed;
 
     top: 50%;
@@ -1037,6 +1025,7 @@ body {
     background: rgba(0,0,0,.25);
 
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     color: #fff;
 
@@ -1052,7 +1041,6 @@ body {
 }
 
 .nav-btn:hover {
-
     background: rgba(255,70,120,.15);
 
     transform:
@@ -1061,12 +1049,10 @@ body {
 }
 
 .nav-btn.prev {
-
     left: 20px;
 }
 
 .nav-btn.next {
-
     right: 20px;
 }
 
@@ -1076,7 +1062,6 @@ body {
 ================================= */
 
 .dots {
-
     position: fixed;
 
     bottom: 25px;
@@ -1093,7 +1078,6 @@ body {
 }
 
 .dot {
-
     width: 7px;
 
     height: 7px;
@@ -1112,7 +1096,6 @@ body {
 }
 
 .dot.active {
-
     width: 25px;
 
     border-radius: 10px;
@@ -1126,7 +1109,6 @@ body {
 ================================= */
 
 .swipe-hint {
-
     position: fixed;
 
     top: 22px;
@@ -1146,13 +1128,50 @@ body {
     color: rgba(255,255,255,.3);
 
     pointer-events: none;
+
+    white-space: nowrap;
 }
 
 .swipe-hint span {
-
     color: #ff6f9c;
 
     margin: 0 5px;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+    .page {
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
+    .memory-content,
+    .letter-content {
+        width: 90vw;
+
+        gap: 40px;
+    }
+
+    .photo-container {
+        width: min(420px, 42vw);
+    }
+
+    .memory-text {
+        width: min(450px, 42vw);
+    }
+
+    .letter-photo {
+        width: min(350px, 38vw);
+    }
+
+    .letter {
+        width: min(500px, 45vw);
+    }
 }
 
 
@@ -1162,74 +1181,155 @@ body {
 
 @media (max-width: 700px) {
 
-    .page {
+    /*
+       La pagina rimane grande quanto lo schermo,
+       ma può scorrere verticalmente.
+    */
 
-        padding: 50px 25px 70px;
+    .page {
+        height: 100dvh;
+
+        min-height: 100dvh;
+
+        padding:
+            55px
+            25px
+            85px;
+
+        align-items: flex-start;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+
+    /* =================================
+       COPERTINA MOBILE
+    ================================= */
+
+    .cover {
+        align-items: center;
+
+        justify-content: center;
+    }
+
+    .cover-content {
+        width: 100%;
+
+        margin: auto;
+
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 20px;
+    }
+
+    .mini-heart {
+        font-size: 25px;
     }
 
     .cover h1 {
-
         font-size: clamp(45px, 14vw, 75px);
 
         letter-spacing: -2px;
     }
 
     .cover h2 {
-
         font-size: 22px;
     }
 
     .cover-text {
-
         font-size: 15px;
 
         line-height: 1.7;
+
+        margin: 22px auto;
     }
 
     .date-box {
-
         gap: 12px;
 
         font-size: 10px;
 
         letter-spacing: 2px;
+
+        margin: 20px 0;
     }
+
+    .date-box div {
+        font-size: 16px;
+    }
+
+
+    /* =================================
+       FOTO MOBILE
+    ================================= */
 
     .memory-content,
     .memory-content.reverse {
-
         flex-direction: column;
 
         gap: 25px;
 
         width: 100%;
 
-        max-height: 90vh;
+        /*
+           NON usiamo max-height.
+           Se il contenuto è più alto dello schermo,
+           la pagina può scorrere.
+        */
+
+        min-height: max-content;
+
+        padding-top: 15px;
+        padding-bottom: 30px;
     }
 
     .photo-container {
-
         width: min(330px, 78vw);
 
         aspect-ratio: 4 / 4.5;
+
+        flex-shrink: 0;
     }
 
     .memory-text {
-
         width: min(500px, 90vw);
 
         text-align: center;
+
+        flex-shrink: 0;
+
+        padding-bottom: 20px;
+    }
+
+    .memory-number {
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+    .memory-label {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 12px;
     }
 
     .memory-text h2 {
-
         font-size: 32px;
 
         margin-bottom: 15px;
     }
 
     .memory-text p {
-
         font-size: 14px;
 
         line-height: 1.6;
@@ -1238,24 +1338,38 @@ body {
     }
 
     .heart {
-
         margin-top: 10px;
     }
 
-    .video-content {
 
+    /* =================================
+       VIDEO MOBILE
+    ================================= */
+
+    .video-content {
         width: 100%;
+
+        padding-top: 15px;
+        padding-bottom: 30px;
     }
 
     .video-content h2 {
-
         font-size: 38px;
 
         margin-bottom: 20px;
     }
 
-    .video-text {
+    .video-container {
+        width: 100%;
+    }
 
+    .video-container video {
+        width: 100%;
+
+        max-height: none;
+    }
+
+    .video-text {
         font-size: 13px;
 
         line-height: 1.6;
@@ -1263,42 +1377,54 @@ body {
         margin-top: 15px;
     }
 
-    .letter-content {
 
+    /* =================================
+       LETTERA MOBILE
+    ================================= */
+
+    .letter-content {
         flex-direction: column;
 
-        gap: 20px;
+        gap: 25px;
 
         width: 100%;
+
+        min-height: max-content;
+
+        padding-top: 15px;
+        padding-bottom: 35px;
     }
 
     .letter-photo {
-
         width: min(250px, 60vw);
+
+        flex-shrink: 0;
     }
 
     .letter {
-
         width: 100%;
 
         text-align: center;
 
-        max-height: 47vh;
+        /*
+           La lettera NON ha più un'altezza
+           fissa che potrebbe tagliare il testo.
+        */
 
-        overflow-y: auto;
+        max-height: none;
 
-        padding-right: 5px;
+        overflow: visible;
+
+        padding: 0 5px 20px;
     }
 
     .letter h2 {
-
         font-size: 35px;
 
         margin-bottom: 15px;
     }
 
     .letter p {
-
         font-size: 13px;
 
         line-height: 1.6;
@@ -1307,41 +1433,59 @@ body {
     }
 
     .signature {
-
         margin-top: 15px;
     }
 
-    .big-heart {
 
+    /* =================================
+       FINALE MOBILE
+    ================================= */
+
+    .final-page {
+        align-items: center;
+    }
+
+    .final-content {
+        width: 100%;
+
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    .big-heart {
         font-size: 60px;
     }
 
     .final-content h1 {
-
         font-size: 45px;
     }
 
     .final-content h2 {
-
         font-size: 21px;
 
         margin-bottom: 25px;
     }
 
     .final-message p {
-
         font-size: 14px;
 
         line-height: 1.65;
     }
 
-    .final-love {
+    .final-highlight {
+        font-size: 17px !important;
+    }
 
+    .final-love {
         font-size: 24px;
     }
 
-    .nav-btn {
 
+    /* =================================
+       NAVIGAZIONE MOBILE
+    ================================= */
+
+    .nav-btn {
         width: 40px;
 
         height: 40px;
@@ -1352,42 +1496,283 @@ body {
     }
 
     .nav-btn.prev {
-
         left: 8px;
     }
 
     .nav-btn.next {
-
         right: 8px;
     }
 
-    .dots {
 
+    /* =================================
+       DOTS MOBILE
+    ================================= */
+
+    .dots {
         bottom: 15px;
     }
 
-    .swipe-hint {
 
+    /* =================================
+       SWIPE MOBILE
+    ================================= */
+
+    .swipe-hint {
         top: 12px;
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
     }
 
-    /* PASSWORD MOBILE */
+
+    /* =================================
+       PASSWORD MOBILE
+    ================================= */
+
+    .password-screen {
+        padding: 18px;
+    }
 
     .password-box {
-
         padding: 35px 25px;
     }
 
-    .password-box h1 {
+    .password-heart {
+        font-size: 38px;
+    }
 
+    .password-box h1 {
         font-size: 35px;
     }
 
-    .password-format {
+    .password-box > p {
+        font-size: 13px;
+    }
 
+    .password-format {
         font-size: 19px;
 
         letter-spacing: 4px;
     }
+}
 
+
+/* =================================
+   MOBILE MOLTO PICCOLO
+================================= */
+
+@media (max-width: 380px) {
+
+    .page {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .cover h1 {
+        font-size: 42px;
+    }
+
+    .cover h2 {
+        font-size: 20px;
+    }
+
+    .cover-text {
+        font-size: 14px;
+    }
+
+    .photo-container {
+        width: min(300px, 80vw);
+    }
+
+    .memory-text h2 {
+        font-size: 29px;
+    }
+
+    .memory-text p {
+        font-size: 13px;
+    }
+
+    .letter-photo {
+        width: min(220px, 62vw);
+    }
+
+    .letter p {
+        font-size: 12.5px;
+    }
+
+    .final-content h1 {
+        font-size: 40px;
+    }
+}
+
+
+/* =================================
+   TELEFONO ORIZZONTALE
+================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .page {
+        padding:
+            35px
+            65px
+            65px;
+
+        align-items: flex-start;
+    }
+
+    .memory-content,
+    .memory-content.reverse {
+        flex-direction: row;
+
+        width: min(850px, 90vw);
+
+        gap: 35px;
+
+        margin: auto;
+    }
+
+    .photo-container {
+        width: min(300px, 38vw);
+    }
+
+    .memory-text {
+        width: min(400px, 42vw);
+    }
+
+    .memory-text h2 {
+        font-size: 28px;
+    }
+
+    .memory-text p {
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+
+    .video-container video {
+        max-height: 70vh;
+    }
+
+    .letter-content {
+        flex-direction: row;
+
+        width: min(850px, 90vw);
+
+        gap: 35px;
+
+        margin: auto;
+    }
+
+    .letter-photo {
+        width: min(260px, 30vw);
+    }
+
+    .letter {
+        width: min(450px, 45vw);
+    }
+
+    .letter p {
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+}
+
+
+/* =================================
+   SCHERMI BASSI
+================================= */
+
+@media (max-height: 700px) {
+
+    .page {
+        padding-top: 35px;
+
+        padding-bottom: 65px;
+    }
+
+    .cover-content {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .cover-text {
+        margin: 15px auto;
+
+        line-height: 1.6;
+    }
+
+    .date-box {
+        margin: 15px 0;
+    }
+
+    .photo-container {
+        width: min(380px, 42vw);
+    }
+
+    .memory-text p {
+        line-height: 1.6;
+    }
+
+    .video-content h2 {
+        margin-bottom: 15px;
+    }
+}
+
+
+/* =================================
+   MONITOR GRANDI
+================================= */
+
+@media (min-width: 1600px) {
+
+    .memory-content {
+        width: min(1350px, 90vw);
+    }
+
+    .photo-container {
+        width: min(520px, 35vw);
+    }
+
+    .memory-text {
+        width: min(550px, 38vw);
+    }
+
+    .video-content {
+        width: min(1100px, 85vw);
+    }
+
+    .letter-content {
+        width: min(1350px, 90vw);
+    }
+
+    .letter-photo {
+        width: min(430px, 32vw);
+    }
+
+    .letter {
+        width: min(600px, 42vw);
+    }
+}
+
+
+/* =================================
+   ACCESSIBILITÀ
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
 }
