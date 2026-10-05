@@ -13,100 +13,73 @@ body {
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255, 70, 130, 0.15),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(180, 40, 100, 0.12),
-            transparent 35%
-        ),
-        #09060b;
-
+        radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.10), transparent 30%),
+        #09050b;
     color: #fff;
 }
 
-
-/* =================================
+/* =========================
    STELLE
-================================= */
+========================= */
 
 .stars {
     position: fixed;
     inset: 0;
-
-    pointer-events: none;
     z-index: 0;
+    pointer-events: none;
+    opacity: 0.65;
 
     background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.7) 1px,
-            transparent 1px
-        ),
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.4) 1px,
-            transparent 1px
-        );
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,182,193,0.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
 
     background-size:
         120px 120px,
-        190px 190px;
+        180px 180px,
+        250px 250px;
 
     background-position:
-        20px 30px,
-        80px 100px;
+        0 0,
+        40px 60px,
+        100px 30px;
 
-    animation: starsMove 15s linear infinite;
+    animation: starsMove 35s linear infinite;
 }
 
 @keyframes starsMove {
-
     from {
-        transform: translateY(0);
+        transform: translate(0, 0);
     }
 
     to {
-        transform: translateY(-120px);
+        transform: translate(-80px, -60px);
     }
 }
 
 
-/* =================================
+/* =========================
    PASSWORD
-================================= */
+========================= */
 
 .password-screen {
     position: fixed;
     inset: 0;
-
-    z-index: 9999;
-
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding: 25px;
+    padding: 20px;
 
     background:
-        radial-gradient(
-            circle at 50% 25%,
-            rgba(255, 70, 130, .20),
-            transparent 40%
-        ),
-        #09060b;
-
-    opacity: 1;
-    visibility: visible;
+        radial-gradient(circle at 50% 35%, rgba(255, 20, 147, 0.16), transparent 35%),
+        #09050b;
 
     transition:
-        opacity .8s ease,
-        visibility .8s ease;
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
 .password-screen.hidden {
@@ -116,301 +89,194 @@ body {
 }
 
 .password-box {
-    width: min(450px, 100%);
-
-    padding: 45px 35px;
-
+    width: min(460px, 100%);
+    padding: 48px 38px;
     text-align: center;
 
-    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 28px;
 
-    border: 1px solid rgba(255,255,255,.12);
-
-    border-radius: 25px;
-
+    background: rgba(255, 255, 255, 0.035);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,.55),
-        0 0 70px rgba(255,70,120,.08);
-
-    animation: passwordAppear .8s ease;
-}
-
-@keyframes passwordAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
+        0 30px 100px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(255, 20, 147, 0.08);
 }
 
 .password-heart {
-    color: #ff5c91;
+    font-size: 42px;
+    color: #ff5fa2;
+    margin-bottom: 20px;
 
-    font-size: 45px;
-
-    margin-bottom: 15px;
-
-    animation: heartbeat 1.8s infinite;
+    animation: heartBeat 2s ease-in-out infinite;
 }
 
-.password-small {
-    display: block;
+@keyframes heartBeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
 
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.password-eyebrow {
     font-family: Arial, sans-serif;
-
     font-size: 10px;
-
     letter-spacing: 4px;
-
-    color: rgba(255,255,255,.4);
-
-    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 14px;
 }
 
 .password-box h1 {
-    font-size: 42px;
-
-    font-weight: normal;
-
+    font-size: clamp(30px, 6vw, 46px);
+    font-weight: 400;
     margin-bottom: 18px;
 }
 
-.password-box > p {
-    color: rgba(255,255,255,.65);
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
+.password-box h1 span {
+    color: #ff5fa2;
 }
 
-
-/* =================================
-   FORMATO PASSWORD
-================================= */
-
-.password-format {
-    font-family: Arial, sans-serif;
-
-    font-size: 22px;
-
-    letter-spacing: 5px;
-
-    color: rgba(255,255,255,.35);
-
-    margin-bottom: 18px;
+.password-description {
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
+.password-input-wrapper {
+    margin-bottom: 14px;
+}
 
-/* =================================
-   INPUT
-================================= */
-
-#passwordInput {
+.password-input-wrapper input {
     width: 100%;
+    height: 54px;
+    padding: 0 20px;
 
-    padding: 15px 18px;
-
-    border-radius: 50px;
-
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
 
     outline: none;
 
-    background: rgba(0,0,0,.25);
+    background: rgba(255, 255, 255, 0.05);
 
-    color: #fff;
-
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
     text-align: center;
 
+    transition: 0.3s ease;
+}
+
+.password-input-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.password-input-wrapper input:focus {
+    border-color: rgba(255, 95, 162, 0.8);
+    box-shadow: 0 0 25px rgba(255, 95, 162, 0.12);
+}
+
+.password-btn,
+.start-btn {
+    border: none;
+    cursor: pointer;
     font-family: Arial, sans-serif;
 
-    font-size: 16px;
+    color: white;
 
-    transition:
-        border .3s ease,
-        box-shadow .3s ease;
-}
-
-#passwordInput::placeholder {
-    color: rgba(255,255,255,.3);
-}
-
-#passwordInput:focus {
-    border-color: rgba(255,92,145,.6);
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f9a,
+            #e91e63
+        );
 
     box-shadow:
-        0 0 25px rgba(255,70,120,.1);
-}
-
-
-/* =================================
-   BOTTONE PASSWORD
-================================= */
-
-#passwordBtn {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 15px;
-
-    border: 1px solid rgba(255,92,145,.4);
-
-    border-radius: 50px;
-
-    background: rgba(255,70,120,.1);
-
-    color: #fff;
-
-    font-family: Georgia, serif;
-
-    font-size: 16px;
-
-    cursor: pointer;
+        0 10px 30px rgba(233, 30, 99, 0.25);
 
     transition:
-        background .3s ease,
-        transform .3s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-#passwordBtn:hover {
-    background: rgba(255,70,120,.2);
+.password-btn {
+    width: 100%;
+    height: 54px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+}
 
+.password-btn:hover,
+.start-btn:hover {
     transform: translateY(-2px);
+    box-shadow:
+        0 14px 35px rgba(233, 30, 99, 0.35);
 }
 
-
-/* =================================
-   NOTIFICA ERRORE
-================================= */
-
-.password-error {
-    display: none;
-
+.password-error,
+.password-success {
     margin-top: 18px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.35s ease;
+}
 
-    padding: 13px 15px;
-
-    border-radius: 15px;
-
-    background: rgba(255,60,100,.08);
-
-    border: 1px solid rgba(255,80,120,.18);
-
-    color: #ff8eaa;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    line-height: 1.5;
+.password-error.show {
+    opacity: 1;
+    max-height: 80px;
+    color: #ff8bbd;
 }
 
 .password-error span {
     margin-right: 5px;
-
-    color: #ff5c91;
 }
 
 .password-error small {
     display: block;
-
-    margin-top: 3px;
-
-    color: rgba(255,255,255,.4);
-
-    font-size: 10px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.45);
 }
 
-.password-error.show {
-    display: block;
-
-    animation: shake .4s ease;
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    20% {
-        transform: translateX(-8px);
-    }
-
-    40% {
-        transform: translateX(8px);
-    }
-
-    60% {
-        transform: translateX(-6px);
-    }
-
-    80% {
-        transform: translateX(6px);
-    }
+.password-success.show {
+    opacity: 1;
+    max-height: 80px;
+    color: #ff8bbd;
 }
 
 
-/* =================================
-   ALBUM
-================================= */
+/* =========================
+   LIBRO
+========================= */
 
 .book {
     position: relative;
-
-    z-index: 1;
+    z-index: 2;
 
     display: flex;
 
     width: 100vw;
-
-    height: 100dvh;
+    height: 100vh;
 
     overflow-x: auto;
-
-    /*
-       Lo scroll verticale viene gestito
-       dalle singole pagine.
-    */
     overflow-y: hidden;
 
     scroll-snap-type: x mandatory;
-
     scroll-behavior: smooth;
 
     scrollbar-width: none;
 
     -webkit-overflow-scrolling: touch;
-
-    overscroll-behavior-x: contain;
 }
 
 .book::-webkit-scrollbar {
     display: none;
 }
-
-
-/* =================================
-   PAGINE
-================================= */
 
 .page {
     position: relative;
@@ -418,1349 +284,736 @@ body {
     flex: 0 0 100vw;
 
     width: 100vw;
+    height: 100vh;
 
-    min-width: 100vw;
-
-    /*
-       La pagina occupa lo schermo,
-       ma il suo contenuto può essere
-       più alto e quindi scorrere.
-    */
-
-    height: 100dvh;
-
-    min-height: 100dvh;
+    overflow: hidden;
 
     scroll-snap-align: start;
 
     display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        70px
-        clamp(35px, 6vw, 100px);
-
-    /*
-       IMPORTANTE:
-       lo scroll verticale avviene qui.
-    */
-
-    overflow-x: hidden;
-
-    overflow-y: auto;
-
-    scrollbar-width: thin;
-
-    -webkit-overflow-scrolling: touch;
-
-    overscroll-behavior-y: contain;
 }
 
 
-/* =================================
-   CONTENUTO PAGINA
-================================= */
-
-.page > * {
-    flex-shrink: 0;
-}
-
-
-/* =================================
-   COPERTINA
-================================= */
+/* =========================
+   COVER
+========================= */
 
 .cover {
+    align-items: center;
+    justify-content: center;
     text-align: center;
+
+    padding: 60px 25px;
 }
 
 .cover-content {
-    max-width: 900px;
-
-    width: 100%;
-
-    flex-shrink: 0;
+    width: min(720px, 100%);
+    margin: auto;
 }
 
-.eyebrow {
-    display: block;
-
+.cover-eyebrow,
+.final-date {
     font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    color: rgba(255,255,255,.55);
-
-    margin-bottom: 30px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.45);
 }
 
-.mini-heart {
-    font-size: 30px;
+.cover-heart {
+    margin: 24px 0 10px;
 
-    color: #ff5c91;
+    font-size: 42px;
+    color: #ff5fa2;
 
-    animation: heartbeat 1.8s infinite;
-}
-
-@keyframes heartbeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
+    text-shadow:
+        0 0 25px rgba(255, 95, 162, 0.45);
 }
 
 .cover h1 {
-    margin-top: 15px;
-
-    font-size: clamp(55px, 9vw, 115px);
-
-    font-weight: normal;
-
-    letter-spacing: -4px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #ffb5ca,
-            #ff4f87
-        );
-
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 400;
+    line-height: 1.05;
 }
 
 .cover h1 span {
-    color: #ff5c91;
-
-    -webkit-text-fill-color: #ff5c91;
+    color: #ff5fa2;
 }
 
 .cover h2 {
-    margin-top: 20px;
+    margin-top: 15px;
 
-    font-size: clamp(22px, 3vw, 36px);
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 400;
 
-    font-weight: normal;
+    color: rgba(255, 255, 255, 0.65);
+}
 
-    color: #f5dbe4;
+.cover-line,
+.final-line {
+    width: 70px;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background: rgba(255, 95, 162, 0.65);
 }
 
 .cover-text {
     max-width: 650px;
+    margin: 0 auto 18px;
 
-    margin: 30px auto;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 16px;
+    line-height: 1.9;
+}
 
-    font-size: 18px;
-
-    line-height: 1.8;
-
-    color: rgba(255,255,255,.72);
+.cover-final-text {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .date-box {
-    display: flex;
-
+    display: inline-flex;
     align-items: center;
+    gap: 15px;
 
-    justify-content: center;
+    margin-top: 10px;
+    padding: 12px 20px;
 
-    gap: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 100px;
 
-    margin: 30px 0;
+    color: rgba(255, 255, 255, 0.55);
 
     font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    color: rgba(255,255,255,.6);
+    font-size: 11px;
+    letter-spacing: 2px;
 }
 
-.date-box div {
-    color: #ff5c91;
-
-    font-size: 18px;
+.date-box span:nth-child(2) {
+    color: #ff5fa2;
 }
 
 .start-btn {
-    border: 1px solid rgba(255,100,150,.45);
+    display: block;
 
-    background: rgba(255,70,120,.08);
+    margin: 28px auto 0;
+    padding: 15px 25px;
 
-    color: #fff;
+    border-radius: 100px;
 
-    padding: 15px 28px;
-
-    border-radius: 50px;
-
-    font-family: Georgia, serif;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition:
-        background .3s ease,
-        transform .3s ease,
-        box-shadow .3s ease;
+    font-size: 13px;
 }
 
-.start-btn span {
-    margin-left: 10px;
-}
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
 
-.start-btn:hover {
-    background: rgba(255,70,120,.18);
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 35px rgba(255,50,120,.15);
-}
-
-
-/* =================================
-   FOTO
-================================= */
-
-.memory-content {
-    width: min(1200px, 90vw);
+    transform: translateX(-50%);
 
     display: flex;
-
+    flex-direction: column;
     align-items: center;
+    gap: 7px;
 
-    justify-content: center;
-
-    gap: clamp(50px, 8vw, 120px);
-
-    flex-shrink: 0;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.35);
 }
 
-.memory-content.reverse {
+.scroll-line {
+    width: 1px;
+    height: 30px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+}
+
+
+/* =========================
+   MEMORY PAGES
+========================= */
+
+.memory-page {
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(40px, 7vw, 100px);
+
+    padding: 70px clamp(30px, 8vw, 130px);
+}
+
+.memory-page.reverse {
     flex-direction: row-reverse;
 }
 
-.photo-container {
-    width: min(480px, 40vw);
-
-    aspect-ratio: 4 / 5;
-
-    padding: 12px;
+.memory-image {
+    width: min(42vw, 520px);
+    height: min(68vh, 620px);
 
     flex-shrink: 0;
 
-    background: rgba(255,255,255,.06);
+    border-radius: 25px;
+    overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.5),
-        0 0 50px rgba(255,70,120,.08);
-
-    transform: rotate(-2deg);
-
-    transition: transform .5s ease;
+        0 25px 80px rgba(0, 0, 0, 0.45),
+        0 0 50px rgba(255, 20, 147, 0.07);
 }
 
-.memory-content.reverse .photo-container {
-    transform: rotate(2deg);
-}
-
-.photo-container:hover {
-    transform: rotate(0deg) scale(1.02);
-}
-
-.photo-container img {
-    display: block;
-
+.memory-image img {
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
+
+    transition: transform 0.8s ease;
 }
 
-
-/* =================================
-   TESTO
-================================= */
-
-.memory-text {
-    width: min(500px, 40vw);
-
-    flex-shrink: 0;
+.memory-image:hover img {
+    transform: scale(1.04);
 }
 
-.memory-number {
-    display: block;
+.memory-content {
+    width: min(520px, 42vw);
+}
 
+.page-number {
     font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-
-    color: #ff6f9c;
-
-    margin-bottom: 10px;
-}
-
-.memory-label {
-    display: block;
-
-    font-family: Arial, sans-serif;
-
     font-size: 11px;
-
     letter-spacing: 3px;
+    color: #ff5fa2;
 
-    color: rgba(255,255,255,.4);
-
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
-.memory-text h2 {
-    font-size: clamp(35px, 4vw, 55px);
-
-    font-weight: normal;
-
-    margin-bottom: 25px;
-
-    color: #fff;
-}
-
-.memory-text p {
-    font-size: 17px;
-
-    line-height: 1.9;
-
-    color: rgba(255,255,255,.72);
-
-    margin-bottom: 18px;
-}
-
-.heart {
-    color: #ff5c91;
-
-    font-size: 24px;
-
-    margin-top: 25px;
-}
-
-
-/* =================================
-   VIDEO
-================================= */
-
-.video-page {
-    text-align: center;
-}
-
-.video-content {
-    width: min(950px, 90vw);
-
-    flex-shrink: 0;
-}
-
-.video-content h2 {
-    font-size: clamp(40px, 5vw, 65px);
-
-    font-weight: normal;
-
-    margin-bottom: 30px;
-}
-
-.video-container {
-    width: 100%;
-
-    background: #000;
-
-    border: 1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.6),
-        0 0 50px rgba(255,70,120,.08);
-
-    overflow: hidden;
-}
-
-.video-container video {
-    display: block;
-
-    width: 100%;
-
-    max-height: 70vh;
-
-    object-fit: contain;
-}
-
-.video-text {
-    max-width: 750px;
-
-    margin: 22px auto 0;
-
-    color: rgba(255,255,255,.68);
-
-    font-size: 16px;
-
-    line-height: 1.7;
-}
-
-
-/* =================================
-   LETTERA
-================================= */
-
-.letter-content {
-    width: min(1200px, 90vw);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 80px;
-
-    flex-shrink: 0;
-}
-
-.letter-photo {
-    width: min(390px, 35vw);
-
-    padding: 10px;
-
-    flex-shrink: 0;
-
-    background: rgba(255,255,255,.06);
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    transform: rotate(-2deg);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5);
-}
-
-.letter-photo img {
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio: 4 / 5;
-
-    object-fit: cover;
-}
-
-.letter {
-    width: min(550px, 45vw);
-
-    flex-shrink: 0;
-}
-
-.letter h2 {
-    font-size: clamp(40px, 5vw, 65px);
-
-    font-weight: normal;
-
-    margin-bottom: 25px;
-}
-
-.letter p {
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    color: rgba(255,255,255,.72);
-
-    margin-bottom: 17px;
-}
-
-.signature {
-    margin-top: 30px;
-
-    color: rgba(255,255,255,.55);
-
-    line-height: 1.7;
-}
-
-.signature strong {
-    color: #fff;
-
-    font-size: 20px;
-}
-
-
-/* =================================
-   FINALE
-================================= */
-
-.final-page {
-    text-align: center;
-}
-
-.final-content {
-    width: min(800px, 90vw);
-
-    flex-shrink: 0;
-}
-
-.big-heart {
-    color: #ff5c91;
-
-    font-size: 80px;
+.page-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.4);
 
     margin-bottom: 15px;
-
-    animation: heartbeat 1.8s infinite;
-
-    text-shadow:
-        0 0 40px rgba(255,70,120,.35);
 }
 
-.final-content h1 {
-    font-size: clamp(45px, 7vw, 85px);
-
-    font-weight: normal;
-
+.memory-content h2,
+.video-content h2,
+.letter-card h2,
+.final-content h2 {
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 400;
     line-height: 1.05;
 
     margin-bottom: 25px;
 }
 
-.final-content h1 span {
+.text-line {
+    width: 45px;
+    height: 1px;
+
+    background: #ff5fa2;
+
+    margin-bottom: 25px;
+}
+
+.memory-content p:not(.page-number):not(.page-eyebrow) {
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, 0.67);
+
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-page {
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 25px;
+    text-align: center;
+}
+
+.video-content {
+    width: min(850px, 100%);
+}
+
+.video-content .page-number,
+.video-content .page-eyebrow {
+    text-align: center;
+}
+
+.video-wrapper {
+    width: min(720px, 100%);
+    margin: 20px auto 25px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    background: black;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+.video-wrapper video {
     display: block;
 
-    color: #ff9db8;
+    width: 100%;
+    max-height: 55vh;
+}
+
+.video-content > p:last-child,
+.video-content > p:nth-last-child(2) {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-page {
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 25px;
+}
+
+.letter-card {
+    width: min(720px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 50px clamp(25px, 6vw, 65px);
+
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.4);
+
+    scrollbar-width: thin;
+}
+
+.letter-card .page-number,
+.letter-card .page-eyebrow {
+    text-align: center;
+}
+
+.letter-card h2 {
+    text-align: center;
+}
+
+.letter-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 0 auto 30px;
+
+    background: #ff5fa2;
+}
+
+.letter-card > p:not(.page-number):not(.page-eyebrow):not(.letter-signature) {
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, 0.70);
+
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.letter-signature {
+    margin-top: 35px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    line-height: 1.8;
+}
+
+.letter-signature strong {
+    color: #ff7caf;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-page {
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 25px;
+
+    text-align: center;
+}
+
+.final-content {
+    width: min(720px, 100%);
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 30px 10px;
+
+    scrollbar-width: thin;
+}
+
+.final-heart {
+    margin: 25px 0 12px;
+
+    font-size: 46px;
+    color: #ff5fa2;
+
+    text-shadow:
+        0 0 35px rgba(255, 95, 162, 0.4);
 }
 
 .final-content h2 {
-    font-size: 25px;
-
-    font-weight: normal;
-
-    color: rgba(255,255,255,.8);
-
-    margin-bottom: 35px;
+    margin-bottom: 12px;
 }
 
-.final-content h2 span {
-    color: #ff5c91;
+.final-content h3 {
+    font-size: 18px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.55);
 }
 
-.final-message {
-    max-width: 650px;
-
-    margin: auto;
+.final-content h3 span {
+    color: #ff5fa2;
 }
 
-.final-message p {
-    color: rgba(255,255,255,.68);
+.final-content > p:not(.final-date):not(.final-love) {
+    max-width: 620px;
+
+    margin: 0 auto 18px;
+
+    color: rgba(255, 255, 255, 0.68);
 
     font-size: 16px;
-
-    line-height: 1.8;
-
-    margin-bottom: 18px;
+    line-height: 1.85;
 }
 
 .final-highlight {
-    color: #ffb2c7 !important;
+    margin-top: 30px !important;
 
-    font-size: 19px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.final-highlight strong {
+    color: #ff72ad;
+    font-size: 20px;
 }
 
 .final-love {
-    margin-top: 30px;
+    margin-top: 35px;
 
-    font-size: 28px;
+    color: #ff72ad;
 
-    color: #fff;
+    font-size: 22px;
+    line-height: 1.8;
 }
 
-.final-signature {
-    margin-top: 25px;
-
-    font-size: 16px;
-
-    color: rgba(255,255,255,.45);
+.final-love span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
 }
 
 
-/* =================================
-   NAVIGAZIONE
-================================= */
+/* =========================
+   FRECCE
+========================= */
 
-.nav-btn {
+.nav-arrow {
     position: fixed;
-
     top: 50%;
+
+    z-index: 30;
+
+    width: 52px;
+    height: 52px;
 
     transform: translateY(-50%);
 
-    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width: 48px;
-
-    height: 48px;
-
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50%;
 
-    border: 1px solid rgba(255,255,255,.15);
-
-    background: rgba(0,0,0,.25);
-
+    background: rgba(255, 255, 255, 0.045);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
 
-    font-size: 35px;
-
-    line-height: 40px;
+    font-size: 20px;
 
     cursor: pointer;
 
     transition:
-        background .3s ease,
-        transform .3s ease;
+        0.25s ease;
 }
 
-.nav-btn:hover {
-    background: rgba(255,70,120,.15);
-
-    transform:
-        translateY(-50%)
-        scale(1.08);
+.nav-arrow:hover {
+    background: rgba(255, 95, 162, 0.15);
+    border-color: rgba(255, 95, 162, 0.45);
+    color: white;
 }
 
-.nav-btn.prev {
-    left: 20px;
+.nav-arrow-left {
+    left: 22px;
 }
 
-.nav-btn.next {
-    right: 20px;
+.nav-arrow-right {
+    right: 22px;
+}
+
+.nav-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
 }
 
 
-/* =================================
+/* =========================
    DOTS
-================================= */
+========================= */
 
 .dots {
     position: fixed;
-
-    bottom: 25px;
+    z-index: 40;
 
     left: 50%;
+    bottom: 18px;
 
     transform: translateX(-50%);
 
-    z-index: 20;
-
     display: flex;
-
-    gap: 8px;
+    align-items: center;
+    gap: 7px;
 }
 
 .dot {
-    width: 7px;
-
-    height: 7px;
-
-    border-radius: 50%;
+    width: 6px;
+    height: 6px;
 
     border: none;
+    border-radius: 50%;
 
-    background: rgba(255,255,255,.3);
+    background: rgba(255, 255, 255, 0.25);
 
     cursor: pointer;
 
     transition:
-        width .3s ease,
-        background .3s ease;
+        width 0.25s ease,
+        background 0.25s ease;
 }
 
 .dot.active {
-    width: 25px;
-
+    width: 20px;
     border-radius: 10px;
-
-    background: #ff6f9c;
+    background: #ff5fa2;
 }
 
 
-/* =================================
-   SWIPE
-================================= */
-
-.swipe-hint {
-    position: fixed;
-
-    top: 22px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 20;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: rgba(255,255,255,.3);
-
-    pointer-events: none;
-
-    white-space: nowrap;
-}
-
-.swipe-hint span {
-    color: #ff6f9c;
-
-    margin: 0 5px;
-}
-
-
-/* =================================
-   TABLET
-================================= */
-
-@media (max-width: 1000px) {
-
-    .page {
-        padding-left: 55px;
-        padding-right: 55px;
-    }
-
-    .memory-content,
-    .letter-content {
-        width: 90vw;
-
-        gap: 40px;
-    }
-
-    .photo-container {
-        width: min(420px, 42vw);
-    }
-
-    .memory-text {
-        width: min(450px, 42vw);
-    }
-
-    .letter-photo {
-        width: min(350px, 38vw);
-    }
-
-    .letter {
-        width: min(500px, 45vw);
-    }
-}
-
-
-/* =================================
+/* =========================
    MOBILE
-================================= */
+========================= */
 
 @media (max-width: 700px) {
 
-    /*
-       La pagina rimane grande quanto lo schermo,
-       ma può scorrere verticalmente.
-    */
-
-    .page {
-        height: 100dvh;
-
-        min-height: 100dvh;
-
-        padding:
-            55px
-            25px
-            85px;
-
-        align-items: flex-start;
-
-        overflow-x: hidden;
-        overflow-y: auto;
+    html,
+    body {
+        overflow: hidden;
     }
 
+    .book {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
 
-    /* =================================
-       COPERTINA MOBILE
-    ================================= */
+    .nav-arrow {
+        display: none;
+    }
+
+    .password-box {
+        padding: 38px 24px;
+    }
 
     .cover {
-        align-items: center;
-
-        justify-content: center;
+        padding: 40px 22px 70px;
     }
 
-    .cover-content {
-        width: 100%;
-
-        margin: auto;
-
-        padding-top: 20px;
-        padding-bottom: 30px;
-    }
-
-    .eyebrow {
-        font-size: 9px;
-
-        letter-spacing: 3px;
-
-        margin-bottom: 20px;
-    }
-
-    .mini-heart {
-        font-size: 25px;
-    }
-
-    .cover h1 {
-        font-size: clamp(45px, 14vw, 75px);
-
-        letter-spacing: -2px;
-    }
-
-    .cover h2 {
-        font-size: 22px;
+    .cover-heart {
+        font-size: 34px;
     }
 
     .cover-text {
         font-size: 15px;
-
-        line-height: 1.7;
-
-        margin: 22px auto;
+        line-height: 1.75;
     }
 
     .date-box {
-        gap: 12px;
-
-        font-size: 10px;
-
-        letter-spacing: 2px;
-
-        margin: 20px 0;
-    }
-
-    .date-box div {
-        font-size: 16px;
-    }
-
-
-    /* =================================
-       FOTO MOBILE
-    ================================= */
-
-    .memory-content,
-    .memory-content.reverse {
-        flex-direction: column;
-
-        gap: 25px;
-
-        width: 100%;
-
-        /*
-           NON usiamo max-height.
-           Se il contenuto è più alto dello schermo,
-           la pagina può scorrere.
-        */
-
-        min-height: max-content;
-
-        padding-top: 15px;
-        padding-bottom: 30px;
-    }
-
-    .photo-container {
-        width: min(330px, 78vw);
-
-        aspect-ratio: 4 / 4.5;
-
-        flex-shrink: 0;
-    }
-
-    .memory-text {
-        width: min(500px, 90vw);
-
-        text-align: center;
-
-        flex-shrink: 0;
-
-        padding-bottom: 20px;
-    }
-
-    .memory-number {
-        font-size: 10px;
-
-        letter-spacing: 3px;
-    }
-
-    .memory-label {
         font-size: 9px;
-
-        letter-spacing: 2px;
-
-        margin-bottom: 12px;
+        gap: 10px;
     }
 
-    .memory-text h2 {
-        font-size: 32px;
-
-        margin-bottom: 15px;
-    }
-
-    .memory-text p {
-        font-size: 14px;
-
-        line-height: 1.6;
-
-        margin-bottom: 10px;
-    }
-
-    .heart {
-        margin-top: 10px;
-    }
-
-
-    /* =================================
-       VIDEO MOBILE
-    ================================= */
-
-    .video-content {
-        width: 100%;
-
-        padding-top: 15px;
-        padding-bottom: 30px;
-    }
-
-    .video-content h2 {
-        font-size: 38px;
-
-        margin-bottom: 20px;
-    }
-
-    .video-container {
-        width: 100%;
-    }
-
-    .video-container video {
-        width: 100%;
-
-        max-height: none;
-    }
-
-    .video-text {
-        font-size: 13px;
-
-        line-height: 1.6;
-
-        margin-top: 15px;
-    }
-
-
-    /* =================================
-       LETTERA MOBILE
-    ================================= */
-
-    .letter-content {
+    .memory-page,
+    .memory-page.reverse {
         flex-direction: column;
 
+        justify-content: center;
         gap: 25px;
 
-        width: 100%;
+        padding: 35px 25px 60px;
 
-        min-height: max-content;
-
-        padding-top: 15px;
-        padding-bottom: 35px;
+        overflow-y: auto;
     }
 
-    .letter-photo {
-        width: min(250px, 60vw);
+    .memory-image {
+        width: min(82vw, 360px);
+        height: 40vh;
 
-        flex-shrink: 0;
+        max-height: 380px;
     }
 
-    .letter {
-        width: 100%;
-
-        text-align: center;
-
-        /*
-           La lettera NON ha più un'altezza
-           fissa che potrebbe tagliare il testo.
-        */
-
-        max-height: none;
-
-        overflow: visible;
-
-        padding: 0 5px 20px;
+    .memory-content {
+        width: min(88vw, 500px);
     }
 
-    .letter h2 {
-        font-size: 35px;
-
-        margin-bottom: 15px;
+    .memory-content h2,
+    .video-content h2,
+    .letter-card h2,
+    .final-content h2 {
+        font-size: 36px;
     }
 
-    .letter p {
-        font-size: 13px;
-
-        line-height: 1.6;
-
-        margin-bottom: 10px;
+    .memory-content p:not(.page-number):not(.page-eyebrow) {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 14px;
     }
 
-    .signature {
+    .video-page {
+        overflow-y: auto;
+        padding-bottom: 70px;
+    }
+
+    .video-wrapper {
         margin-top: 15px;
     }
 
+    .video-wrapper video {
+        max-height: 45vh;
+    }
 
-    /* =================================
-       FINALE MOBILE
-    ================================= */
+    .letter-page {
+        overflow-y: auto;
+        padding: 30px 18px 70px;
+    }
+
+    .letter-card {
+        max-height: none;
+        padding: 35px 23px;
+    }
+
+    .letter-card > p:not(.page-number):not(.page-eyebrow):not(.letter-signature) {
+        font-size: 15px;
+        line-height: 1.75;
+    }
 
     .final-page {
-        align-items: center;
+        overflow-y: auto;
+        padding: 30px 20px 70px;
     }
 
     .final-content {
-        width: 100%;
-
-        padding-top: 20px;
-        padding-bottom: 40px;
+        max-height: none;
     }
 
-    .big-heart {
-        font-size: 60px;
+    .final-content > p:not(.final-date):not(.final-love) {
+        font-size: 15px;
+        line-height: 1.75;
     }
-
-    .final-content h1 {
-        font-size: 45px;
-    }
-
-    .final-content h2 {
-        font-size: 21px;
-
-        margin-bottom: 25px;
-    }
-
-    .final-message p {
-        font-size: 14px;
-
-        line-height: 1.65;
-    }
-
-    .final-highlight {
-        font-size: 17px !important;
-    }
-
-    .final-love {
-        font-size: 24px;
-    }
-
-
-    /* =================================
-       NAVIGAZIONE MOBILE
-    ================================= */
-
-    .nav-btn {
-        width: 40px;
-
-        height: 40px;
-
-        font-size: 28px;
-
-        line-height: 34px;
-    }
-
-    .nav-btn.prev {
-        left: 8px;
-    }
-
-    .nav-btn.next {
-        right: 8px;
-    }
-
-
-    /* =================================
-       DOTS MOBILE
-    ================================= */
 
     .dots {
-        bottom: 15px;
+        bottom: 10px;
     }
 
-
-    /* =================================
-       SWIPE MOBILE
-    ================================= */
-
-    .swipe-hint {
-        top: 12px;
-
-        font-size: 8px;
-
-        letter-spacing: 1.5px;
+    .dot {
+        width: 5px;
+        height: 5px;
     }
 
-
-    /* =================================
-       PASSWORD MOBILE
-    ================================= */
-
-    .password-screen {
-        padding: 18px;
-    }
-
-    .password-box {
-        padding: 35px 25px;
-    }
-
-    .password-heart {
-        font-size: 38px;
-    }
-
-    .password-box h1 {
-        font-size: 35px;
-    }
-
-    .password-box > p {
-        font-size: 13px;
-    }
-
-    .password-format {
-        font-size: 19px;
-
-        letter-spacing: 4px;
+    .dot.active {
+        width: 17px;
     }
 }
 
 
-/* =================================
-   MOBILE MOLTO PICCOLO
-================================= */
+/* =========================
+   SMALL PHONES
+========================= */
 
 @media (max-width: 380px) {
 
-    .page {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
     .cover h1 {
-        font-size: 42px;
+        font-size: 34px;
     }
 
     .cover h2 {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .cover-text {
         font-size: 14px;
     }
 
-    .photo-container {
-        width: min(300px, 80vw);
+    .memory-image {
+        height: 34vh;
     }
 
-    .memory-text h2 {
-        font-size: 29px;
+    .memory-content h2,
+    .video-content h2,
+    .letter-card h2,
+    .final-content h2 {
+        font-size: 31px;
     }
 
-    .memory-text p {
-        font-size: 13px;
-    }
-
-    .letter-photo {
-        width: min(220px, 62vw);
-    }
-
-    .letter p {
-        font-size: 12.5px;
-    }
-
-    .final-content h1 {
-        font-size: 40px;
+    .memory-content p:not(.page-number):not(.page-eyebrow),
+    .letter-card > p:not(.page-number):not(.page-eyebrow):not(.letter-signature),
+    .final-content > p:not(.final-date):not(.final-love) {
+        font-size: 14px;
     }
 }
 
 
-/* =================================
-   TELEFONO ORIZZONTALE
-================================= */
-
-@media (max-width: 900px) and (orientation: landscape) {
-
-    .page {
-        padding:
-            35px
-            65px
-            65px;
-
-        align-items: flex-start;
-    }
-
-    .memory-content,
-    .memory-content.reverse {
-        flex-direction: row;
-
-        width: min(850px, 90vw);
-
-        gap: 35px;
-
-        margin: auto;
-    }
-
-    .photo-container {
-        width: min(300px, 38vw);
-    }
-
-    .memory-text {
-        width: min(400px, 42vw);
-    }
-
-    .memory-text h2 {
-        font-size: 28px;
-    }
-
-    .memory-text p {
-        font-size: 13px;
-
-        line-height: 1.5;
-    }
-
-    .video-container video {
-        max-height: 70vh;
-    }
-
-    .letter-content {
-        flex-direction: row;
-
-        width: min(850px, 90vw);
-
-        gap: 35px;
-
-        margin: auto;
-    }
-
-    .letter-photo {
-        width: min(260px, 30vw);
-    }
-
-    .letter {
-        width: min(450px, 45vw);
-    }
-
-    .letter p {
-        font-size: 13px;
-
-        line-height: 1.55;
-    }
-}
-
-
-/* =================================
-   SCHERMI BASSI
-================================= */
-
-@media (max-height: 700px) {
-
-    .page {
-        padding-top: 35px;
-
-        padding-bottom: 65px;
-    }
-
-    .cover-content {
-        padding-top: 10px;
-        padding-bottom: 20px;
-    }
-
-    .cover-text {
-        margin: 15px auto;
-
-        line-height: 1.6;
-    }
-
-    .date-box {
-        margin: 15px 0;
-    }
-
-    .photo-container {
-        width: min(380px, 42vw);
-    }
-
-    .memory-text p {
-        line-height: 1.6;
-    }
-
-    .video-content h2 {
-        margin-bottom: 15px;
-    }
-}
-
-
-/* =================================
-   MONITOR GRANDI
-================================= */
-
-@media (min-width: 1600px) {
-
-    .memory-content {
-        width: min(1350px, 90vw);
-    }
-
-    .photo-container {
-        width: min(520px, 35vw);
-    }
-
-    .memory-text {
-        width: min(550px, 38vw);
-    }
-
-    .video-content {
-        width: min(1100px, 85vw);
-    }
-
-    .letter-content {
-        width: min(1350px, 90vw);
-    }
-
-    .letter-photo {
-        width: min(430px, 32vw);
-    }
-
-    .letter {
-        width: min(600px, 42vw);
-    }
-}
-
-
-/* =================================
-   ACCESSIBILITÀ
-================================= */
+/* =========================
+   RIDOTTO MOVIMENTO
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1768,11 +1021,8 @@ body {
     *::before,
     *::after {
         scroll-behavior: auto !important;
-
         animation-duration: 0.01ms !important;
-
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
     }
 }
