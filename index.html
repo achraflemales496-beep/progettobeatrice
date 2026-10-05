@@ -2,352 +2,314 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Achraf ♥ Beatrice — 2 mesi</title>
+    <title>Noi, Capitolo Uno ❤️</title>
+
+    <meta
+        name="description"
+        content="Il primo capitolo della nostra storia. Achraf ♥ Beatrice — 09.08.2026"
+    >
+
+    <!-- Anteprima quando il sito viene condiviso -->
+    <meta property="og:title" content="Noi, Capitolo Uno ❤️">
+    <meta
+        property="og:description"
+        content="Il primo capitolo della nostra storia. Achraf ♥ Beatrice — 09.08.2026"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://progettobeatrice.vercel.app/">
+
+    <!-- Colore della scheda su dispositivi mobili -->
+    <meta name="theme-color" content="#0b0710">
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E❤️%3C/text%3E%3C/svg%3E"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         PASSWORD
-    ========================== -->
-
-    <div class="password-screen" id="passwordScreen">
-
+    <!-- SCHERMATA PASSWORD -->
+    <div id="passwordScreen" class="password-screen">
         <div class="password-box">
 
             <div class="password-heart">♥</div>
 
-            <span class="password-small">
-                UN PICCOLO SEGRETO
-            </span>
+            <p class="password-eyebrow">IL NOSTRO PICCOLO MONDO</p>
 
-            <h1>
-                Solo per te ❤️
-            </h1>
+            <h1>Achraf <span>♥</span> Beatrice</h1>
 
-            <p>
-                Per entrare nel nostro piccolo mondo
-                devi conoscere la data da cui è iniziato tutto.
+            <p class="password-description">
+                Questa pagina è solo per te.
+                <br>
+                Inserisci la nostra data.
             </p>
 
-            <div class="password-format">
-                */**/****
+            <div class="password-input-wrapper">
+                <input
+                    type="text"
+                    id="passwordInput"
+                    placeholder="*/**/****"
+                    maxlength="10"
+                    autocomplete="off"
+                >
             </div>
 
-            <input
-                type="text"
-                id="passwordInput"
-                placeholder="Inserisci la password"
-                autocomplete="off"
-                maxlength="10"
-            >
-
-            <button id="passwordBtn">
-                Entra ❤️
+            <button id="passwordBtn" class="password-btn">
+                Entra nel nostro mondo ♥
             </button>
 
-            <div class="password-error" id="passwordError">
+            <p id="passwordError" class="password-error">
                 <span>♥</span>
-                Password sbagliata...
-                <small>Prova a ricordare il nostro giorno ❤️</small>
-            </div>
+                Non è questa...
+                <small>Prova a ricordare la nostra data.</small>
+            </p>
+
+            <p id="passwordSuccess" class="password-success">
+                Benvenuta nel nostro mondo ♥
+            </p>
 
         </div>
-
     </div>
 
 
-    <!-- =========================
-         STELLE
-    ========================== -->
-
+    <!-- SFONDO STELLE -->
     <div class="stars"></div>
 
 
-    <!-- =========================
-         ALBUM
-    ========================== -->
-
+    <!-- LIBRO -->
     <main class="book" id="book">
 
-
-        <!-- =========================
-             PAGINA 1
-        ========================== -->
-
+        <!-- PAGINA 1 -->
         <section class="page cover">
 
             <div class="cover-content">
 
-                <span class="eyebrow">
+                <p class="cover-eyebrow">
                     9 AGOSTO 2026 — 9 OTTOBRE 2026
-                </span>
+                </p>
 
-                <div class="mini-heart">
+                <div class="cover-heart">
                     ♥
                 </div>
 
                 <h1>
-                    Achraf
-                    <span>♥</span>
-                    Beatrice
+                    Achraf <span>♥</span> Beatrice
                 </h1>
 
                 <h2>
                     Il nostro secondo mesiversario
                 </h2>
 
+                <div class="cover-line"></div>
+
                 <p class="cover-text">
-                    Due mesi fa è iniziata una cosa che,
-                    probabilmente, nessuno dei due si aspettava.
-                    Oggi invece posso dire che è una delle cose
-                    più belle che mi siano capitate.
+                    Due mesi fa è iniziato qualcosa che non avevo
+                    programmato e che, sinceramente, non pensavo
+                    sarebbe diventato così importante per me.
+                </p>
+
+                <p class="cover-text">
+                    In così poco tempo sei riuscita a diventare
+                    una parte speciale delle mie giornate,
+                    dei miei pensieri e dei miei sorrisi.
+                </p>
+
+                <p class="cover-text">
+                    Queste pagine sono un piccolo modo per fermare
+                    il tempo per un momento e ricordarci tutto
+                    quello che abbiamo vissuto insieme finora.
+                </p>
+
+                <p class="cover-text cover-final-text">
+                    E se questi sono stati solo i primi due mesi...
+                    <br>
+                    non vedo l'ora di scoprire tutto quello
+                    che verrà dopo. ❤️
                 </p>
 
                 <div class="date-box">
-
-                    <span>
-                        09.08.2026
-                    </span>
-
-                    <div>
-                        ♥
-                    </div>
-
-                    <span>
-                        09.10.2026
-                    </span>
-
+                    <span>09.08.2026</span>
+                    <span>♥</span>
+                    <span>09.10.2026</span>
                 </div>
 
                 <button class="start-btn" id="startBtn">
-                    Inizia il nostro viaggio
-                    <span>→</span>
+                    Inizia il nostro viaggio →
                 </button>
 
             </div>
 
+            <div class="scroll-indicator">
+                <span>SCORRI</span>
+                <div class="scroll-line"></div>
+            </div>
+
         </section>
 
 
-        <!-- =========================
-             PAGINA 2
-        ========================== -->
-
+        <!-- PAGINA 2 -->
         <section class="page memory-page">
+
+            <div class="memory-image">
+                <img src="images/foto1.jpg" alt="Un nostro ricordo">
+            </div>
 
             <div class="memory-content">
 
-                <div class="photo-container">
-                    <img
-                        src="images/foto1.jpg"
-                        alt="Il nostro primo ricordo"
-                    >
-                </div>
+                <p class="page-number">01</p>
 
-                <div class="memory-text">
+                <p class="page-eyebrow">
+                    DA QUI È INIZIATO TUTTO
+                </p>
 
-                    <span class="memory-number">
-                        01
-                    </span>
+                <h2>
+                    Una cosa inaspettata
+                </h2>
 
-                    <span class="memory-label">
-                        DA QUI È INIZIATO TUTTO
-                    </span>
+                <div class="text-line"></div>
 
-                    <h2>
-                        Una cosa inaspettata
-                    </h2>
+                <p>
+                    Quando è iniziato tutto, non credo che nessuno
+                    dei due si aspettasse che saremmo arrivati fin qui.
+                    È successo quasi senza accorgercene,
+                    un giorno dopo l'altro.
+                </p>
 
-                    <p>
-                        Quando è iniziato tutto, non credo che nessuno
-                        dei due si aspettasse che saremmo arrivati fin qui.
-                        È successo quasi senza accorgercene, un giorno
-                        dopo l'altro.
-                    </p>
-
-                    <p>
-                        E adesso, guardando indietro, penso che tra tutte
-                        le cose inaspettate che potevano succedere,
-                        incontrare te sia stata sicuramente la più bella.
-                    </p>
-
-                    <div class="heart">
-                        ♥
-                    </div>
-
-                </div>
+                <p>
+                    E adesso, guardando indietro, penso che tra tutte
+                    le cose inaspettate che potevano succedere,
+                    incontrare te sia stata sicuramente la più bella.
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             PAGINA 3
-        ========================== -->
+        <!-- PAGINA 3 -->
+        <section class="page memory-page reverse">
 
-        <section class="page memory-page">
-
-            <div class="memory-content reverse">
-
-                <div class="photo-container">
-
-                    <img
-                        src="images/foto2.jpg"
-                        alt="Un nostro ricordo"
-                    >
-
-                </div>
-
-                <div class="memory-text">
-
-                    <span class="memory-number">
-                        02
-                    </span>
-
-                    <span class="memory-label">
-                        TU
-                    </span>
-
-                    <h2>
-                        Quanto mi fai stare bene
-                    </h2>
-
-                    <p>
-                        Tra tutte le persone che avrei potuto incontrare,
-                        sono davvero felice che la vita abbia fatto
-                        incontrare proprio noi.
-                    </p>
-
-                    <p>
-                        Perché ogni giorno passato con te riesce a farmi
-                        stare un po' meglio, a farmi sorridere anche quando
-                        non ne ho voglia e, senza che tu te ne accorga,
-                        mi rendi una persona migliore.
-                    </p>
-
-                    <div class="heart">
-                        ♥
-                    </div>
-
-                </div>
-
+            <div class="memory-image">
+                <img src="images/foto2.jpg" alt="Beatrice">
             </div>
-
-        </section>
-
-
-        <!-- =========================
-             PAGINA 4
-        ========================== -->
-
-        <section class="page memory-page">
 
             <div class="memory-content">
 
-                <div class="photo-container">
+                <p class="page-number">02</p>
 
-                    <img
-                        src="images/foto3.jpg"
-                        alt="Un nostro momento"
-                    >
+                <p class="page-eyebrow">
+                    TU
+                </p>
 
-                </div>
+                <h2>
+                    Il mio posto preferito sei tu
+                </h2>
 
-                <div class="memory-text">
+                <div class="text-line"></div>
 
-                    <span class="memory-number">
-                        03
-                    </span>
+                <p>
+                    A volte penso a quanto sia strano il modo in cui
+                    la vita riesce a far incontrare due persone.
+                    Tra così tante possibilità, ha fatto incontrare noi.
+                </p>
 
-                    <span class="memory-label">
-                        I NOSTRI MOMENTI
-                    </span>
+                <p>
+                    E sono felice che sia successo.
+                    Perché sei riuscita a portare qualcosa di speciale
+                    nelle mie giornate.
+                </p>
 
-                    <h2>
-                        Le piccole cose
-                    </h2>
-
-                    <p>
-                        Forse la cosa più bella di noi sono proprio
-                        i piccoli momenti.
-                    </p>
-
-                    <p>
-                        Un sorriso, una risata, una giornata passata
-                        insieme, anche una cosa semplicissima.
-                        Perché quando ci sei tu, anche i momenti più
-                        normali diventano ricordi che vorrei poter
-                        rivivere ancora e ancora.
-                    </p>
-
-                    <div class="heart">
-                        ♥
-                    </div>
-
-                </div>
+                <p>
+                    Mi fai sorridere anche quando non ne ho voglia
+                    e riesci a rendere più belle anche le giornate
+                    più normali.
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             PAGINA 5 — VIDEO
-        ========================== -->
+        <!-- PAGINA 4 -->
+        <section class="page memory-page">
 
+            <div class="memory-image">
+                <img src="images/foto3.jpg" alt="Un nostro momento">
+            </div>
+
+            <div class="memory-content">
+
+                <p class="page-number">03</p>
+
+                <p class="page-eyebrow">
+                    I NOSTRI MOMENTI
+                </p>
+
+                <h2>
+                    Le piccole cose
+                </h2>
+
+                <div class="text-line"></div>
+
+                <p>
+                    Forse sono proprio le piccole cose quelle che
+                    mi rimangono più impresse.
+                </p>
+
+                <p>
+                    Una risata improvvisa, una conversazione senza senso,
+                    un abbraccio, uno sguardo o semplicemente
+                    il fatto di averti accanto.
+                </p>
+
+                <p>
+                    Sono momenti semplici, ma insieme a te
+                    diventano ricordi che voglio custodire.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAGINA 5 -->
         <section class="page video-page">
 
             <div class="video-content">
 
-                <span class="memory-number">
-                    04
-                </span>
+                <p class="page-number">04</p>
 
-                <span class="memory-label">
+                <p class="page-eyebrow">
                     UN RICORDO DA RIVIVERE
-                </span>
+                </p>
 
                 <h2>
                     Noi
                 </h2>
 
-                <div class="video-container">
-
-                    <video
-                        controls
-                        playsinline
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="video/video.mp4"
-                            type="video/mp4"
-                        >
-
-                        Il tuo browser non supporta la riproduzione
-                        del video.
-
+                <div class="video-wrapper">
+                    <video controls playsinline>
+                        <source src="video/video.mp4" type="video/mp4">
+                        Il tuo browser non supporta il video.
                     </video>
-
                 </div>
 
-                <p class="video-text">
-                    Guardare questi momenti mi fa pensare a quanto siamo
-                    cambiati in così poco tempo.
-                    All'inizio non avrei mai immaginato che saremmo
-                    diventati noi.
+                <p>
+                    Due mesi possono sembrare pochi,
+                    ma quando penso a tutto quello che abbiamo vissuto
+                    insieme sembrano molto di più.
                 </p>
 
-                <p class="video-text">
-                    E invece eccoci qui, con tutti questi ricordi
-                    da custodire e con la voglia di crearne ancora
-                    tantissimi insieme.
+                <p>
+                    E questo video è solo uno dei tanti piccoli ricordi
+                    che voglio continuare a creare insieme a te.
                 </p>
 
             </div>
@@ -355,252 +317,225 @@
         </section>
 
 
-        <!-- =========================
-             PAGINA 6
-        ========================== -->
+        <!-- PAGINA 6 -->
+        <section class="page memory-page reverse">
 
-        <section class="page memory-page">
-
-            <div class="memory-content reverse">
-
-                <div class="photo-container">
-
-                    <img
-                        src="images/foto4.jpg"
-                        alt="Un nostro ricordo"
-                    >
-
-                </div>
-
-                <div class="memory-text">
-
-                    <span class="memory-number">
-                        05
-                    </span>
-
-                    <span class="memory-label">
-                        IN QUESTI DUE MESI
-                    </span>
-
-                    <h2>
-                        Sei diventata importante
-                    </h2>
-
-                    <p>
-                        In questi due mesi sei riuscita a diventare
-                        una presenza che ormai fa parte delle mie giornate.
-                    </p>
-
-                    <p>
-                        Sei nei miei pensieri, nei miei sorrisi e in
-                        tantissime piccole cose che faccio.
-                        E la verità è che più tempo passo con te,
-                        più mi rendo conto di quanto sto bene quando
-                        siamo insieme.
-                    </p>
-
-                    <div class="heart">
-                        ♥
-                    </div>
-
-                </div>
-
+            <div class="memory-image">
+                <img src="images/foto4.jpg" alt="Un nostro ricordo">
             </div>
-
-        </section>
-
-
-        <!-- =========================
-             PAGINA 7
-        ========================== -->
-
-        <section class="page memory-page">
 
             <div class="memory-content">
 
-                <div class="photo-container">
+                <p class="page-number">05</p>
 
-                    <img
-                        src="images/foto5.jpg"
-                        alt="Un nostro momento"
-                    >
+                <p class="page-eyebrow">
+                    IN QUESTI DUE MESI
+                </p>
 
-                </div>
+                <h2>
+                    Sei entrata nella mia vita
+                </h2>
 
-                <div class="memory-text">
+                <div class="text-line"></div>
 
-                    <span class="memory-number">
-                        06
-                    </span>
+                <p>
+                    In così poco tempo sei riuscita a diventare
+                    una presenza importante nella mia vita.
+                </p>
 
-                    <span class="memory-label">
-                        SOLO L'INIZIO
-                    </span>
+                <p>
+                    Sei entrata nelle mie giornate,
+                    nei miei pensieri e nei miei sorrisi
+                    quasi senza che me ne accorgessi.
+                </p>
 
-                    <h2>
-                        Tutto quello che ci aspetta
-                    </h2>
-
-                    <p>
-                        Sono passati solo due mesi, ma a me sembra già
-                        di avere tantissimi ricordi da custodire.
-                    </p>
-
-                    <p>
-                        E la cosa che mi rende più felice è sapere che
-                        questi sono solamente i primi.
-                        Voglio continuare a vivere momenti con te,
-                        ridere con te, scoprire cose nuove insieme
-                        e vedere dove ci porterà tutto questo.
-                    </p>
-
-                    <div class="heart">
-                        ♥
-                    </div>
-
-                </div>
+                <p>
+                    E oggi non riesco più a pensare a questi due mesi
+                    senza pensare anche a te.
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             PAGINA 8 — LETTERA
-        ========================== -->
+        <!-- PAGINA 7 -->
+        <section class="page memory-page">
 
+            <div class="memory-image">
+                <img src="images/foto5.jpg" alt="Un nostro ricordo">
+            </div>
+
+            <div class="memory-content">
+
+                <p class="page-number">06</p>
+
+                <p class="page-eyebrow">
+                    SOLO L'INIZIO
+                </p>
+
+                <h2>
+                    Tutto quello che ci aspetta
+                </h2>
+
+                <div class="text-line"></div>
+
+                <p>
+                    Questi due mesi sono solo i primi ricordi
+                    di una storia che spero possa regalarci
+                    ancora tantissimi momenti.
+                </p>
+
+                <p>
+                    Abbiamo ancora posti da vedere,
+                    cose da provare, foto da scattare
+                    e infinite risate da condividere.
+                </p>
+
+                <p>
+                    E sinceramente non vedo l'ora di scoprire
+                    tutto quello che ci aspetta.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAGINA 8 -->
         <section class="page letter-page">
 
-            <div class="letter-content">
+            <div class="letter-card">
 
-                <div class="letter-photo">
+                <p class="page-number">07</p>
 
-                    <img
-                        src="images/foto6.jpg"
-                        alt="Achraf e Beatrice"
-                    >
+                <p class="page-eyebrow">
+                    PER TE
+                </p>
 
-                </div>
+                <h2>
+                    Beatrice ❤️
+                </h2>
 
-                <div class="letter">
+                <div class="letter-line"></div>
 
-                    <span class="memory-number">
-                        07
-                    </span>
+                <p>
+                    Non so se riuscirò mai a trovare le parole perfette
+                    per spiegarti quanto sei importante per me.
+                </p>
 
-                    <span class="memory-label">
-                        PER TE
-                    </span>
+                <p>
+                    So però una cosa: da quando sei entrata nella mia vita,
+                    c'è qualcosa che è cambiato.
+                </p>
 
-                    <h2>
-                        Beatrice ❤️
-                    </h2>
+                <p>
+                    Le mie giornate sono più belle quando ci sei tu.
+                    I miei sorrisi hanno un motivo in più.
+                    E anche i momenti più semplici hanno qualcosa di speciale.
+                </p>
 
-                    <p>
-                        Non so se riuscirò mai a trovare le parole
-                        perfette per spiegarti quanto sei importante
-                        per me.
-                    </p>
+                <p>
+                    Forse è proprio questo che amo di noi:
+                    non abbiamo bisogno di qualcosa di enorme per stare bene.
+                    A volte mi basta averti accanto.
+                </p>
 
-                    <p>
-                        So però una cosa: da quando sei entrata nella
-                        mia vita, c'è qualcosa che è cambiato.
-                    </p>
+                <p>
+                    E se all'inizio non avrei mai immaginato tutto questo,
+                    oggi non riesco a immaginare questi ultimi due mesi
+                    senza di te.
+                </p>
 
-                    <p>
-                        Le mie giornate sono più belle quando ci sei tu.
-                        I miei sorrisi hanno un motivo in più.
-                        E anche i momenti più semplici hanno qualcosa
-                        di speciale.
-                    </p>
-
-                    <p>
-                        Forse è proprio questo che amo di noi:
-                        non abbiamo bisogno di qualcosa di enorme
-                        per stare bene.
-                        A volte mi basta averti accanto.
-                    </p>
-
-                    <p>
-                        E se all'inizio non avrei mai immaginato
-                        tutto questo, oggi non riesco a immaginare
-                        questi ultimi due mesi senza di te.
-                    </p>
-
-                    <div class="signature">
-                        Con amore,<br>
-                        <strong>
-                            Achraf ❤️
-                        </strong>
-                    </div>
-
-                </div>
+                <p class="letter-signature">
+                    Con amore,
+                    <br>
+                    <strong>Achraf ❤️</strong>
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             PAGINA 9 — FINALE
-        ========================== -->
-
+        <!-- PAGINA 9 -->
         <section class="page final-page">
 
             <div class="final-content">
 
-                <div class="big-heart">
+                <p class="final-date">
+                    09 AGOSTO → 09 OTTOBRE
+                </p>
+
+                <div class="final-heart">
                     ♥
                 </div>
 
-                <span class="eyebrow">
-                    09 AGOSTO → 09 OTTOBRE
-                </span>
-
-                <h1>
-                    Buon secondo
-                    <span>
-                        mesiversario
-                    </span>
-                </h1>
-
                 <h2>
-                    Achraf
-                    <span>♥</span>
-                    Beatrice
+                    Buon secondo mesiversario
                 </h2>
 
-                <div class="final-message">
+                <h3>
+                    Achraf <span>♥</span> Beatrice
+                </h3>
 
-                    <p>
-                        Buon secondo mesiversario, amore mio. ❤️
-                    </p>
+                <div class="final-line"></div>
 
-                    <p>
-                        Grazie per questi due mesi, per ogni sorriso,
-                        ogni risata, ogni abbraccio e per tutti quei
-                        piccoli momenti che magari sembrano insignificanti,
-                        ma che per me significano tantissimo.
-                    </p>
+                <p>
+                    Buon secondo mesiversario, amore mio. ❤️
+                </p>
 
-                    <p>
-                        Non so cosa ci aspetta nei prossimi mesi,
-                        ma so che voglio scoprirlo insieme a te.
-                    </p>
+                <p>
+                    Se penso che sono passati solamente due mesi,
+                    mi viene quasi da sorridere.
+                </p>
 
-                    <p class="final-highlight">
-                        Questo è solo l'inizio della nostra storia.
-                    </p>
+                <p>
+                    Perché in così poco tempo sono successe così tante cose
+                    che ormai faccio fatica a ricordare com'erano
+                    le mie giornate prima di te.
+                </p>
 
-                    <div class="final-love">
-                        Ti amo, Beatrice. ❤️
-                    </div>
+                <p>
+                    Grazie per ogni momento passato insieme,
+                    per le risate, per gli abbracci, per le piccole cose
+                    e anche per quei momenti che magari per te sembrano
+                    normali, ma che per me sono diventati ricordi importanti.
+                </p>
 
-                    <div class="final-signature">
-                        — Achraf
-                    </div>
+                <p>
+                    Non so dove ci porterà questa storia
+                    e forse è proprio questo il bello.
+                </p>
 
-                </div>
+                <p>
+                    Abbiamo ancora tantissime cose da vivere,
+                    posti da scoprire, foto da fare,
+                    risate da condividere e ricordi da creare.
+                </p>
+
+                <p>
+                    Quindi non voglio fermarmi a questi due mesi.
+                    <br>
+                    Voglio vedere cosa succede al prossimo capitolo.
+                </p>
+
+                <p>
+                    E poi a quello dopo ancora.
+                </p>
+
+                <p class="final-highlight">
+                    Perché se devo scegliere con chi vivere
+                    tutto quello che deve ancora arrivare...
+                    <br><br>
+                    <strong>scelgo te. ❤️</strong>
+                </p>
+
+                <p class="final-love">
+                    Ti amo, Beatrice.
+                    <br>
+                    <span>— Achraf</span>
+                </p>
 
             </div>
 
@@ -609,42 +544,26 @@
     </main>
 
 
-    <!-- =========================
-         SWIPE
-    ========================== -->
-
-    <div class="swipe-hint">
-        <span>←</span>
-        scorri
-        <span>→</span>
-    </div>
-
-
-    <!-- =========================
-         NAVIGAZIONE
-    ========================== -->
-
+    <!-- FRECCE DESKTOP -->
     <button
-        class="nav-btn prev"
+        class="nav-arrow nav-arrow-left"
         id="prevBtn"
         aria-label="Pagina precedente"
     >
-        ‹
+        ←
     </button>
 
     <button
-        class="nav-btn next"
+        class="nav-arrow nav-arrow-right"
         id="nextBtn"
         aria-label="Pagina successiva"
     >
-        ›
+        →
     </button>
 
 
-    <div
-        class="dots"
-        id="dots"
-    ></div>
+    <!-- PUNTINI -->
+    <div class="dots" id="dots"></div>
 
 
     <script src="script.js"></script>
