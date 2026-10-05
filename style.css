@@ -1902,6 +1902,55 @@ body {
         visibility 0.45s ease;
 }
 
+.memory-reveal {
+    position: fixed;
+
+    top: 5%;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+
+    width: auto;
+    height: auto;
+
+    padding:
+        55px
+        20px
+        calc(30px + env(safe-area-inset-bottom));
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 25px;
+
+    background:
+        rgba(10, 6, 12, 0.97);
+
+    backdrop-filter: blur(22px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(0.96);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0.45s ease;
+
+    z-index: 100;
+}
+
 .memory-reveal.active {
     opacity: 1;
     visibility: visible;
@@ -1909,32 +1958,90 @@ body {
     transform: scale(1);
 }
 
+.reveal-content {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 25px;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    padding-bottom: 20px;
+}
+
+.reveal-text {
+    width: 100%;
+    text-align: center;
+}
+
+.reveal-text h3 {
+    font-size: 30px;
+
+    line-height: 1.1;
+
+    margin-bottom: 0;
+}
+
+.reveal-description {
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    max-width: 440px;
+
+    margin: 0 auto;
+}
+
+.reveal-description p {
+    margin-bottom: 13px;
+}
+
+.reveal-line {
+    margin: 17px auto;
+}
+
+.reveal-image-wrap {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding-bottom: 10px;
+}
+
+.reveal-photo-frame {
+    width: min(100%, 270px);
+
+    aspect-ratio: 4 / 5;
+
+    flex-shrink: 0;
+}
+
+.reveal-photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
 .close-memory {
     position: absolute;
 
-    top: 18px;
-    right: 20px;
+    top: 12px;
+    right: 12px;
 
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.1);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.04);
-
-    color:
-        rgba(255, 255, 255, 0.65);
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    z-index: 4;
+    z-index: 10;
 }
 
 .reveal-content {
