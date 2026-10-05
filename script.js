@@ -1,194 +1,138 @@
-
-// ========================================
-// PASSWORD
-// ========================================
-
 const correctPassword = "9/08/2026";
 
 const passwordScreen = document.getElementById("passwordScreen");
 const passwordInput = document.getElementById("passwordInput");
 const passwordBtn = document.getElementById("passwordBtn");
 const passwordError = document.getElementById("passwordError");
+const passwordSuccess = document.getElementById("passwordSuccess");
 
-// Inserimento automatico degli /
-passwordInput.addEventListener("input", () => {
-    let value = passwordInput.value.replace(/\D/g, "");
+const book = document.getElementById("book");
+const pages = Array.from(document.querySelectorAll(".page"));
 
-    // Giorno
-    if (value.length > 1) {
-        value = value.slice(0, 1) + "/" + value.slice(1);
-    }
-
-    // Mese
-    if (value.length > 4) {
-        value = value.slice(0, 4) + "/" + value.slice(4);
-    }
-
-    // Massimo: 9/08/2026
-    value = value.slice(0, 9);
-
-    passwordInput.value = value;
-});
-
-function checkPassword() {
-    const enteredPassword = passwordInput.value.trim();
-
-    if (enteredPassword === correctPassword) {
-        // Password corretta
-        passwordScreen.classList.add("hidden");
-
-        // Porta il cursore fuori dal campo
-        passwordInput.blur();
-
-    } else {
-        // Password sbagliata
-        passwordError.classList.add("show");
-
-        // Svuota il campo
-        passwordInput.value = "";
-
-        // Rimette il focus sull'input
-        passwordInput.focus();
-
-        // Fa sparire il messaggio dopo 2.5 secondi
-        setTimeout(() => {
-            passwordError.classList.remove("show");
-        }, 2500);
-    }
-}
-
-// Pulsante "Entra"
-passwordBtn.addEventListener("click", checkPassword);
-
-// Premere INVIO per entrare
-passwordInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        checkPassword();
-    }
-});
-
-
-// ========================================
-// ALBUM / PAGINE
-// ========================================
-
-const album = document.getElementById("album");
-const pages = document.querySelectorAll(".page");
+const dotsContainer = document.getElementById("dots");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-
-const dots = document.querySelectorAll(".dot");
 
 const startBtn = document.getElementById("startBtn");
 
 let currentPage = 0;
 
+let touchStartX = 0;
+let touchStartY = 0;
 
-// ========================================
-// AGGIORNA PAGINA
-// ========================================
 
-function updatePage(index) {
+/* =========================
+   DOTS
+========================= */
+
+pages.forEach((page, index) => {
+
+    const dot = document.createElement("button");
+
+    dot.className = "dot";
+
+    dot.setAttribute(
+        "aria-label",
+        `Vai alla pagina ${index + 1}`
+    );
+
+    dot.addEventListener("click", () => {
+        goToPage(index);
+    });
+
+    dotsContainer.appendChild(dot);
+});
+
+
+const dots = Array.from(
+    dotsContainer.querySelectorAll(".dot")
+);
+
+
+/* =========================
+   AGGIORNA NAVIGAZIONE
+========================= */
+
+function updateNavigation() {
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle(
+            "active",
+            index === currentPage
+        );
+    });
+
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === pages.length - 1;
+}
+
+
+/* =========================
+   VAI ALLA PAGINA
+========================= */
+
+function goToPage(index) {
+
     if (index < 0) {
         index = 0;
     }
 
-    if (index >= pages.length) {
+    if (index > pages.length - 1) {
         index = pages.length - 1;
     }
 
     currentPage = index;
 
-    pages[currentPage].scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center"
+    book.scrollTo({
+        left: index * window.innerWidth,
+        behavior: "smooth"
     });
 
-    // Aggiorna i pallini
-    dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentPage);
-    });
-
-    // Aggiorna pulsante precedente
-    if (currentPage === 0) {
-        prevBtn.classList.add("disabled");
-    } else {
-        prevBtn.classList.remove("disabled");
-    }
-
-    // Aggiorna pulsante successivo
-    if (currentPage === pages.length - 1) {
-        nextBtn.classList.add("disabled");
-    } else {
-        nextBtn.classList.remove("disabled");
-    }
+    updateNavigation();
 }
 
 
-// ========================================
-// PAGINA SUCCESSIVA
-// ========================================
+/* =========================
+   PAGINA SUCCESSIVA
+========================= */
 
 function nextPage() {
+
     if (currentPage < pages.length - 1) {
-        updatePage(currentPage + 1);
+        goToPage(currentPage + 1);
     }
 }
 
 
-// ========================================
-// PAGINA PRECEDENTE
-// ========================================
+/* =========================
+   PAGINA PRECEDENTE
+========================= */
 
 function previousPage() {
+
     if (currentPage > 0) {
-        updatePage(currentPage - 1);
+        goToPage(currentPage - 1);
     }
 }
 
 
-// ========================================
-// PULSANTI
-// ========================================
+/* =========================
+   FRECCE
+========================= */
 
 nextBtn.addEventListener("click", nextPage);
 
 prevBtn.addEventListener("click", previousPage);
 
 
-// ========================================
-// PALLINI DI NAVIGAZIONE
-// ========================================
-
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-        updatePage(index);
-    });
-});
-
-
-// ========================================
-// BOTTONE INIZIA
-// ========================================
-
-if (startBtn) {
-    startBtn.addEventListener("click", () => {
-        updatePage(1);
-    });
-}
-
-
-// ========================================
-// TASTIERA
-// ========================================
+/* =========================
+   TASTIERA
+========================= */
 
 document.addEventListener("keydown", (event) => {
 
-    // Se la password è ancora visibile,
-    // non permettere la navigazione dell'album
-    if (!passwordScreen.classList.contains("hidden")) {
+    if (document.activeElement === passwordInput) {
         return;
     }
 
@@ -202,103 +146,239 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-// ========================================
-// SWIPE SU TELEFONO
-// ========================================
+/* =========================
+   SWIPE MOBILE
+========================= */
 
-let touchStartX = 0;
-let touchEndX = 0;
+book.addEventListener(
+    "touchstart",
+    (event) => {
 
-album.addEventListener("touchstart", (event) => {
-    touchStartX = event.changedTouches[0].screenX;
-});
+        const touch = event.changedTouches[0];
 
-album.addEventListener("touchend", (event) => {
-    touchEndX = event.changedTouches[0].screenX;
-
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const swipeDistance = touchEndX - touchStartX;
-
-    // Evita piccoli movimenti accidentali
-    if (Math.abs(swipeDistance) < 50) {
-        return;
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+    },
+    {
+        passive: true
     }
+);
 
-    // Swipe verso sinistra
-    if (swipeDistance < 0) {
+
+book.addEventListener(
+    "touchend",
+    (event) => {
+
+        const touch = event.changedTouches[0];
+
+        const touchEndX = touch.clientX;
+        const touchEndY = touch.clientY;
+
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        const minimumSwipe = 50;
+
+        /*
+         * Ignora gli swipe principalmente verticali.
+         */
+        if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            return;
+        }
+
+        if (Math.abs(deltaX) < minimumSwipe) {
+            return;
+        }
+
+        if (deltaX < 0) {
+            nextPage();
+        } else {
+            previousPage();
+        }
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================
+   SCROLL
+========================= */
+
+book.addEventListener(
+    "scroll",
+    () => {
+
+        const newPage = Math.round(
+            book.scrollLeft / window.innerWidth
+        );
+
+        if (newPage !== currentPage) {
+
+            currentPage = Math.max(
+                0,
+                Math.min(newPage, pages.length - 1)
+            );
+
+            updateNavigation();
+        }
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================
+   BOTTONE INIZIA
+========================= */
+
+startBtn.addEventListener(
+    "click",
+    () => {
         nextPage();
     }
+);
 
-    // Swipe verso destra
-    if (swipeDistance > 0) {
-        previousPage();
+
+/* =========================
+   PASSWORD
+========================= */
+
+function formatPassword(value) {
+
+    let digits = value.replace(/\D/g, "");
+
+    /*
+     * Massimo:
+     * 1 cifra giorno
+     * 2 cifre mese
+     * 4 cifre anno
+     */
+
+    if (digits.length > 7) {
+        digits = digits.substring(0, 7);
+    }
+
+    let formatted = "";
+
+    if (digits.length > 0) {
+        formatted += digits.substring(0, 1);
+    }
+
+    if (digits.length > 1) {
+        formatted += "/";
+        formatted += digits.substring(1, 3);
+    }
+
+    if (digits.length > 3) {
+        formatted += "/";
+        formatted += digits.substring(3, 7);
+    }
+
+    return formatted;
+}
+
+
+passwordInput.addEventListener(
+    "input",
+    () => {
+
+        passwordInput.value = formatPassword(
+            passwordInput.value
+        );
+
+        passwordError.classList.remove("show");
+    }
+);
+
+
+/* =========================
+   CONTROLLO PASSWORD
+========================= */
+
+function checkPassword() {
+
+    const value = passwordInput.value.trim();
+
+    if (value === correctPassword) {
+
+        passwordError.classList.remove("show");
+
+        passwordSuccess.classList.add("show");
+
+        setTimeout(() => {
+
+            passwordScreen.classList.add("hidden");
+
+            setTimeout(() => {
+                passwordSuccess.classList.remove("show");
+            }, 500);
+
+        }, 600);
+
+    } else {
+
+        passwordSuccess.classList.remove("show");
+
+        passwordError.classList.remove("show");
+
+        /*
+         * Piccolo ritardo per permettere
+         * all'animazione di ripartire.
+         */
+
+        void passwordError.offsetWidth;
+
+        passwordError.classList.add("show");
     }
 }
 
 
-// ========================================
-// RILEVAMENTO SCROLL
-// ========================================
+passwordBtn.addEventListener(
+    "click",
+    checkPassword
+);
 
-let scrollTimeout;
 
-album.addEventListener("scroll", () => {
+/* =========================
+   ENTER PASSWORD
+========================= */
 
-    clearTimeout(scrollTimeout);
+passwordInput.addEventListener(
+    "keydown",
+    (event) => {
 
-    scrollTimeout = setTimeout(() => {
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+    }
+);
 
-        let closestPage = 0;
-        let smallestDistance = Infinity;
 
-        pages.forEach((page, index) => {
+/* =========================
+   AVVIO
+========================= */
 
-            const rect = page.getBoundingClientRect();
+updateNavigation();
 
-            const distance = Math.abs(
-                rect.left - (window.innerWidth / 2 - rect.width / 2)
-            );
+passwordInput.focus();
 
-            if (distance < smallestDistance) {
-                smallestDistance = distance;
-                closestPage = index;
-            }
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        book.scrollTo({
+            left: currentPage * window.innerWidth,
+            behavior: "auto"
         });
 
-        currentPage = closestPage;
-
-        // Aggiorna pallini
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentPage);
-        });
-
-        // Aggiorna frecce
-        if (currentPage === 0) {
-            prevBtn.classList.add("disabled");
-        } else {
-            prevBtn.classList.remove("disabled");
-        }
-
-        if (currentPage === pages.length - 1) {
-            nextBtn.classList.add("disabled");
-        } else {
-            nextBtn.classList.remove("disabled");
-        }
-
-    }, 100);
-});
-
-
-// ========================================
-// INIZIALIZZAZIONE
-// ========================================
-
-updatePage(0);
-
-// Focus automatico sulla password
-window.addEventListener("load", () => {
-    passwordInput.focus();
-});
+        updateNavigation();
+    }
+);s
