@@ -26,7 +26,6 @@ body {
     color: #fff;
 }
 
-
 /* =========================================================
    SFONDO CINEMATOGRAFICO
 ========================================================= */
@@ -37,7 +36,6 @@ body {
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-
     background:
         radial-gradient(
             circle at 18% 22%,
@@ -66,14 +64,12 @@ body {
     content: "";
     position: absolute;
     inset: -20%;
-
     background:
         radial-gradient(
             ellipse at center,
             transparent 25%,
             rgba(0, 0, 0, 0.55) 85%
         );
-
     animation: cinematicPulse 9s ease-in-out infinite alternate;
 }
 
@@ -84,18 +80,14 @@ body {
     height: 70vw;
     top: -30vw;
     left: -15vw;
-
     border-radius: 50%;
-
     background:
         radial-gradient(
             circle,
             rgba(255, 100, 170, 0.08),
             transparent 68%
         );
-
     filter: blur(20px);
-
     animation: floatingGlow 14s ease-in-out infinite alternate;
 }
 
@@ -121,7 +113,6 @@ body {
     }
 }
 
-
 /* =========================================================
    GRAIN
 ========================================================= */
@@ -132,13 +123,10 @@ body {
     z-index: 5;
     pointer-events: none;
     opacity: 0.035;
-
     background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-
     mix-blend-mode: screen;
 }
-
 
 /* =========================================================
    PARTICELLE
@@ -155,15 +143,11 @@ body {
 .ambient-particle {
     position: absolute;
     bottom: -30px;
-
     color: rgba(255, 125, 180, 0.55);
-
     font-family: Arial, sans-serif;
-
     animation:
         particleFloat linear infinite,
         particlePulse ease-in-out infinite alternate;
-
     user-select: none;
 }
 
@@ -195,7 +179,6 @@ body {
     }
 }
 
-
 /* =========================================================
    PASSWORD
 ========================================================= */
@@ -204,17 +187,14 @@ body {
     position: fixed;
     inset: 0;
     z-index: 100;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding:
         max(20px, env(safe-area-inset-top))
         max(20px, env(safe-area-inset-right))
         max(20px, env(safe-area-inset-bottom))
         max(20px, env(safe-area-inset-left));
-
     background:
         radial-gradient(
             circle at 50% 35%,
@@ -222,7 +202,6 @@ body {
             transparent 35%
         ),
         #08050b;
-
     transition:
         opacity 0.9s ease,
         visibility 0.9s ease;
@@ -236,21 +215,16 @@ body {
 
 .password-glow {
     position: absolute;
-
     width: 420px;
     height: 420px;
-
     border-radius: 50%;
-
     background:
         radial-gradient(
             circle,
             rgba(255, 75, 150, 0.13),
             transparent 68%
         );
-
     filter: blur(15px);
-
     animation:
         passwordGlow 5s ease-in-out infinite alternate;
 }
@@ -270,32 +244,23 @@ body {
 .password-box {
     position: relative;
     z-index: 2;
-
     width: min(460px, 100%);
-
     padding: 48px 38px;
-
     text-align: center;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.1);
-
     border-radius: 30px;
-
     background:
         linear-gradient(
             145deg,
             rgba(255, 255, 255, 0.055),
             rgba(255, 255, 255, 0.018)
         );
-
     backdrop-filter: blur(25px);
-
     box-shadow:
         0 35px 120px rgba(0, 0, 0, 0.6),
         0 0 80px rgba(255, 20, 147, 0.08);
-
     animation:
         passwordBoxIn 1s ease both;
 }
@@ -318,14 +283,10 @@ body {
 
 .password-top-symbol {
     margin-bottom: 20px;
-
     color: #ff72ad;
-
     font-size: 46px;
-
     text-shadow:
         0 0 35px rgba(255, 95, 162, 0.55);
-
     animation:
         heartBeat 2.2s ease-in-out infinite;
 }
@@ -343,13 +304,9 @@ body {
 
 .password-eyebrow {
     margin-bottom: 14px;
-
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 4px;
-
     color:
         rgba(255, 255, 255, 0.45);
 }
@@ -366,9 +323,7 @@ body {
 .password-divider {
     width: 45px;
     height: 1px;
-
     margin: 24px auto;
-
     background:
         linear-gradient(
             to right,
@@ -380,20 +335,15 @@ body {
 
 .password-description {
     margin-bottom: 16px;
-
     color:
         rgba(255, 255, 255, 0.68);
-
     line-height: 1.8;
 }
 
 .password-hint {
     margin-bottom: 25px;
-
     font-family: Arial, sans-serif;
-
     font-size: 11px;
-
     color:
         rgba(255, 255, 255, 0.4);
 }
@@ -410,28 +360,18 @@ body {
 .password-input-wrapper input {
     width: 100%;
     height: 55px;
-
     padding: 0 20px;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.13);
-
     border-radius: 15px;
-
     outline: none;
-
     background:
         rgba(255, 255, 255, 0.045);
-
     color: white;
-
     font-family: Arial, sans-serif;
-
     font-size: 17px;
-
     text-align: center;
-
     transition:
         border-color 0.3s ease,
         box-shadow 0.3s ease;
@@ -445,7 +385,6 @@ body {
 .password-input-wrapper input:focus {
     border-color:
         rgba(255, 95, 162, 0.8);
-
     box-shadow:
         0 0 30px rgba(255, 95, 162, 0.12);
 }
@@ -455,22 +394,17 @@ body {
 .game-main-btn {
     border: none;
     cursor: pointer;
-
     color: white;
-
     font-family: Arial, sans-serif;
-
     background:
         linear-gradient(
             135deg,
             #ff4f9a,
             #df1d62
         );
-
     box-shadow:
         0 12px 35px
         rgba(233, 30, 99, 0.25);
-
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
@@ -479,9 +413,7 @@ body {
 .password-btn {
     width: 100%;
     height: 55px;
-
     border-radius: 15px;
-
     font-size: 13px;
     font-weight: 600;
 }
@@ -494,7 +426,6 @@ body {
 .start-btn:hover,
 .game-main-btn:hover {
     transform: translateY(-3px);
-
     box-shadow:
         0 18px 45px
         rgba(233, 30, 99, 0.35);
@@ -503,12 +434,9 @@ body {
 .password-error,
 .password-success {
     margin-top: 17px;
-
     opacity: 0;
     max-height: 0;
-
     overflow: hidden;
-
     transition:
         opacity 0.35s ease,
         max-height 0.35s ease;
@@ -527,7 +455,6 @@ body {
 .password-error small {
     display: block;
     margin-top: 5px;
-
     color:
         rgba(255, 255, 255, 0.4);
 }
@@ -538,17 +465,12 @@ body {
 
 .password-footer {
     margin-top: 30px;
-
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.25);
 }
-
 
 /* =========================================================
    FLASH PAGINA
@@ -557,18 +479,14 @@ body {
 .page-flash {
     position: fixed;
     inset: 0;
-
     z-index: 90;
-
     pointer-events: none;
-
     background:
         radial-gradient(
             circle at center,
             rgba(255, 160, 205, 0.25),
             transparent 50%
         );
-
     opacity: 0;
 }
 
@@ -590,7 +508,6 @@ body {
     }
 }
 
-
 /* =========================================================
    LIBRO
 ========================================================= */
@@ -598,21 +515,14 @@ body {
 .book {
     position: relative;
     z-index: 2;
-
     display: flex;
-
     width: 100vw;
     height: 100vh;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     scroll-snap-type: x mandatory;
-
     scroll-behavior: smooth;
-
     scrollbar-width: none;
-
     -webkit-overflow-scrolling: touch;
 }
 
@@ -622,51 +532,37 @@ body {
 
 .page {
     position: relative;
-
     flex:
         0 0 100vw;
-
     width: 100vw;
     height: 100vh;
-
     overflow: hidden;
-
     scroll-snap-align: start;
-
     display: flex;
-
     isolation: isolate;
 }
 
 .page::before {
     content: "";
-
     position: absolute;
     inset: 0;
-
     pointer-events: none;
-
     background:
         radial-gradient(
             circle at center,
             transparent 45%,
             rgba(0, 0, 0, 0.18) 100%
         );
-
     z-index: -1;
 }
 
 .page::after {
     content: "";
-
     position: absolute;
     top: 4%;
     bottom: 4%;
-
     width: 1px;
-
     right: 0;
-
     background:
         linear-gradient(
             to bottom,
@@ -674,10 +570,8 @@ body {
             rgba(255, 255, 255, 0.07),
             transparent
         );
-
     opacity: 0.4;
 }
-
 
 /* =========================================================
    COVER
@@ -686,52 +580,39 @@ body {
 .cover {
     align-items: center;
     justify-content: center;
-
     padding: 60px 25px;
-
     text-align: center;
 }
 
 .cover-content {
     position: relative;
     z-index: 2;
-
     width: min(740px, 100%);
-
     margin: auto;
 }
 
 .cover-eyebrow,
 .final-date {
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 4px;
-
     color:
         rgba(255, 255, 255, 0.43);
 }
 
 .cover-heart {
     margin: 23px 0 12px;
-
     color: #ff5fa2;
-
     font-size: 45px;
-
     text-shadow:
         0 0 30px rgba(255, 95, 162, 0.5);
-
     animation:
         heartBeat 2.5s ease-in-out infinite;
 }
 
 .cover h1 {
     font-size: clamp(42px, 7vw, 78px);
-
     font-weight: 400;
-
     line-height: 1;
 }
 
@@ -741,12 +622,9 @@ body {
 
 .cover h2 {
     margin-top: 15px;
-
     font-size:
         clamp(18px, 3vw, 28px);
-
     font-weight: 400;
-
     color:
         rgba(255, 255, 255, 0.63);
 }
@@ -755,9 +633,7 @@ body {
 .final-line {
     width: 70px;
     height: 1px;
-
     margin: 27px auto;
-
     background:
         linear-gradient(
             to right,
@@ -769,14 +645,10 @@ body {
 
 .cover-text {
     max-width: 650px;
-
     margin: 0 auto 17px;
-
     color:
         rgba(255, 255, 255, 0.67);
-
     font-size: 15px;
-
     line-height: 1.85;
 }
 
@@ -785,33 +657,24 @@ body {
         rgba(255, 255, 255, 0.85);
 }
 
-
 /* =========================================================
    CONTATORE GIORNI
 ========================================================= */
 
 .days-counter {
     display: inline-flex;
-
     flex-direction: column;
     align-items: center;
-
     min-width: 160px;
-
     margin-top: 6px;
     margin-bottom: 5px;
-
     padding: 11px 24px 12px;
-
     border:
         1px solid
         rgba(255, 95, 162, 0.18);
-
     border-radius: 20px;
-
     background:
         rgba(255, 255, 255, 0.025);
-
     box-shadow:
         inset 0 0 30px
         rgba(255, 95, 162, 0.025);
@@ -819,42 +682,29 @@ body {
 
 .counter-label {
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.38);
 }
 
 .counter-number {
     margin-top: 2px;
-
     font-family: Georgia, serif;
-
     font-size: 32px;
-
     line-height: 1;
-
     color: #ff80b3;
-
     text-shadow:
         0 0 20px rgba(255, 95, 162, 0.25);
-
     transition:
         transform 0.25s ease;
 }
 
 .counter-bottom {
     margin-top: 3px;
-
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 1px;
-
     color:
         rgba(255, 255, 255, 0.4);
 }
@@ -877,28 +727,18 @@ body {
 
 .date-box {
     display: inline-flex;
-
     align-items: center;
-
     gap: 15px;
-
     margin-top: 10px;
-
     padding: 11px 19px;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.09);
-
     border-radius: 100px;
-
     color:
         rgba(255, 255, 255, 0.5);
-
     font-family: Arial, sans-serif;
-
     font-size: 10px;
-
     letter-spacing: 2px;
 }
 
@@ -908,13 +748,9 @@ body {
 
 .start-btn {
     display: block;
-
     margin: 22px auto 0;
-
     padding: 14px 23px;
-
     border-radius: 100px;
-
     font-size: 12px;
 }
 
@@ -924,24 +760,16 @@ body {
 
 .scroll-indicator {
     position: absolute;
-
     bottom: 22px;
     left: 50%;
-
     transform: translateX(-50%);
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     gap: 7px;
-
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.32);
 }
@@ -949,7 +777,6 @@ body {
 .scroll-line {
     width: 1px;
     height: 30px;
-
     background:
         linear-gradient(
             to bottom,
@@ -960,16 +787,12 @@ body {
 
 .cover-orbit {
     position: absolute;
-
     width: 500px;
     height: 500px;
-
     border-radius: 50%;
-
     border:
         1px solid
         rgba(255, 95, 162, 0.035);
-
     pointer-events: none;
 }
 
@@ -981,10 +804,8 @@ body {
 .orbit-two {
     width: 720px;
     height: 720px;
-
     border-color:
         rgba(255, 255, 255, 0.02);
-
     animation:
         orbitRotateReverse 35s linear infinite;
 }
@@ -1009,7 +830,6 @@ body {
     }
 }
 
-
 /* =========================================================
    MEMORY PAGES
 ========================================================= */
@@ -1017,10 +837,8 @@ body {
 .memory-page {
     align-items: center;
     justify-content: center;
-
     gap:
         clamp(40px, 7vw, 100px);
-
     padding:
         70px
         clamp(30px, 8vw, 130px);
@@ -1032,66 +850,49 @@ body {
 
 .memory-image {
     position: relative;
-
     width:
         min(42vw, 520px);
-
     height:
         min(68vh, 620px);
-
     flex-shrink: 0;
 }
 
 .photo-frame {
     padding: 9px;
-
     background:
         linear-gradient(
             145deg,
             rgba(255, 255, 255, 0.13),
             rgba(255, 255, 255, 0.035)
         );
-
     border:
         1px solid
         rgba(255, 255, 255, 0.12);
-
     border-radius: 24px;
-
     box-shadow:
         0 30px 90px rgba(0, 0, 0, 0.5),
         0 0 60px rgba(255, 20, 147, 0.06);
-
     overflow: hidden;
 }
 
 .photo-frame::before {
     content: "";
-
     position: absolute;
     inset: 9px;
-
     z-index: 2;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.08);
-
     border-radius: 17px;
-
     pointer-events: none;
 }
 
 .photo-frame img {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
-
     border-radius: 17px;
-
     transition:
         transform 1s ease;
 }
@@ -1102,25 +903,17 @@ body {
 
 .photo-caption {
     position: absolute;
-
     z-index: 3;
-
     left: 22px;
     right: 22px;
     bottom: 20px;
-
     display: flex;
     justify-content: space-between;
-
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.65);
-
     text-shadow:
         0 1px 10px rgba(0, 0, 0, 0.8);
 }
@@ -1131,22 +924,17 @@ body {
 
 .photo-corner {
     position: absolute;
-
     z-index: 4;
-
     width: 28px;
     height: 28px;
-
     pointer-events: none;
 }
 
 .corner-top {
     top: 17px;
     left: 17px;
-
     border-top:
         1px solid rgba(255, 255, 255, 0.3);
-
     border-left:
         1px solid rgba(255, 255, 255, 0.3);
 }
@@ -1154,10 +942,8 @@ body {
 .corner-bottom {
     right: 17px;
     bottom: 17px;
-
     border-right:
         1px solid rgba(255, 255, 255, 0.3);
-
     border-bottom:
         1px solid rgba(255, 255, 255, 0.3);
 }
@@ -1169,26 +955,18 @@ body {
 
 .page-number {
     font-family: Arial, sans-serif;
-
     font-size: 10px;
-
     letter-spacing: 3px;
-
     color: #ff5fa2;
-
     margin-bottom: 12px;
 }
 
 .page-eyebrow {
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.38);
-
     margin-bottom: 15px;
 }
 
@@ -1198,37 +976,27 @@ body {
 .final-content h2 {
     font-size:
         clamp(32px, 5vw, 58px);
-
     font-weight: 400;
-
     line-height: 1.05;
-
     margin-bottom: 25px;
 }
 
 .text-line {
     width: 45px;
     height: 1px;
-
     background: #ff5fa2;
-
     margin-bottom: 25px;
-
     box-shadow:
         0 0 15px rgba(255, 95, 162, 0.4);
 }
 
 .memory-content p:not(.page-number):not(.page-eyebrow) {
     margin-bottom: 19px;
-
     color:
         rgba(255, 255, 255, 0.66);
-
     font-size: 15px;
-
     line-height: 1.9;
 }
-
 
 /* =========================================================
    VIDEO
@@ -1237,9 +1005,7 @@ body {
 .video-page {
     align-items: center;
     justify-content: center;
-
     padding: 50px 25px;
-
     text-align: center;
 }
 
@@ -1254,22 +1020,15 @@ body {
 
 .video-wrapper {
     position: relative;
-
     width:
         min(720px, 100%);
-
     margin: 20px auto 25px;
-
     border-radius: 22px;
-
     overflow: hidden;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.11);
-
     background: black;
-
     box-shadow:
         0 30px 90px rgba(0, 0, 0, 0.55);
 }
@@ -1277,45 +1036,34 @@ body {
 .video-glow {
     position: absolute;
     inset: -40px;
-
     pointer-events: none;
-
     background:
         radial-gradient(
             circle,
             rgba(255, 70, 150, 0.12),
             transparent 65%
         );
-
     filter: blur(20px);
-
     z-index: 0;
 }
 
 .video-wrapper video {
     position: relative;
     z-index: 1;
-
     display: block;
-
     width: 100%;
-
     max-height: 55vh;
 }
 
 .video-content > p:last-child,
 .video-content > p:nth-last-child(2) {
     max-width: 650px;
-
     margin-left: auto;
     margin-right: auto;
-
     color:
         rgba(255, 255, 255, 0.63);
-
     line-height: 1.8;
 }
-
 
 /* =========================================================
    LETTERA
@@ -1324,37 +1072,28 @@ body {
 .letter-page {
     align-items: center;
     justify-content: center;
-
     padding: 50px 25px;
 }
 
 .letter-card {
     width: min(720px, 100%);
-
     max-height: 90vh;
-
     overflow-y: auto;
-
     padding:
         50px
         clamp(25px, 6vw, 65px);
-
     border-radius: 28px;
-
     background:
         linear-gradient(
             145deg,
             rgba(255, 255, 255, 0.055),
             rgba(255, 255, 255, 0.018)
         );
-
     border:
         1px solid
         rgba(255, 255, 255, 0.1);
-
     box-shadow:
         0 35px 100px rgba(0, 0, 0, 0.45);
-
     scrollbar-width: thin;
 }
 
@@ -1370,9 +1109,7 @@ body {
 .letter-line {
     width: 50px;
     height: 1px;
-
     margin: 0 auto 30px;
-
     background: #ff5fa2;
 }
 
@@ -1384,28 +1121,22 @@ body {
     .letter-signature
 ) {
     margin-bottom: 20px;
-
     color:
         rgba(255, 255, 255, 0.7);
-
     line-height: 1.9;
-
     font-size: 15px;
 }
 
 .letter-signature {
     margin-top: 35px;
-
     color:
         rgba(255, 255, 255, 0.65);
-
     line-height: 1.8;
 }
 
 .letter-signature strong {
     color: #ff7caf;
 }
-
 
 /* =========================================================
    GAME
@@ -1414,7 +1145,6 @@ body {
 .game-page {
     align-items: center;
     justify-content: center;
-
     padding:
         50px
         clamp(20px, 6vw, 80px);
@@ -1423,7 +1153,6 @@ body {
 .game-background-glow {
     position: absolute;
     inset: 0;
-
     background:
         radial-gradient(
             circle at 30% 30%,
@@ -1435,31 +1164,27 @@ body {
             rgba(150, 50, 130, 0.08),
             transparent 30%
         );
-
     pointer-events: none;
 }
 
 .game-container {
     position: relative;
     z-index: 2;
-
     width: min(1050px, 100%);
     height: min(86vh, 800px);
 }
 
-
-/* INTRO */
+/* =========================================================
+   GAME INTRO
+========================================================= */
 
 .game-intro {
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     transition:
         opacity 0.6s ease,
         transform 0.6s ease;
@@ -1475,14 +1200,10 @@ body {
 
 .game-icon {
     margin-bottom: 17px;
-
     font-size: 52px;
-
     color: #ff72ad;
-
     text-shadow:
         0 0 35px rgba(255, 95, 162, 0.45);
-
     animation:
         heartBeat 2.4s ease-in-out infinite;
 }
@@ -1491,41 +1212,31 @@ body {
 .complete-label,
 .final-memory-label {
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 4px;
-
     color:
         rgba(255, 255, 255, 0.38);
 }
 
 .game-intro h2 {
     margin-top: 12px;
-
     font-size:
         clamp(34px, 5vw, 58px);
-
     font-weight: 400;
 }
 
 .game-line {
     width: 50px;
     height: 1px;
-
     margin: 24px auto;
-
     background: #ff5fa2;
 }
 
 .game-intro-text {
     max-width: 570px;
-
     margin-bottom: 12px;
-
     color:
         rgba(255, 255, 255, 0.66);
-
     line-height: 1.8;
 }
 
@@ -1535,18 +1246,14 @@ body {
 
 .game-intro-small {
     margin: 10px 0 23px;
-
     color:
         rgba(255, 255, 255, 0.9);
-
     font-style: italic;
 }
 
 .game-main-btn {
     padding: 14px 25px;
-
     border-radius: 100px;
-
     font-size: 12px;
 }
 
@@ -1554,21 +1261,18 @@ body {
     margin-left: 7px;
 }
 
-
-/* GAME BOARD */
+/* =========================================================
+   GAME BOARD
+========================================================= */
 
 .game-board {
     position: absolute;
     inset: 0;
-
     opacity: 0;
-
     transform:
         translateY(25px)
         scale(0.98);
-
     pointer-events: none;
-
     transition:
         opacity 0.6s ease,
         transform 0.6s ease;
@@ -1576,24 +1280,18 @@ body {
 
 .game-board.active {
     opacity: 1;
-
     transform:
         translateY(0)
         scale(1);
-
     pointer-events: auto;
 }
 
 .game-board-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 25px;
-
     padding-bottom: 18px;
-
     border-bottom:
         1px solid
         rgba(255, 255, 255, 0.07);
@@ -1601,20 +1299,15 @@ body {
 
 .game-board-header p {
     margin-bottom: 5px;
-
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.35);
 }
 
 .game-board-header > div:first-child span {
     font-size: 14px;
-
     color:
         rgba(255, 255, 255, 0.78);
 }
@@ -1622,9 +1315,7 @@ body {
 .game-progress {
     display: flex;
     align-items: baseline;
-
     gap: 4px;
-
     font-family: Arial, sans-serif;
 }
 
@@ -1638,42 +1329,33 @@ body {
         rgba(255, 255, 255, 0.3);
 }
 
-
-/* MEMORY CARDS */
+/* =========================================================
+   MEMORY CARDS
+========================================================= */
 
 .memory-cards {
     display: grid;
-
     grid-template-columns:
         repeat(3, 1fr);
-
     gap: 16px;
 }
 
 .game-card {
     position: relative;
-
     min-height: 310px;
-
     padding: 28px 22px 22px;
-
     text-align: center;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.08);
-
     border-radius: 23px;
-
     background:
         linear-gradient(
             145deg,
             rgba(255, 255, 255, 0.045),
             rgba(255, 255, 255, 0.015)
         );
-
     overflow: hidden;
-
     transition:
         transform 0.35s ease,
         border-color 0.35s ease,
@@ -1682,26 +1364,21 @@ body {
 
 .game-card::before {
     content: "";
-
     position: absolute;
     inset: 0;
-
     background:
         radial-gradient(
             circle at 50% 20%,
             rgba(255, 95, 162, 0.08),
             transparent 45%
         );
-
     pointer-events: none;
 }
 
 .game-card:hover {
     transform: translateY(-6px);
-
     border-color:
         rgba(255, 95, 162, 0.28);
-
     background:
         linear-gradient(
             145deg,
@@ -1712,120 +1389,84 @@ body {
 
 .card-lock {
     position: absolute;
-
     top: 15px;
     right: 17px;
-
     font-size: 12px;
-
     opacity: 0.55;
 }
 
 .card-number {
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     color:
         rgba(255, 255, 255, 0.25);
 }
 
 .card-preview {
     position: relative;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 75px;
     height: 75px;
-
     margin: 20px auto 18px;
-
     border-radius: 50%;
-
     background:
         rgba(255, 95, 162, 0.07);
-
     border:
         1px solid
         rgba(255, 95, 162, 0.12);
-
     font-size: 30px;
-
     filter: grayscale(0.3);
 }
 
 .game-card h3 {
     position: relative;
-
     margin-bottom: 10px;
-
     font-size: 21px;
-
     font-weight: 400;
-
     line-height: 1.15;
 }
 
 .game-card p {
     position: relative;
-
     min-height: 45px;
-
     margin-bottom: 17px;
-
     color:
         rgba(255, 255, 255, 0.45);
-
     font-size: 12px;
-
     line-height: 1.6;
 }
 
 .unlock-btn {
     position: relative;
-
     padding: 9px 17px;
-
     border:
         1px solid
         rgba(255, 255, 255, 0.1);
-
     border-radius: 100px;
-
     background:
         rgba(255, 255, 255, 0.04);
-
     color:
         rgba(255, 255, 255, 0.7);
-
     cursor: pointer;
-
     font-family: Arial, sans-serif;
-
     font-size: 10px;
-
     transition: 0.3s ease;
 }
 
 .unlock-btn:hover {
     border-color:
         rgba(255, 95, 162, 0.45);
-
     background:
         rgba(255, 95, 162, 0.1);
-
     color: white;
 }
 
 .game-card.unlocked {
     border-color:
         rgba(255, 95, 162, 0.22);
-
     background:
         linear-gradient(
             145deg,
@@ -1844,14 +1485,13 @@ body {
         rgba(255, 95, 162, 0.3);
 }
 
-
-/* MEMORY REVEAL */
+/* =========================================================
+   MEMORY REVEAL
+========================================================= */
 
 .memory-reveal {
     position: absolute;
-
     inset: 0;
-
     z-index: 20;
 
     display: flex;
@@ -1867,7 +1507,7 @@ body {
     border-radius: 25px;
 
     background:
-        rgba(10, 6, 12, 0.95);
+        rgba(10, 6, 12, 0.97);
 
     backdrop-filter: blur(22px);
 
@@ -1880,18 +1520,20 @@ body {
         opacity 0.45s ease,
         transform 0.45s ease,
         visibility 0.45s ease;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .memory-reveal.active {
     opacity: 1;
     visibility: visible;
-
     transform: scale(1);
 }
 
 .close-memory {
     position: absolute;
-
     top: 18px;
     right: 20px;
 
@@ -1911,9 +1553,7 @@ body {
         rgba(255, 255, 255, 0.65);
 
     font-size: 22px;
-
     cursor: pointer;
-
     z-index: 4;
 }
 
@@ -1929,15 +1569,15 @@ body {
     align-items: center;
 
     width: min(900px, 100%);
+
+    margin: auto;
 }
 
 .reveal-eyebrow {
     margin-bottom: 10px;
 
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
 
     color: #ff72ad;
@@ -1948,14 +1588,12 @@ body {
         clamp(30px, 4vw, 48px);
 
     font-weight: 400;
-
     line-height: 1.05;
 }
 
 .reveal-line {
     width: 40px;
     height: 1px;
-
     margin: 20px 0;
 
     background: #ff5fa2;
@@ -1966,7 +1604,6 @@ body {
         rgba(255, 255, 255, 0.68);
 
     font-size: 14px;
-
     line-height: 1.85;
 }
 
@@ -2011,14 +1648,13 @@ body {
     border-radius: 13px;
 }
 
-
-/* COMPLETATO */
+/* =========================================================
+   COMPLETATO
+========================================================= */
 
 .game-complete {
     position: absolute;
-
     inset: 0;
-
     z-index: 18;
 
     display: flex;
@@ -2057,7 +1693,6 @@ body {
 .game-complete.active {
     opacity: 1;
     visibility: visible;
-
     transform: scale(1);
 }
 
@@ -2078,7 +1713,6 @@ body {
     border-radius: 50%;
 
     color: #ff72ad;
-
     font-size: 30px;
 
     box-shadow:
@@ -2115,14 +1749,13 @@ body {
     line-height: 1.7;
 }
 
-
-/* FINAL MEMORY */
+/* =========================================================
+   FINAL MEMORY
+========================================================= */
 
 .final-memory {
     position: absolute;
-
     inset: 0;
-
     z-index: 30;
 
     display: flex;
@@ -2132,6 +1765,8 @@ body {
     padding: 25px;
 
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 
     background:
         radial-gradient(
@@ -2154,14 +1789,13 @@ body {
 .final-memory.active {
     opacity: 1;
     visibility: visible;
-
     transform: scale(1);
 }
 
 .final-memory-content {
     width: min(650px, 100%);
-
     text-align: center;
+    margin: auto;
 }
 
 .file-icon {
@@ -2183,7 +1817,6 @@ body {
     color: #ff72ad;
 
     font-family: Arial, sans-serif;
-
     font-size: 30px;
 }
 
@@ -2192,19 +1825,14 @@ body {
         clamp(28px, 4vw, 43px);
 
     font-weight: 400;
-
     margin-bottom: 20px;
 }
 
 .fake-files {
     display: flex;
-
     flex-wrap: wrap;
-
     justify-content: center;
-
     gap: 8px;
-
     margin-bottom: 25px;
 }
 
@@ -2218,7 +1846,6 @@ body {
     border-radius: 100px;
 
     font-family: Arial, sans-serif;
-
     font-size: 9px;
 
     color:
@@ -2267,7 +1894,6 @@ body {
         rgba(255, 255, 255, 0.62);
 
     font-size: 14px;
-
     line-height: 1.8;
 
     margin-bottom: 12px;
@@ -2306,7 +1932,6 @@ body {
     cursor: pointer;
 
     font-family: Arial, sans-serif;
-
     font-size: 11px;
 
     transition: 0.3s ease;
@@ -2323,7 +1948,6 @@ body {
 .finish-game-btn span {
     margin-left: 7px;
 }
-
 
 /* =========================================================
    FINAL PAGE
@@ -2357,9 +1981,7 @@ body {
     margin-bottom: 10px;
 
     font-family: Arial, sans-serif;
-
     font-size: 8px;
-
     letter-spacing: 3px;
 
     color:
@@ -2386,7 +2008,6 @@ body {
 
 .final-content h3 {
     font-size: 18px;
-
     font-weight: 400;
 
     color:
@@ -2412,7 +2033,6 @@ body {
         rgba(255, 255, 255, 0.68);
 
     font-size: 15px;
-
     line-height: 1.85;
 }
 
@@ -2425,7 +2045,6 @@ body {
 
 .final-highlight strong {
     color: #ff72ad;
-
     font-size: 21px;
 }
 
@@ -2435,7 +2054,6 @@ body {
     color: #ff72ad;
 
     font-size: 22px;
-
     line-height: 1.8;
 }
 
@@ -2450,9 +2068,7 @@ body {
     margin-top: 30px;
 
     font-family: Arial, sans-serif;
-
     font-size: 9px;
-
     letter-spacing: 3px;
 
     color:
@@ -2509,16 +2125,13 @@ body {
     }
 }
 
-
 /* =========================================================
    FRECCE
 ========================================================= */
 
 .nav-arrow {
     position: fixed;
-
     top: 50%;
-
     z-index: 40;
 
     width: 48px;
@@ -2548,8 +2161,7 @@ body {
 
     cursor: pointer;
 
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
 
 .nav-arrow:hover {
@@ -2579,7 +2191,6 @@ body {
     cursor: default;
 }
 
-
 /* =========================================================
    PAGE INDICATOR
 ========================================================= */
@@ -2595,7 +2206,6 @@ body {
     z-index: 40;
 
     display: flex;
-
     align-items: center;
 
     gap: 5px;
@@ -2631,7 +2241,6 @@ body {
     opacity: 0.35;
 }
 
-
 /* =========================================================
    DOTS
 ========================================================= */
@@ -2647,7 +2256,6 @@ body {
     transform: translateX(-50%);
 
     display: flex;
-
     align-items: center;
 
     gap: 7px;
@@ -2658,7 +2266,6 @@ body {
     height: 5px;
 
     border: none;
-
     border-radius: 50%;
 
     background:
@@ -2683,7 +2290,6 @@ body {
         0 0 10px rgba(255, 95, 162, 0.3);
 }
 
-
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -2695,9 +2301,37 @@ body {
         overflow: hidden;
     }
 
+    /*
+       Il libro continua a scorrere orizzontalmente
+       tra una pagina e l'altra.
+    */
+
     .book {
         overflow-x: auto;
         overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*
+       Ogni singola pagina può invece avere
+       il proprio scroll verticale.
+    */
+
+    .page {
+        height: 100vh;
+        min-height: 100vh;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        align-items: center;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
     }
 
     .nav-arrow {
@@ -2706,9 +2340,12 @@ body {
 
     .page-indicator {
         top: 12px;
-
         font-size: 7px;
     }
+
+    /* =====================================================
+       PASSWORD MOBILE
+    ===================================================== */
 
     .password-box {
         padding: 38px 24px;
@@ -2718,11 +2355,17 @@ body {
         font-size: 38px;
     }
 
+    /* =====================================================
+       COVER MOBILE
+    ===================================================== */
+
     .cover {
+        min-height: 100vh;
+
         padding:
-            40px
+            55px
             20px
-            65px;
+            80px;
     }
 
     .cover-heart {
@@ -2748,40 +2391,80 @@ body {
         gap: 9px;
     }
 
+    .scroll-indicator {
+        bottom: 25px;
+    }
+
+    /* =====================================================
+       RICORDI MOBILE
+    ===================================================== */
+
     .memory-page,
     .memory-page.reverse {
+
         flex-direction: column;
 
-        justify-content: center;
+        justify-content: flex-start;
 
-        gap: 22px;
+        align-items: center;
+
+        gap: 28px;
+
+        /*
+           IMPORTANTE:
+           la pagina può diventare più alta di 100vh
+           e quindi può essere scrollata.
+        */
+
+        min-height: 100vh;
+        height: auto;
 
         padding:
-            45px
+            65px
             22px
-            60px;
+            90px;
 
+        overflow-x: hidden;
         overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
     }
 
     .memory-image {
+
         width:
             min(82vw, 350px);
 
+        /*
+           Altezza proporzionata ma non troppo grande.
+        */
+
         height:
-            min(40vh, 360px);
+            min(48vh, 380px);
+
+        flex-shrink: 0;
+
+        margin-top: 10px;
     }
 
     .memory-content {
+
         width:
             min(88vw, 500px);
+
+        flex-shrink: 0;
+
+        padding-bottom: 20px;
     }
 
     .memory-content h2,
     .video-content h2,
     .letter-card h2,
     .final-content h2 {
+
         font-size: 34px;
+
+        line-height: 1.08;
     }
 
     .memory-content p:not(
@@ -2789,39 +2472,81 @@ body {
     ):not(
         .page-eyebrow
     ) {
+
         font-size: 14px;
-        line-height: 1.72;
-        margin-bottom: 12px;
+
+        line-height: 1.8;
+
+        margin-bottom: 15px;
     }
 
+    /*
+       La foto non deve mai uscire dallo schermo.
+    */
+
+    .photo-frame {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* =====================================================
+       VIDEO MOBILE
+    ===================================================== */
+
     .video-page {
+
+        min-height: 100vh;
+        height: auto;
+
+        align-items: flex-start;
+
         overflow-y: auto;
 
         padding:
-            50px
+            65px
             20px
-            70px;
+            90px;
+    }
+
+    .video-content {
+        width: 100%;
     }
 
     .video-wrapper video {
-        max-height: 43vh;
+        max-height: 60vh;
     }
 
+    /* =====================================================
+       LETTERA MOBILE
+    ===================================================== */
+
     .letter-page {
+
+        min-height: 100vh;
+        height: auto;
+
+        align-items: flex-start;
+
         overflow-y: auto;
 
         padding:
-            35px
+            55px
             17px
-            70px;
+            90px;
     }
 
     .letter-card {
+
+        width: 100%;
+
         max-height: none;
+
+        overflow: visible;
 
         padding:
             35px
-            22px;
+            22px
+            40px;
     }
 
     .letter-card > p:not(
@@ -2831,30 +2556,51 @@ body {
     ):not(
         .letter-signature
     ) {
+
         font-size: 14px;
-        line-height: 1.75;
+
+        line-height: 1.8;
     }
 
-
-    /* GAME MOBILE */
+    /* =====================================================
+       GAME MOBILE
+    ===================================================== */
 
     .game-page {
+
+        min-height: 100vh;
+        height: auto;
+
+        align-items: flex-start;
+
         overflow-y: auto;
 
         padding:
-            45px
+            55px
             15px
-            65px;
+            90px;
     }
 
     .game-container {
+
         width: 100%;
+
         height: auto;
+
         min-height: 720px;
+
+        /*
+           Evita che i popup vengano tagliati.
+        */
+
+        overflow: visible;
     }
 
     .game-intro {
+
         min-height: 650px;
+
+        padding-bottom: 30px;
     }
 
     .game-intro h2 {
@@ -2866,11 +2612,33 @@ body {
         line-height: 1.75;
     }
 
+    /*
+       Il tabellone mobile diventa parte normale
+       della pagina e quindi può essere scrollato.
+    */
+
     .game-board {
+
         position: relative;
+
         inset: auto;
 
+        width: 100%;
+
         min-height: 700px;
+
+        height: auto;
+
+        transform:
+            translateY(25px)
+            scale(0.98);
+    }
+
+    .game-board.active {
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 
     .game-board-header {
@@ -2878,12 +2646,14 @@ body {
     }
 
     .memory-cards {
+
         grid-template-columns: 1fr;
 
         gap: 12px;
     }
 
     .game-card {
+
         min-height: 185px;
 
         display: grid;
@@ -2902,16 +2672,20 @@ body {
 
         text-align: left;
 
-        padding: 20px 17px;
+        padding:
+            20px
+            17px;
     }
 
     .card-number {
+
         grid-column: 1;
         grid-row: 1 / 4;
 
         align-self: center;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -2927,6 +2701,7 @@ body {
     }
 
     .card-preview {
+
         position: absolute;
 
         top: 15px;
@@ -2938,6 +2713,7 @@ body {
         margin: 0;
 
         background: none;
+
         border: none;
 
         font-size: 20px;
@@ -2948,111 +2724,273 @@ body {
     }
 
     .game-card h3 {
+
         grid-column: 2;
         grid-row: 1;
 
-        margin: 3px 0 7px;
+        margin:
+            3px
+            0
+            7px;
 
         font-size: 19px;
     }
 
     .game-card p {
+
         grid-column: 2;
         grid-row: 2;
 
         min-height: 0;
 
-        margin: 0 0 10px;
+        margin:
+            0
+            0
+            10px;
 
         font-size: 11px;
     }
 
     .unlock-btn {
+
         grid-column: 2;
         grid-row: 3;
 
         justify-self: start;
     }
 
+    /* =====================================================
+       MEMORY REVEAL MOBILE
+    ===================================================== */
+
+    /*
+       NON usiamo position: fixed.
+       Il popup rimane dentro il game-board,
+       evitando il problema del contenuto
+       precedente visibile attraverso.
+    */
+
     .memory-reveal {
-        position: fixed;
 
-        inset:
-            10%
-            7%;
+        position: absolute;
 
-        width: auto;
-        height: auto;
+        inset: 0;
 
-        padding: 35px 18px 20px;
+        width: 100%;
+        height: 100%;
+
+        min-height: 100%;
+
+        padding:
+            65px
+            18px
+            35px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior: contain;
+
+        border-radius: 23px;
+    }
+
+    .memory-reveal.active {
 
         overflow-y: auto;
     }
 
+    .close-memory {
+
+        position: sticky;
+
+        top: 0;
+
+        margin-left: auto;
+
+        flex-shrink: 0;
+
+        z-index: 10;
+    }
+
     .reveal-content {
-        grid-template-columns: 1fr;
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
 
         gap: 25px;
+
+        align-items: center;
+
+        margin-top: 5px;
+
+        padding-bottom: 30px;
     }
 
     .reveal-text {
+
+        width: 100%;
+
         text-align: center;
     }
 
+    .reveal-eyebrow {
+        margin-bottom: 12px;
+    }
+
+    .reveal-text h3 {
+
+        font-size: 31px;
+
+        line-height: 1.1;
+    }
+
     .reveal-line {
-        margin: 17px auto;
+
+        margin:
+            17px
+            auto;
     }
 
     .reveal-description {
+
         font-size: 13px;
+
+        line-height: 1.8;
+
+        text-align: center;
+    }
+
+    .reveal-description p {
+        margin-bottom: 15px;
+    }
+
+    .reveal-image-wrap {
+
+        width: 100%;
+
+        flex-shrink: 0;
+
+        padding-bottom: 10px;
     }
 
     .reveal-photo-frame {
-        width: min(100%, 270px);
+
+        width:
+            min(100%, 270px);
+
+        height: auto;
+
+        aspect-ratio: 4 / 5;
+
         margin: 0 auto;
     }
 
+    /* =====================================================
+       GAME COMPLETATO MOBILE
+    ===================================================== */
+
     .game-complete {
-        position: fixed;
 
-        inset:
-            10%
-            7%;
-    }
-
-    .final-memory {
-        position: fixed;
+        position: absolute;
 
         inset: 0;
 
+        min-height: 100%;
+
         padding:
-            70px
+            50px
+            20px;
+
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* =====================================================
+       FINAL MEMORY MOBILE
+    ===================================================== */
+
+    .final-memory {
+
+        position: absolute;
+
+        inset: 0;
+
+        min-height: 100%;
+
+        padding:
+            65px
             22px
-            40px;
+            45px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        align-items: flex-start;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior: contain;
     }
 
     .final-memory-content {
+
+        width: 100%;
+
         padding-bottom: 30px;
     }
 
     .final-memory-content h3 {
         font-size: 29px;
+        line-height: 1.1;
     }
 
+    .final-memory-text {
+        font-size: 14px;
+    }
 
-    /* FINAL MOBILE */
+    .final-memory-highlight {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    /* =====================================================
+       FINAL PAGE MOBILE
+    ===================================================== */
 
     .final-page {
+
+        min-height: 100vh;
+        height: auto;
+
+        align-items: flex-start;
+
         overflow-y: auto;
 
         padding:
-            35px
+            55px
             20px
-            70px;
+            90px;
     }
 
     .final-content {
+
         max-height: none;
+
+        overflow: visible;
+
+        padding:
+            20px
+            5px
+            30px;
     }
 
     .final-content > p:not(
@@ -3062,8 +3000,10 @@ body {
     ):not(
         .final-overline
     ) {
+
         font-size: 14px;
-        line-height: 1.75;
+
+        line-height: 1.8;
     }
 
     .dots {
@@ -3079,7 +3019,6 @@ body {
         width: 16px;
     }
 }
-
 
 /* =========================================================
    TELEFONI PICCOLI
@@ -3099,8 +3038,17 @@ body {
         font-size: 13px;
     }
 
+    .memory-page,
+    .memory-page.reverse {
+        padding:
+            60px
+            18px
+            85px;
+    }
+
     .memory-image {
-        height: 32vh;
+        width: 86vw;
+        height: 34vh;
     }
 
     .memory-content h2,
@@ -3129,14 +3077,28 @@ body {
     ):not(
         .final-overline
     ) {
+
         font-size: 13px;
+
+        line-height: 1.75;
     }
 
     .game-intro h2 {
         font-size: 30px;
     }
-}
 
+    .reveal-text h3 {
+        font-size: 28px;
+    }
+
+    .reveal-description {
+        font-size: 12.5px;
+    }
+
+    .reveal-photo-frame {
+        width: 240px;
+    }
+}
 
 /* =========================================================
    RIDOTTO MOVIMENTO
@@ -3147,9 +3109,11 @@ body {
     *,
     *::before,
     *::after {
+
         scroll-behavior: auto !important;
 
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
