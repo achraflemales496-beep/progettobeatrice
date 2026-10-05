@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
     <title>Noi, Capitolo Uno ❤️</title>
 
@@ -12,19 +15,22 @@
         content="Il primo capitolo della nostra storia. Achraf ♥ Beatrice — 09.08.2026"
     >
 
-    <!-- Anteprima quando il sito viene condiviso -->
     <meta property="og:title" content="Noi, Capitolo Uno ❤️">
+
     <meta
         property="og:description"
         content="Il primo capitolo della nostra storia. Achraf ♥ Beatrice — 09.08.2026"
     >
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://progettobeatrice.vercel.app/">
 
-    <!-- Colore della scheda su dispositivi mobili -->
-    <meta name="theme-color" content="#0b0710">
+    <meta
+        property="og:url"
+        content="https://progettobeatrice.vercel.app/"
+    >
 
-    <!-- Favicon -->
+    <meta name="theme-color" content="#08050b">
+
     <link
         rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E❤️%3C/text%3E%3C/svg%3E"
@@ -35,64 +41,142 @@
 
 <body>
 
-    <!-- SCHERMATA PASSWORD -->
+    <!-- =====================================================
+         SFONDO
+    ====================================================== -->
+
+    <div class="cinematic-background"></div>
+    <div class="grain"></div>
+
+    <div
+        class="ambient-particles"
+        id="ambientParticles"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         SCHERMATA PASSWORD
+    ====================================================== -->
+
     <div id="passwordScreen" class="password-screen">
+
+        <div class="password-glow"></div>
+
         <div class="password-box">
 
-            <div class="password-heart">♥</div>
+            <div class="password-top-symbol">
+                ♡
+            </div>
 
-            <p class="password-eyebrow">IL NOSTRO PICCOLO MONDO</p>
+            <p class="password-eyebrow">
+                IL NOSTRO PICCOLO MONDO
+            </p>
 
-            <h1>Achraf <span>♥</span> Beatrice</h1>
+            <h1>
+                Achraf
+                <span>♥</span>
+                Beatrice
+            </h1>
+
+            <div class="password-divider"></div>
 
             <p class="password-description">
-                Questa pagina è solo per te.
+                C'è un posto che esiste solo per noi.
                 <br>
-                Inserisci la nostra data.
+                Per entrare devi ricordarti
+                una cosa molto semplice.
+            </p>
+
+            <p class="password-hint">
+                <span>⌁</span>
+                La data che ha dato inizio a tutto.
             </p>
 
             <div class="password-input-wrapper">
+
                 <input
                     type="text"
                     id="passwordInput"
-                    placeholder="*/**/****"
+                    placeholder="9/08/2026"
                     maxlength="10"
                     autocomplete="off"
+                    inputmode="numeric"
+                    aria-label="Inserisci la nostra data"
                 >
+
             </div>
 
-            <button id="passwordBtn" class="password-btn">
-                Entra nel nostro mondo ♥
+            <button
+                id="passwordBtn"
+                class="password-btn"
+            >
+                Entra nel nostro mondo
+                <span>♥</span>
             </button>
 
-            <p id="passwordError" class="password-error">
-                <span>♥</span>
+            <p
+                id="passwordError"
+                class="password-error"
+            >
+                <span>♡</span>
                 Non è questa...
-                <small>Prova a ricordare la nostra data.</small>
+                <small>
+                    Prova a ricordare la nostra data.
+                </small>
             </p>
 
-            <p id="passwordSuccess" class="password-success">
+            <p
+                id="passwordSuccess"
+                class="password-success"
+            >
                 Benvenuta nel nostro mondo ♥
             </p>
 
+            <div class="password-footer">
+                09.08.2026
+            </div>
+
         </div>
+
     </div>
 
 
-    <!-- SFONDO STELLE -->
-    <div class="stars"></div>
+    <!-- =====================================================
+         FLASH TRANSIZIONE
+    ====================================================== -->
+
+    <div
+        id="pageFlash"
+        class="page-flash"
+        aria-hidden="true"
+    ></div>
 
 
-    <!-- LIBRO -->
-    <main class="book" id="book">
+    <!-- =====================================================
+         LIBRO
+    ====================================================== -->
 
-        <!-- PAGINA 1 -->
+    <main
+        class="book"
+        id="book"
+        aria-label="Il nostro album"
+    >
+
+
+        <!-- =================================================
+             PAGINA 1 — COPERTINA
+        ================================================== -->
+
         <section class="page cover">
+
+            <div class="cover-orbit orbit-one"></div>
+            <div class="cover-orbit orbit-two"></div>
 
             <div class="cover-content">
 
                 <p class="cover-eyebrow">
-                    9 AGOSTO 2026 — 9 OTTOBRE 2026
+                    09 AGOSTO 2026 — 09 OTTOBRE 2026
                 </p>
 
                 <div class="cover-heart">
@@ -100,7 +184,9 @@
                 </div>
 
                 <h1>
-                    Achraf <span>♥</span> Beatrice
+                    Achraf
+                    <span>♥</span>
+                    Beatrice
                 </h1>
 
                 <h2>
@@ -134,36 +220,99 @@
                     che verrà dopo. ❤️
                 </p>
 
-                <div class="date-box">
-                    <span>09.08.2026</span>
-                    <span>♥</span>
-                    <span>09.10.2026</span>
+
+                <!-- CONTATORE -->
+
+                <div class="days-counter">
+
+                    <div class="counter-label">
+                        ⏳ INSIEME DA
+                    </div>
+
+                    <div
+                        id="daysTogether"
+                        class="counter-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="counter-bottom">
+                        giorni
+                        <span>♥</span>
+                    </div>
+
                 </div>
 
-                <button class="start-btn" id="startBtn">
-                    Inizia il nostro viaggio →
+
+                <div class="date-box">
+
+                    <span>
+                        09.08.2026
+                    </span>
+
+                    <span>
+                        ♥
+                    </span>
+
+                    <span>
+                        09.10.2026
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="start-btn"
+                    id="startBtn"
+                >
+                    Inizia il nostro viaggio
+                    <span>→</span>
                 </button>
 
             </div>
 
+
             <div class="scroll-indicator">
-                <span>SCORRI</span>
+
+                <span>
+                    SCORRI
+                </span>
+
                 <div class="scroll-line"></div>
+
             </div>
 
         </section>
 
 
-        <!-- PAGINA 2 -->
+        <!-- =================================================
+             PAGINA 2
+        ================================================== -->
+
         <section class="page memory-page">
 
-            <div class="memory-image">
-                <img src="images/foto1.jpg" alt="Un nostro ricordo">
+            <div class="memory-image photo-frame">
+
+                <div class="photo-corner corner-top"></div>
+                <div class="photo-corner corner-bottom"></div>
+
+                <img
+                    src="images/foto1.jpg"
+                    alt="Un nostro ricordo"
+                >
+
+                <div class="photo-caption">
+                    <span>RICORDO 01</span>
+                    <span>♥</span>
+                </div>
+
             </div>
 
             <div class="memory-content">
 
-                <p class="page-number">01</p>
+                <p class="page-number">
+                    01
+                </p>
 
                 <p class="page-eyebrow">
                     DA QUI È INIZIATO TUTTO
@@ -193,16 +342,34 @@
         </section>
 
 
-        <!-- PAGINA 3 -->
+        <!-- =================================================
+             PAGINA 3
+        ================================================== -->
+
         <section class="page memory-page reverse">
 
-            <div class="memory-image">
-                <img src="images/foto2.jpg" alt="Beatrice">
+            <div class="memory-image photo-frame">
+
+                <div class="photo-corner corner-top"></div>
+                <div class="photo-corner corner-bottom"></div>
+
+                <img
+                    src="images/foto2.jpg"
+                    alt="Beatrice"
+                >
+
+                <div class="photo-caption">
+                    <span>RICORDO 02</span>
+                    <span>♥</span>
+                </div>
+
             </div>
 
             <div class="memory-content">
 
-                <p class="page-number">02</p>
+                <p class="page-number">
+                    02
+                </p>
 
                 <p class="page-eyebrow">
                     TU
@@ -237,16 +404,34 @@
         </section>
 
 
-        <!-- PAGINA 4 -->
+        <!-- =================================================
+             PAGINA 4
+        ================================================== -->
+
         <section class="page memory-page">
 
-            <div class="memory-image">
-                <img src="images/foto3.jpg" alt="Un nostro momento">
+            <div class="memory-image photo-frame">
+
+                <div class="photo-corner corner-top"></div>
+                <div class="photo-corner corner-bottom"></div>
+
+                <img
+                    src="images/foto3.jpg"
+                    alt="Un nostro momento"
+                >
+
+                <div class="photo-caption">
+                    <span>RICORDO 03</span>
+                    <span>♥</span>
+                </div>
+
             </div>
 
             <div class="memory-content">
 
-                <p class="page-number">03</p>
+                <p class="page-number">
+                    03
+                </p>
 
                 <p class="page-eyebrow">
                     I NOSTRI MOMENTI
@@ -279,12 +464,17 @@
         </section>
 
 
-        <!-- PAGINA 5 -->
+        <!-- =================================================
+             PAGINA 5 — VIDEO
+        ================================================== -->
+
         <section class="page video-page">
 
             <div class="video-content">
 
-                <p class="page-number">04</p>
+                <p class="page-number">
+                    04
+                </p>
 
                 <p class="page-eyebrow">
                     UN RICORDO DA RIVIVERE
@@ -295,10 +485,25 @@
                 </h2>
 
                 <div class="video-wrapper">
-                    <video controls playsinline>
-                        <source src="video/video.mp4" type="video/mp4">
+
+                    <div class="video-glow"></div>
+
+                    <video
+                        id="memoryVideo"
+                        controls
+                        playsinline
+                        preload="metadata"
+                    >
+
+                        <source
+                            src="video/video.mp4"
+                            type="video/mp4"
+                        >
+
                         Il tuo browser non supporta il video.
+
                     </video>
+
                 </div>
 
                 <p>
@@ -317,16 +522,34 @@
         </section>
 
 
-        <!-- PAGINA 6 -->
+        <!-- =================================================
+             PAGINA 6
+        ================================================== -->
+
         <section class="page memory-page reverse">
 
-            <div class="memory-image">
-                <img src="images/foto4.jpg" alt="Un nostro ricordo">
+            <div class="memory-image photo-frame">
+
+                <div class="photo-corner corner-top"></div>
+                <div class="photo-corner corner-bottom"></div>
+
+                <img
+                    src="images/foto4.jpg"
+                    alt="Un nostro ricordo"
+                >
+
+                <div class="photo-caption">
+                    <span>RICORDO 05</span>
+                    <span>♥</span>
+                </div>
+
             </div>
 
             <div class="memory-content">
 
-                <p class="page-number">05</p>
+                <p class="page-number">
+                    05
+                </p>
 
                 <p class="page-eyebrow">
                     IN QUESTI DUE MESI
@@ -359,16 +582,34 @@
         </section>
 
 
-        <!-- PAGINA 7 -->
+        <!-- =================================================
+             PAGINA 7
+        ================================================== -->
+
         <section class="page memory-page">
 
-            <div class="memory-image">
-                <img src="images/foto5.jpg" alt="Un nostro ricordo">
+            <div class="memory-image photo-frame">
+
+                <div class="photo-corner corner-top"></div>
+                <div class="photo-corner corner-bottom"></div>
+
+                <img
+                    src="images/foto5.jpg"
+                    alt="Un nostro ricordo"
+                >
+
+                <div class="photo-caption">
+                    <span>RICORDO 06</span>
+                    <span>♥</span>
+                </div>
+
             </div>
 
             <div class="memory-content">
 
-                <p class="page-number">06</p>
+                <p class="page-number">
+                    06
+                </p>
 
                 <p class="page-eyebrow">
                     SOLO L'INIZIO
@@ -402,12 +643,17 @@
         </section>
 
 
-        <!-- PAGINA 8 -->
+        <!-- =================================================
+             PAGINA 8 — LETTERA
+        ================================================== -->
+
         <section class="page letter-page">
 
             <div class="letter-card">
 
-                <p class="page-number">07</p>
+                <p class="page-number">
+                    07
+                </p>
 
                 <p class="page-eyebrow">
                     PER TE
@@ -450,7 +696,9 @@
                 <p class="letter-signature">
                     Con amore,
                     <br>
-                    <strong>Achraf ❤️</strong>
+                    <strong>
+                        Achraf ❤️
+                    </strong>
                 </p>
 
             </div>
@@ -458,8 +706,392 @@
         </section>
 
 
-        <!-- PAGINA 9 -->
+        <!-- =================================================
+             PAGINA 9 — MINI GIOCO
+        ================================================== -->
+
+        <section class="page game-page">
+
+            <div class="game-background-glow"></div>
+
+            <div class="game-container">
+
+                <div class="game-intro" id="gameIntro">
+
+                    <div class="game-icon">
+                        ♡
+                    </div>
+
+                    <p class="game-label">
+                        LIVELLO SEGRETO
+                    </p>
+
+                    <h2>
+                        Quando non sono con te...
+                    </h2>
+
+                    <div class="game-line"></div>
+
+                    <p class="game-intro-text">
+                        Visto che ogni tanto non posso essere lì
+                        a romperti le scatole di persona...
+                        ho pensato di lasciarti qualcosa qui.
+                    </p>
+
+                    <p class="game-intro-text">
+                        Ci sono <strong>3 ricordi</strong>.
+                        <br>
+                        Non sono tutti bellissimi.
+                        Anzi, alcuni sono abbastanza discutibili. 😂
+                    </p>
+
+                    <p class="game-intro-small">
+                        Ma sono nostri.
+                    </p>
+
+                    <button
+                        id="startGameBtn"
+                        class="game-main-btn"
+                    >
+                        Inizia il gioco
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="game-board"
+                    id="gameBoard"
+                >
+
+                    <div class="game-board-header">
+
+                        <div>
+                            <p>
+                                RICORDI DA SBLOCCARE
+                            </p>
+
+                            <span>
+                                Quando non sono con te ❤️
+                            </span>
+                        </div>
+
+                        <div class="game-progress">
+                            <strong id="gameProgress">
+                                0
+                            </strong>
+                            <span>/ 3</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="memory-cards">
+
+
+                        <!-- RICORDO 1 -->
+
+                        <article
+                            class="game-card locked"
+                            data-memory="1"
+                        >
+
+                            <div class="card-lock">
+                                🔒
+                            </div>
+
+                            <div class="card-number">
+                                01
+                            </div>
+
+                            <div class="card-preview">
+                                😂
+                            </div>
+
+                            <h3>
+                                Il mio talento
+                                da stylist
+                            </h3>
+
+                            <p>
+                                C'è una certa foto
+                                di cui dovremmo parlare...
+                            </p>
+
+                            <button class="unlock-btn">
+                                Sblocca
+                            </button>
+
+                        </article>
+
+
+                        <!-- RICORDO 2 -->
+
+                        <article
+                            class="game-card locked"
+                            data-memory="2"
+                        >
+
+                            <div class="card-lock">
+                                🔒
+                            </div>
+
+                            <div class="card-number">
+                                02
+                            </div>
+
+                            <div class="card-preview">
+                                💄
+                            </div>
+
+                            <h3>
+                                Prova classificata
+                            </h3>
+
+                            <p>
+                                Una delle tante cose
+                                che ho fatto per te...
+                            </p>
+
+                            <button class="unlock-btn">
+                                Sblocca
+                            </button>
+
+                        </article>
+
+
+                        <!-- RICORDO 3 -->
+
+                        <article
+                            class="game-card locked"
+                            data-memory="3"
+                        >
+
+                            <div class="card-lock">
+                                🔒
+                            </div>
+
+                            <div class="card-number">
+                                03
+                            </div>
+
+                            <div class="card-preview">
+                                🫂
+                            </div>
+
+                            <h3>
+                                Questo è diverso
+                            </h3>
+
+                            <p>
+                                Questo ricordo
+                                non fa ridere.
+                            </p>
+
+                            <button class="unlock-btn">
+                                Sblocca
+                            </button>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- AREA RICORDO -->
+
+                    <div
+                        id="memoryReveal"
+                        class="memory-reveal"
+                    >
+
+                        <button
+                            id="closeMemoryBtn"
+                            class="close-memory"
+                            aria-label="Chiudi ricordo"
+                        >
+                            ×
+                        </button>
+
+                        <div class="reveal-content">
+
+                            <div class="reveal-text">
+
+                                <p
+                                    id="revealEyebrow"
+                                    class="reveal-eyebrow"
+                                ></p>
+
+                                <h3
+                                    id="revealTitle"
+                                ></h3>
+
+                                <div class="reveal-line"></div>
+
+                                <div
+                                    id="revealDescription"
+                                    class="reveal-description"
+                                ></div>
+
+                            </div>
+
+                            <div class="reveal-image-wrap">
+
+                                <div class="reveal-photo-frame">
+
+                                    <img
+                                        id="revealImage"
+                                        src=""
+                                        alt="Ricordo"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COMPLETATO -->
+
+                    <div
+                        id="gameComplete"
+                        class="game-complete"
+                    >
+
+                        <div class="complete-symbol">
+                            ✓
+                        </div>
+
+                        <p class="complete-label">
+                            MISSIONE COMPLETATA
+                        </p>
+
+                        <h3>
+                            Hai trovato tutti i miei ricordi.
+                        </h3>
+
+                        <p>
+                            <strong>3 / 3</strong>
+                            ricordi sbloccati.
+                        </p>
+
+                        <p class="complete-small">
+                            Ma aspetta...
+                            <br>
+                            c'è ancora una cosa.
+                        </p>
+
+                        <button
+                            id="unlockFinalBtn"
+                            class="game-main-btn"
+                        >
+                            Trova l'ultimo
+                            <span>🔓</span>
+                        </button>
+
+                    </div>
+
+
+                    <!-- RICORDO 4 -->
+
+                    <div
+                        id="finalMemory"
+                        class="final-memory"
+                    >
+
+                        <div class="final-memory-content">
+
+                            <p class="final-memory-label">
+                                RICORDO #04
+                            </p>
+
+                            <div class="file-icon">
+                                <span>?</span>
+                            </div>
+
+                            <h3>
+                                File non trovato.
+                            </h3>
+
+                            <div class="fake-files">
+
+                                <span>
+                                    📷 Foto
+                                    <b>×</b>
+                                </span>
+
+                                <span>
+                                    🎬 Video
+                                    <b>×</b>
+                                </span>
+
+                                <span>
+                                    🎙 Registrazione
+                                    <b>×</b>
+                                </span>
+
+                            </div>
+
+                            <p class="final-memory-text">
+                                Perché questo ricordo
+                                non esiste ancora.
+                            </p>
+
+                            <p class="final-memory-highlight">
+                                Lo dobbiamo ancora vivere.
+                            </p>
+
+                            <div class="final-memory-divider"></div>
+
+                            <p>
+                                Ci sono ancora posti dove non siamo stati,
+                                cose che non abbiamo fatto,
+                                foto che non abbiamo scattato,
+                                risate che ancora non abbiamo fatto.
+                            </p>
+
+                            <p>
+                                Quindi questo spazio rimane vuoto.
+                            </p>
+
+                            <p class="final-memory-last">
+                                <strong>
+                                    Per ora.
+                                </strong>
+                                <br><br>
+                                Perché voglio riempirlo
+                                insieme a te. ❤️
+                            </p>
+
+                            <button
+                                id="finishGameBtn"
+                                class="finish-game-btn"
+                            >
+                                Continua
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGINA 10 — FINALE
+        ================================================== -->
+
         <section class="page final-page">
+
+            <div class="final-stars"></div>
 
             <div class="final-content">
 
@@ -471,12 +1103,20 @@
                     ♥
                 </div>
 
+                <p class="final-overline">
+                    CAPITOLO 02 COMPLETATO
+                </p>
+
                 <h2>
-                    Buon secondo mesiversario
+                    Ma la storia
+                    <br>
+                    non finisce qui.
                 </h2>
 
                 <h3>
-                    Achraf <span>♥</span> Beatrice
+                    Achraf
+                    <span>♥</span>
+                    Beatrice
                 </h3>
 
                 <div class="final-line"></div>
@@ -528,14 +1168,25 @@
                     Perché se devo scegliere con chi vivere
                     tutto quello che deve ancora arrivare...
                     <br><br>
-                    <strong>scelgo te. ❤️</strong>
+
+                    <strong>
+                        scelgo te. ❤️
+                    </strong>
                 </p>
 
                 <p class="final-love">
                     Ti amo, Beatrice.
                     <br>
-                    <span>— Achraf</span>
+                    <span>
+                        — Achraf
+                    </span>
                 </p>
+
+                <div class="final-infinity">
+                    09.08.2026
+                    <span>→</span>
+                    ∞
+                </div>
 
             </div>
 
@@ -544,7 +1195,10 @@
     </main>
 
 
-    <!-- FRECCE DESKTOP -->
+    <!-- =====================================================
+         NAVIGAZIONE
+    ====================================================== -->
+
     <button
         class="nav-arrow nav-arrow-left"
         id="prevBtn"
@@ -562,8 +1216,37 @@
     </button>
 
 
-    <!-- PUNTINI -->
-    <div class="dots" id="dots"></div>
+    <!-- =====================================================
+         INDICATORE PAGINA
+    ====================================================== -->
+
+    <div
+        class="page-indicator"
+        id="pageIndicator"
+    >
+        <span id="currentPageNumber">
+            01
+        </span>
+
+        <span class="indicator-slash">
+            /
+        </span>
+
+        <span id="totalPageNumber">
+            10
+        </span>
+    </div>
+
+
+    <!-- =====================================================
+         DOTS
+    ====================================================== -->
+
+    <div
+        class="dots"
+        id="dots"
+        aria-label="Navigazione pagine"
+    ></div>
 
 
     <script src="script.js"></script>
