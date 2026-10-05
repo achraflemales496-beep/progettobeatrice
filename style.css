@@ -80,8 +80,10 @@ body {
 .cinematic-background::after {
     content: "";
     position: absolute;
+
     width: 70vw;
     height: 70vw;
+
     top: -30vw;
     left: -15vw;
 
@@ -273,6 +275,10 @@ body {
 
     width: min(460px, 100%);
 
+    max-height: calc(100dvh - 40px);
+
+    overflow-y: auto;
+
     padding: 48px 38px;
 
     text-align: center;
@@ -298,6 +304,12 @@ body {
 
     animation:
         passwordBoxIn 1s ease both;
+
+    scrollbar-width: none;
+}
+
+.password-box::-webkit-scrollbar {
+    display: none;
 }
 
 @keyframes passwordBoxIn {
@@ -614,6 +626,12 @@ body {
     scrollbar-width: none;
 
     -webkit-overflow-scrolling: touch;
+
+    /*
+     * Permette al browser di distinguere meglio
+     * lo swipe orizzontale da quello verticale.
+     */
+    touch-action: pan-x;
 }
 
 .book::-webkit-scrollbar {
@@ -660,6 +678,7 @@ body {
     content: "";
 
     position: absolute;
+
     top: 4%;
     bottom: 4%;
 
@@ -1840,6 +1859,7 @@ body {
 
 .game-card.unlocked .unlock-btn {
     color: #ff80b3;
+
     border-color:
         rgba(255, 95, 162, 0.3);
 }
@@ -2685,19 +2705,71 @@ body {
 
 
 /* =========================================================
-   MOBILE
+   MOBILE — SCROLL VERTICALE REALE
 ========================================================= */
 
 @media (max-width: 700px) {
 
-    html,
-    body {
+    html {
+        width: 100%;
+        height: 100%;
         overflow: hidden;
     }
 
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        /*
+         * Evita che il browser interpreti
+         * male i gesti touch.
+         */
+        overscroll-behavior: none;
+    }
+
+    /*
+     * Il libro continua a scorrere orizzontalmente.
+     */
     .book {
+        width: 100vw;
+        height: 100dvh;
+
         overflow-x: auto;
         overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+
+        /*
+         * Fondamentale:
+         * consente allo swipe orizzontale
+         * ma non blocca il contenuto verticale
+         * delle singole pagine.
+         */
+        touch-action: pan-x;
+
+        overscroll-behavior-x: contain;
+        overscroll-behavior-y: none;
+    }
+
+    /*
+     * Ogni pagina è una "finestra".
+     * Il contenuto interno può diventare
+     * più alto dello schermo.
+     */
+    .page {
+        flex: 0 0 100vw;
+
+        width: 100vw;
+        min-width: 100vw;
+
+        height: 100dvh;
+        min-height: 100dvh;
+
+        overflow: hidden;
+
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 
     .nav-arrow {
@@ -2705,13 +2777,51 @@ body {
     }
 
     .page-indicator {
-        top: 12px;
+        top:
+            max(
+                12px,
+                env(safe-area-inset-top)
+            );
 
         font-size: 7px;
+
+        padding: 6px 10px;
+    }
+
+    .dots {
+        bottom:
+            max(
+                9px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .password-screen {
+        padding:
+            max(18px, env(safe-area-inset-top))
+            max(18px, env(safe-area-inset-right))
+            max(18px, env(safe-area-inset-bottom))
+            max(18px, env(safe-area-inset-left));
+
+        overflow-y: auto;
+
+        align-items: center;
+
+        overscroll-behavior: contain;
     }
 
     .password-box {
-        padding: 38px 24px;
+        width: min(440px, 100%);
+
+        max-height:
+            calc(
+                100dvh
+                - env(safe-area-inset-top)
+                - env(safe-area-inset-bottom)
+                - 36px
+            );
+
+        padding: 34px 22px;
     }
 
     .password-top-symbol {
@@ -2719,10 +2829,42 @@ body {
     }
 
     .cover {
+        /*
+         * La pagina stessa non scorre:
+         * scorre invece .cover-content.
+         */
+        display: block;
+
+        height: 100dvh;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
         padding:
-            40px
+            75px
             20px
-            65px;
+            max(
+                85px,
+                calc(
+                    60px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
+    }
+
+    .cover-content {
+        width: min(740px, 100%);
+
+        margin:
+            0 auto;
+
+        min-height: auto;
     }
 
     .cover-heart {
@@ -2731,12 +2873,15 @@ body {
 
     .cover-text {
         font-size: 14px;
-        line-height: 1.7;
+        line-height: 1.75;
     }
 
     .days-counter {
         min-width: 145px;
-        padding: 9px 20px;
+
+        padding:
+            9px
+            20px;
     }
 
     .counter-number {
@@ -2746,35 +2891,97 @@ body {
     .date-box {
         font-size: 8px;
         gap: 9px;
+
+        max-width: 100%;
     }
+
+    .start-btn {
+        margin-bottom: 10px;
+    }
+
+    /*
+     * L'indicatore rimane visibile mentre
+     * il contenuto della copertina scorre.
+     */
+    .scroll-indicator {
+        position: fixed;
+
+        bottom:
+            max(
+                22px,
+                calc(
+                    14px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+    }
+
+
+    /* =====================================================
+       MEMORY MOBILE
+    ===================================================== */
 
     .memory-page,
     .memory-page.reverse {
-        flex-direction: column;
 
-        justify-content: center;
+        /*
+         * IMPORTANTE:
+         * niente overflow-y sulla pagina stessa.
+         * Usiamo un layout interno che può
+         * essere attraversato verticalmente.
+         */
+        display: block;
 
-        gap: 22px;
+        height: 100dvh;
+        min-height: 100dvh;
 
         padding:
-            45px
+            70px
             22px
-            60px;
+            max(
+                80px,
+                calc(
+                    55px +
+                    env(safe-area-inset-bottom)
+                )
+            );
 
         overflow-y: auto;
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
     }
 
     .memory-image {
         width:
-            min(82vw, 350px);
+            min(
+                82vw,
+                350px
+            );
 
         height:
-            min(40vh, 360px);
+            min(
+                43vh,
+                360px
+            );
+
+        margin:
+            0 auto 28px;
     }
 
     .memory-content {
         width:
-            min(88vw, 500px);
+            min(
+                88vw,
+                500px
+            );
+
+        margin:
+            0 auto;
     }
 
     .memory-content h2,
@@ -2790,38 +2997,113 @@ body {
         .page-eyebrow
     ) {
         font-size: 14px;
-        line-height: 1.72;
-        margin-bottom: 12px;
+
+        line-height: 1.78;
+
+        margin-bottom: 14px;
     }
 
+
+    /* =====================================================
+       VIDEO MOBILE
+    ===================================================== */
+
     .video-page {
+
+        display: block;
+
+        height: 100dvh;
+
         overflow-y: auto;
+        overflow-x: hidden;
 
         padding:
-            50px
+            70px
             20px
-            70px;
+            max(
+                85px,
+                calc(
+                    65px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
+    }
+
+    .video-content {
+        width: min(850px, 100%);
+
+        margin:
+            0 auto;
+    }
+
+    .video-wrapper {
+        margin-top: 18px;
     }
 
     .video-wrapper video {
-        max-height: 43vh;
+        width: 100%;
+        max-height: none;
     }
 
+    .video-content > p:last-child,
+    .video-content > p:nth-last-child(2) {
+        font-size: 14px;
+
+        line-height: 1.78;
+    }
+
+
+    /* =====================================================
+       LETTERA MOBILE
+    ===================================================== */
+
     .letter-page {
+
+        display: block;
+
+        height: 100dvh;
+
         overflow-y: auto;
+        overflow-x: hidden;
 
         padding:
-            35px
+            70px
             17px
-            70px;
+            max(
+                85px,
+                calc(
+                    65px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
     }
 
     .letter-card {
+
+        width: 100%;
+
         max-height: none;
+
+        overflow: visible;
 
         padding:
             35px
             22px;
+
+        margin:
+            0 auto;
     }
 
     .letter-card > p:not(
@@ -2832,29 +3114,70 @@ body {
         .letter-signature
     ) {
         font-size: 14px;
-        line-height: 1.75;
+
+        line-height: 1.78;
+
+        margin-bottom: 17px;
     }
 
 
-    /* GAME MOBILE */
+    /* =====================================================
+       GAME MOBILE
+    ===================================================== */
 
     .game-page {
+
+        display: block;
+
+        height: 100dvh;
+
         overflow-y: auto;
+        overflow-x: hidden;
 
         padding:
-            45px
+            70px
             15px
-            65px;
+            max(
+                90px,
+                calc(
+                    70px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
     }
 
     .game-container {
+
         width: 100%;
+
         height: auto;
-        min-height: 720px;
+
+        min-height: auto;
+
+        margin:
+            0 auto;
     }
 
     .game-intro {
-        min-height: 650px;
+
+        min-height:
+            calc(
+                100dvh
+                - 150px
+            );
+
+        height: auto;
+
+        padding:
+            20px
+            0
+            40px;
     }
 
     .game-intro h2 {
@@ -2863,27 +3186,69 @@ body {
 
     .game-intro-text {
         font-size: 14px;
-        line-height: 1.75;
+        line-height: 1.78;
     }
 
+    .game-intro-small {
+        line-height: 1.7;
+    }
+
+    /*
+     * Il board NON è più limitato
+     * all'altezza del telefono.
+     */
     .game-board {
+
         position: relative;
+
         inset: auto;
 
-        min-height: 700px;
+        width: 100%;
+
+        min-height: 0;
+
+        height: auto;
+
+        padding-bottom: 20px;
     }
 
     .game-board-header {
+
+        position: sticky;
+
+        top: -1px;
+
+        z-index: 5;
+
         margin-bottom: 18px;
+
+        padding:
+            12px
+            4px
+            15px;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(8, 5, 11, 0.98),
+                rgba(8, 5, 11, 0.82),
+                transparent
+            );
+
+        backdrop-filter: blur(8px);
     }
 
     .memory-cards {
+
         grid-template-columns: 1fr;
 
         gap: 12px;
+
+        padding-bottom: 20px;
     }
 
     .game-card {
+
         min-height: 185px;
 
         display: grid;
@@ -2902,16 +3267,21 @@ body {
 
         text-align: left;
 
-        padding: 20px 17px;
+        padding:
+            20px
+            17px;
     }
 
     .card-number {
+
         grid-column: 1;
+
         grid-row: 1 / 4;
 
         align-self: center;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -2927,6 +3297,7 @@ body {
     }
 
     .card-preview {
+
         position: absolute;
 
         top: 15px;
@@ -2938,6 +3309,7 @@ body {
         margin: 0;
 
         background: none;
+
         border: none;
 
         font-size: 20px;
@@ -2948,51 +3320,89 @@ body {
     }
 
     .game-card h3 {
+
         grid-column: 2;
+
         grid-row: 1;
 
-        margin: 3px 0 7px;
+        margin:
+            3px
+            0
+            7px;
 
         font-size: 19px;
     }
 
     .game-card p {
+
         grid-column: 2;
+
         grid-row: 2;
 
         min-height: 0;
 
-        margin: 0 0 10px;
+        margin:
+            0
+            0
+            10px;
 
         font-size: 11px;
     }
 
     .unlock-btn {
+
         grid-column: 2;
+
         grid-row: 3;
 
         justify-self: start;
     }
 
+
+    /* =====================================================
+       MEMORY REVEAL MOBILE
+    ===================================================== */
+
     .memory-reveal {
+
         position: fixed;
 
         inset:
-            10%
-            7%;
+            max(
+                8%,
+                env(safe-area-inset-top)
+            )
+            7%
+            max(
+                8%,
+                env(safe-area-inset-bottom)
+            );
 
         width: auto;
         height: auto;
 
-        padding: 35px 18px 20px;
+        padding:
+            45px
+            18px
+            25px;
 
         overflow-y: auto;
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior: contain;
+
+        touch-action: pan-y;
     }
 
     .reveal-content {
+
         grid-template-columns: 1fr;
 
         gap: 25px;
+
+        padding-bottom: 15px;
     }
 
     .reveal-text {
@@ -3000,38 +3410,95 @@ body {
     }
 
     .reveal-line {
-        margin: 17px auto;
+        margin:
+            17px
+            auto;
     }
 
     .reveal-description {
+
         font-size: 13px;
+
+        line-height: 1.78;
     }
 
     .reveal-photo-frame {
-        width: min(100%, 270px);
-        margin: 0 auto;
+
+        width:
+            min(
+                100%,
+                270px
+            );
+
+        margin:
+            0 auto;
     }
 
+
+    /* =====================================================
+       GAME COMPLETE MOBILE
+    ===================================================== */
+
     .game-complete {
+
         position: fixed;
 
         inset:
-            10%
+            8%
             7%;
+
+        padding:
+            35px
+            22px;
+
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+        touch-action: pan-y;
     }
 
+
+    /* =====================================================
+       FINAL MEMORY MOBILE
+    ===================================================== */
+
     .final-memory {
+
         position: fixed;
 
         inset: 0;
 
         padding:
-            70px
+            max(
+                70px,
+                calc(
+                    50px +
+                    env(safe-area-inset-top)
+                )
+            )
             22px
-            40px;
+            max(
+                50px,
+                calc(
+                    40px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior: contain;
+
+        touch-action: pan-y;
     }
 
     .final-memory-content {
+
+        width: 100%;
+
         padding-bottom: 30px;
     }
 
@@ -3040,19 +3507,52 @@ body {
     }
 
 
-    /* FINAL MOBILE */
+    /* =====================================================
+       FINAL PAGE MOBILE
+    ===================================================== */
 
     .final-page {
+
+        display: block;
+
+        height: 100dvh;
+
         overflow-y: auto;
+        overflow-x: hidden;
 
         padding:
-            35px
+            70px
             20px
-            70px;
+            max(
+                90px,
+                calc(
+                    70px +
+                    env(safe-area-inset-bottom)
+                )
+            );
+
+        -webkit-overflow-scrolling: touch;
+
+        overscroll-behavior-y: contain;
+
+        touch-action: pan-y;
     }
 
     .final-content {
+
+        width: 100%;
+
         max-height: none;
+
+        overflow: visible;
+
+        padding:
+            20px
+            10px
+            30px;
+
+        margin:
+            0 auto;
     }
 
     .final-content > p:not(
@@ -3062,21 +3562,20 @@ body {
     ):not(
         .final-overline
     ) {
+
         font-size: 14px;
-        line-height: 1.75;
+
+        line-height: 1.78;
+
+        margin-bottom: 17px;
     }
 
-    .dots {
-        bottom: 9px;
+    .final-heart {
+        font-size: 42px;
     }
 
-    .dot {
-        width: 4px;
-        height: 4px;
-    }
-
-    .dot.active {
-        width: 16px;
+    .final-love {
+        padding-bottom: 20px;
     }
 }
 
@@ -3129,11 +3628,32 @@ body {
     ):not(
         .final-overline
     ) {
+
         font-size: 13px;
+
+        line-height: 1.75;
     }
 
     .game-intro h2 {
         font-size: 30px;
+    }
+
+    .game-card {
+        padding:
+            18px
+            15px;
+    }
+
+    .game-card h3 {
+        font-size: 18px;
+    }
+
+    .game-card p {
+        font-size: 10px;
+    }
+
+    .counter-number {
+        font-size: 27px;
     }
 }
 
@@ -3147,11 +3667,16 @@ body {
     *,
     *::before,
     *::after {
+
         scroll-behavior: auto !important;
 
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+        animation-duration:
+            0.01ms !important;
 
-        transition-duration: 0.01ms !important;
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 }
